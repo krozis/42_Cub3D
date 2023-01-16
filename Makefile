@@ -6,7 +6,7 @@
 #    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/16 16:05:28 by stelie           ###   ########.fr        #
+#    Updated: 2023/01/16 16:13:22 by stelie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,9 +122,9 @@ all:	$(NAME)
 fsan: $(OBJS)
 	@$(MAKE) -C $(LFT_DIR)
 	@echo $(Y)Compiling [$(NAME)] with fsanitize=address flag...$(X)
-	@$(CC) -o $(NAME) $(FLAGS) $(FFLAGS) $(OBJS) $(LIBFT) $(MLX)
+	@$(CC) -o $(NAME) $(FLAGS) $(FSAN_FLAGS) $(OBJS) $(LIBFT) $(MLX)
 	@printf $(UP)$(CUT)
-	@echo $(G)Compiled [$(NAME)] with fsanitize=address flag...$(X)
+	@echo $(G)Compiled [$(NAME)] with fsanitize=address flag$(X)
 
 clean:
 	@$(MAKE) clean -C $(LFT_DIR)
