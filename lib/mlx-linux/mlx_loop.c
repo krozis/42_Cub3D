@@ -41,7 +41,6 @@ int			mlx_loop(t_xvar *xvar)
 
 	mlx_int_set_win_event_mask(xvar);
 	xvar->do_flush = 0;
-		int i = 0;
 	while (win_count(xvar) && !xvar->end_loop)
 	{
 		while (!xvar->end_loop && (!xvar->loop_hook || XPending(xvar->display)))
@@ -50,6 +49,7 @@ int			mlx_loop(t_xvar *xvar)
 			win = xvar->win_list;
 			while (win && (win->window!=ev.xany.window))
 				win = win->next;
+
 			if (win && ev.type == ClientMessage && ev.xclient.message_type == xvar->wm_protocols && ev.xclient.data.l[0] == xvar->wm_delete_window && win->hooks[DestroyNotify].hook)
 				win->hooks[DestroyNotify].hook(win->hooks[DestroyNotify].param);
 			if (win && ev.type < MLX_MAX_EVENT && win->hooks[ev.type].hook)
@@ -59,6 +59,5 @@ int			mlx_loop(t_xvar *xvar)
 		if (xvar->loop_hook)
 			xvar->loop_hook(xvar->loop_param);
 	}
-
 	return (0);
 }
