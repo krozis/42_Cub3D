@@ -1,3 +1,4 @@
+
 # 42_Cub3D
 Cub3D project from 42 cursus.*
 
@@ -20,9 +21,24 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Control handling
 | TODO | Status |
 |--|--|
+| Arrow keys right/left | NOK |
+
+### Files
+| TODO | Status |
+|--|--|
 | Map is in a "xxx.cub" file | NOK |
 | Composed by 6 chars ONLY :
 | 0 is void spaces | NOK |
 | 1 is walls | NOK |
 | N, S, E, W is the initial position of the player, and his orientation | NOK |
 | Map must be surrounded by walls | NOK |
+
+
+### Bonus
+| TODO | Status |
+|--|--|
+| Walls collision | NOK |
+| minimap system | NOK |
+| Doors that can be opened/closed (allowe to add a symbol on map description)| NOK |
+| Animated sprites | NOK |
+| PoV can be changed with the mouse | NOK |
