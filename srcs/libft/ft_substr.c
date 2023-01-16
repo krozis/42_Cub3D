@@ -6,11 +6,12 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 10:29:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 02:59:26 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

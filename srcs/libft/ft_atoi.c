@@ -6,34 +6,11 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:50:11 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 07:01:18 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:35:54 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_cinset(const char c, const char *set)
-{
-	int	i;
-
-	if (set != NULL)
-	{
-		i = 0;
-		while (set[i])
-		{
-			if (c == set[i])
-				return (1);
-			i++;
-		}
-		return (0);
-	}
-	return (-1);
-}
-
-int	ft_isspace(const char c)
-{
-	return (ft_cinset(c, "\t\n\r\v\f "));
-}
+#include "../../includes/libft.h"
 
 int	ft_atoi(const char *str)
 {

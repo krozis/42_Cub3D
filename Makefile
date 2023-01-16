@@ -6,7 +6,7 @@
 #    By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/16 12:49:06 by dcyprien         ###   ########.fr        #
+#    Updated: 2023/01/16 14:21:16 by dcyprien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	=	./srcs/main.c\
 			./srcs/map.c\
 			./srcs/textures.c\
 			./srcs/utils.c\
+			./srcs/utils_texture.c\
 
 SRCSLIBFT =	./srcs/libft/ft_bzero.c\
 			./srcs/libft/ft_memccpy.c\

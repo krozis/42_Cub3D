@@ -6,12 +6,13 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:35:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 07:01:37 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

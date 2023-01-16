@@ -6,12 +6,13 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:13:33 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 02:55:22 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

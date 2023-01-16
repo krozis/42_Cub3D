@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:42:26 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:25:38 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**get_lines(int fd, int num)
 	tmp = get_next_line(fd);
 	if (!tmp)
 		return (NULL);
-	lines = malloc(sizeof(char *) * num);
+	lines = malloc(sizeof(char *) * (num + 1));
 	while (tmp)
 	{
 		lines[i] = ft_strdup(tmp);
@@ -59,13 +59,14 @@ char	**get_lines(int fd, int num)
 	return (lines);
 }
 
-void	*init(char **av)
+t_ptr	*init(char **av)
 {
-	int	fd;
-	char **lines;
-	char *tmp;
-	t_ptr *ptr;
+	int		fd;
+	char	**lines;
+	t_ptr	*ptr;
+	int		i;
 
+	i = -1;
 	ptr = malloc(sizeof(t_ptr));
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
@@ -73,4 +74,9 @@ void	*init(char **av)
 	lines = get_lines(fd, count_lines(av[1]));
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);
+	get_colors(lines, ptr);
+	while (lines[++i])
+		secure_free((void **)&lines[i]);
+	secure_free((void **)&lines);
+	return (ptr);
 }

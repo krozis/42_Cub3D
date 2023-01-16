@@ -6,11 +6,12 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:17:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 03:07:54 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 void	ft_putnbr_fd(int nb, int fd)
 {

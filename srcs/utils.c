@@ -6,12 +6,26 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:31:10 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:19:23 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../includes/libft.h"
+
+int		empty_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	ft_cinset(const char c, const char *set)
 {
@@ -41,10 +55,15 @@ int		ismap(char *str)
 	int	i;
 
 	i = 0;
+	if (empty_line(str))
+		return (0);
 	while (str[i])
 	{
-		if (!isdigit(str[i]) && !isspace(str[i]))
+		while (str[i] && ft_isspace(str[i]))
+			i++;
+		if (ft_isalpha(str[i]))
 			return (0);
+		i++;
 	}
 	return (1);
 }

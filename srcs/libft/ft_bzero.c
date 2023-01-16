@@ -6,12 +6,12 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:04:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 03:56:36 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:14:53 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strings.h>
-#include "libft.h"
+#include "../../includes/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

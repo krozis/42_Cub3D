@@ -6,9 +6,11 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:31:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:32:08 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:20:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../includes/libft.h"
 
 int	ft_isspace(const char c)
 {
