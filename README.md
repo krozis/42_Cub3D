@@ -21,7 +21,9 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Control handling
 | TODO | Status |
 |--|--|
-| Arrow keys right/left | NOK |
+| Arrow keys right/left rotate the camera | NOK |
+| Keys WASD / ZQSD to move the character | NOK |
+| ESCAPE key and red cross shut correcty the program | NOK |
 
 ### Files
 | TODO | Status |
