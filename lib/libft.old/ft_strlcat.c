@@ -6,11 +6,12 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:27:13 by dcyprien          #+#    #+#             */
-/*   Updated: 2020/01/07 08:46:09 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

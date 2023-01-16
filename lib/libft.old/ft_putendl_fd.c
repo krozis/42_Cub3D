@@ -6,11 +6,12 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:09:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2020/01/07 08:43:34 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:19:43 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
+
 
 void	ft_putendl_fd(char *s, int fd)
 {

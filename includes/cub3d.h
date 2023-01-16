@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 15:48:45 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:32:10 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,20 @@ typedef struct	s_ptr{
 	char	*e_text;
 	char	*w_text;
 	void	*mlx_ptr;
+	int		floor[3];
+	int		ceiling[3];
 }				t_ptr;
 
-/* char	*get_next_line(int fd);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-int		ft_strcmp(char *s1, char *s2);
-int		ft_isspace(const char c); */
+int		ft_isspace(const char c);
+t_ptr	*init(char **av);
+void	secure_free(void **ptr);
+char	**get_map(char **lines, int num);
+void	get_textures(char **lines, t_ptr *ptr);
+int		ismap(char *str);
+char	*text(char *str);
+int		set_texture(t_ptr *ptr, char *str);
+void	free_them_all(t_ptr *ptr);
+int		empty_line(char *str);
+void	get_colors(char **lines, t_ptr *ptr);
 
 #endif

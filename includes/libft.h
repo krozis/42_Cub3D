@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:28:40 by dcyprien          #+#    #+#             */
-/*   Updated: 2022/05/14 02:57:24 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:11:14 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 t_list			*ft_lstlast(t_list *lst);
 int				ft_cinset(const char c, const char *set);
+int				ft_isspace(const char c);
 
 #endif
