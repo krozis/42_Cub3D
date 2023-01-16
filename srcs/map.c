@@ -6,12 +6,11 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:08:58 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:36:29 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:24:07 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
 char	**get_map(char **lines, int num)
 {

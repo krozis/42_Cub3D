@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:41:00 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:25:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
-int		empty_line(char *str)
+int	empty_line(char *str)
 {
 	int	i;
 
@@ -27,7 +26,7 @@ int		empty_line(char *str)
 	return (1);
 }
 
-int		ismap(char *str)
+int	ismap(char *str)
 {
 	int	i;
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
+#    By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/16 16:40:44 by stelie           ###   ########.fr        #
+#    Updated: 2023/01/16 17:34:02 by dcyprien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ SRCS	=	main.c\
 			map.c\
 			textures.c\
 			utils.c\
+			utils_texture.c\
+			errors.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

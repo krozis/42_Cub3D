@@ -6,14 +6,13 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 15:25:38 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:22:54 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
-int		count_lines(char *av)
+int	count_lines(char *av)
 {
 	int		i;
 	char	*tmp;
@@ -52,7 +51,7 @@ char	**get_lines(int fd, int num)
 	{
 		lines[i] = ft_strdup(tmp);
 		i++;
-		secure_free((void**)&tmp);
+		secure_free((void **)&tmp);
 		tmp = get_next_line(fd);
 	}
 	lines[i] = NULL;

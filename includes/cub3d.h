@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:37:34 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 18:31:31 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ int		set_texture(t_ptr *ptr, char *str);
 void	free_them_all(t_ptr *ptr);
 int		empty_line(char *str);
 void	get_colors(char **lines, t_ptr *ptr);
+int		verify_args(int ac, char **av);
+int		check_errors(t_ptr *ptr);
+int		check_texture(t_ptr *ptr);
+int		check_colors(t_ptr *ptr);
 
 #endif

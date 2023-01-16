@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:38:54 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:56:24 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ int	main(int ac, char **av)
 {
 	t_ptr	*ptr;
 
-	(void)ac;
+	if (verify_args(ac, av) == EXIT_FAILURE)
+		return (0);
 	ptr = init(av);
+	if (check_errors(ptr) == EXIT_FAILURE)
+		return (0);
 	printf("test map\n");
 	for (int i = 0; ptr->map[i]; i++)
 		printf("%s", ptr->map[i]);
