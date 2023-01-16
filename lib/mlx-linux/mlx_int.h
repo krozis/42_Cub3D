@@ -30,10 +30,8 @@
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 # include <X11/XKBlib.h>
-// # include "../includes/so_long.h"
 /* #include	<X11/xpm.h> */
 
-typedef struct s_ptr t_ptr;
 
 # define MLX_TYPE_SHM_PIXMAP 3
 # define MLX_TYPE_SHM 2
