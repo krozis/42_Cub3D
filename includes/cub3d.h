@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:31:17 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:48:45 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "../lib/mlx-linux/mlx_int.h"
+# include "../lib/mlx-linux/mlx.h"
+# include "../lib/libft/includes/libft.h"
 
 typedef struct	s_ptr{
 	char	**map;
@@ -30,10 +33,10 @@ typedef struct	s_ptr{
 	void	*mlx_ptr;
 }				t_ptr;
 
-char	*get_next_line(int fd);
+/* char	*get_next_line(int fd);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 int		ft_strcmp(char *s1, char *s2);
-int		ft_isspace(const char c);
+int		ft_isspace(const char c); */
 
 #endif

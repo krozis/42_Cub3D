@@ -3,94 +3,140 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+         #
+#    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/16 12:49:06 by dcyprien         ###   ########.fr        #
+#    Updated: 2023/01/16 16:05:28 by stelie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	./srcs/main.c\
-			./srcs/init.c\
-			./srcs/colors.c\
-			./srcs/get_next_line.c\
-			./srcs/malloc_free.c\
-			./srcs/ft_strcmp.c\
-			./srcs/map.c\
-			./srcs/textures.c\
-			./srcs/utils.c\
 
-SRCSLIBFT =	./srcs/libft/ft_bzero.c\
-			./srcs/libft/ft_memccpy.c\
-			./srcs/libft/ft_memcpy.c\
-			./srcs/libft/ft_memset.c\
-			./srcs/libft/ft_strlen.c\
-			./srcs/libft/ft_isalnum.c\
-			./srcs/libft/ft_isalpha.c\
-			./srcs/libft/ft_isdigit.c\
-			./srcs/libft/ft_isprint.c\
-			./srcs/libft/ft_memchr.c\
-			./srcs/libft/ft_memcmp.c\
-			./srcs/libft/ft_memmove.c\
-			./srcs/libft/ft_isascii.c\
-			./srcs/libft/ft_toupper.c\
-			./srcs/libft/ft_tolower.c\
-			./srcs/libft/ft_strchr.c\
-			./srcs/libft/ft_strrchr.c\
-			./srcs/libft/ft_strncmp.c\
-			./srcs/libft/ft_strlcpy.c\
-			./srcs/libft/ft_strlcat.c\
-			./srcs/libft/ft_strnstr.c\
-			./srcs/libft/ft_atoi.c\
-			./srcs/libft/ft_strdup.c\
-			./srcs/libft/ft_substr.c\
-			./srcs/libft/ft_calloc.c\
-			./srcs/libft/ft_strjoin.c\
-			./srcs/libft/ft_strtrim.c\
-			./srcs/libft/ft_split.c\
-			./srcs/libft/ft_itoa.c\
-			./srcs/libft/ft_strmapi.c\
-			./srcs/libft/ft_putchar_fd.c\
-			./srcs/libft/ft_putstr_fd.c\
-			./srcs/libft/ft_putendl_fd.c\
-			./srcs/libft/ft_putnbr_fd.c\
-			./srcs/libft/ft_isspace.c\
-			./srcs/libft/ft_cinset.c
 
-NAME	=	cub3d
+#SRCSLIBFT =	libft/ft_bzero.c\
+			libft/ft_memccpy.c\
+			libft/ft_memcpy.c\
+			libft/ft_memset.c\
+			libft/ft_strlen.c\
+			libft/ft_isalnum.c\
+			libft/ft_isalpha.c\
+			libft/ft_isdigit.c\
+			libft/ft_isprint.c\
+			libft/ft_memchr.c\
+			libft/ft_memcmp.c\
+			libft/ft_memmove.c\
+			libft/ft_isascii.c\
+			libft/ft_toupper.c\
+			libft/ft_tolower.c\
+			libft/ft_strchr.c\
+			libft/ft_strrchr.c\
+			libft/ft_strncmp.c\
+			libft/ft_strlcpy.c\
+			libft/ft_strlcat.c\
+			libft/ft_strnstr.c\
+			libft/ft_atoi.c\
+			libft/ft_strdup.c\
+			libft/ft_substr.c\
+			libft/ft_calloc.c\
+			libft/ft_strjoin.c\
+			libft/ft_strtrim.c\
+			libft/ft_split.c\
+			libft/ft_itoa.c\
+			libft/ft_strmapi.c\
+			libft/ft_putchar_fd.c\
+			libft/ft_putstr_fd.c\
+			libft/ft_putendl_fd.c\
+			libft/ft_putnbr_fd.c\
+			libft/ft_isspace.c\
+			libft/ft_cinset.c
 
-CC		=	cc
+#Name
+NAME		=	cub3D
 
-CCLIB	=	ar rc
+#Colors
+Y			=	"\033[33m"
+R			=	"\033[31m"
+G			=	"\033[32m"
+B			=	"\033[34m"
+X			=	"\033[0m"
+UP			=	"\033[A"
+CUT			=	"\033[K"
 
-CFLAGS	=	-Wall -Wextra -Werror -g
+#Commands
+CC			=	cc
+RM			=	rm -rf
+MAKE		=	make --no-print-directory
+MKD			=	mkdir -p
+INCLUDES	=	-I $(H_DIR)/
+FLAGS		=	$(CFLAGS) $(MLX_FLAGS)
+CFLAGS		=	-Wall -Wextra -Werror -g
+MLX_FLAGS	=	-L mlx -lXext -lX11 -lm -lz
+FSAN_FLAGS	=	-fsanitize=address
 
-OBJS	=	${SRCS:.c=.o}
+#Directories
+S_DIR		=	srcs
+H_DIR		=	includes
+O_DIR		=	obj
+L_DIR		=	lib
 
-OBJSLIB =	$(SRCSLIBFT:.c=.o)
+#Libft
+LFT_DIR		=	$(L_DIR)/libft
+LIBFT		=	$(L_DIR)/libft/libft.a
 
-RM		=	rm -f
+#MinilibX
+MLX_DIR		=	$(L_DIR)/mlx-linux
+MLX			=	$(L_DIR)/mlx-linux/libmlx_Linux.a
 
-srcs/%.o: 	srcs/%.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_Linux -c $< -o $@
+#SRC_FILES
+SRCS	=	main.c\
+#			init.c\
+			colors.c\
+			get_next_line.c\
+			malloc_free.c\
+			ft_strcmp.c\
+			map.c\
+			textures.c\
+			utils.c\
 
-srcs/%.o: srcs/libft/%.c
-	$(CCLIB) $(CFLAGS) -c $< -o $@
+#Object
+OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
 
-$(NAME): $(OBJS) $(OBJSLIB)
-	$(CCLIB) libft.a $(OBJSLIB)
-	$(CC) $(CFLAGS) $(OBJS) -L./mlx-linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lz libft.a -o $(NAME)
+$(O_DIR)/%.o:	./*/%.c
+				@echo $(Y)Compiling [$@]...$(X)
+				@$(MKD) $(O_DIR)
+				@$(CC) $(CFLAGS) -o $@ -c $<
+				@printf $(UP) $(CUT)
 
-all:		${NAME}
+$(NAME):	$(OBJS)
+			@echo $(Y)Compiling [MinilibX]...$(X)
+			@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
+			@printf $(UP)$(CUT)
+			@echo $(G)Compiled [MinilibX]$(X)
+			@$(MAKE) -C $(LFT_DIR)
+			@echo $(Y)Compiling [$(NAME)]...$(X)
+			@$(CC) -o $(NAME) $(FLAGS) $(OBJS) $(LIBFT) $(MLX)
+			@printf $(UP)$(CUT)
+			@echo $(G)Compiled [$(NAME)]$(X)
 
-clean:		
-	${RM} ${OBJS}
-	${RM} libft.a
-	$(RM) $(OBJSLIB)
+all:	$(NAME)
 
-fclean:		clean
-	${RM} ${NAME}
+fsan: $(OBJS)
+	@$(MAKE) -C $(LFT_DIR)
+	@echo $(Y)Compiling [$(NAME)] with fsanitize=address flag...$(X)
+	@$(CC) -o $(NAME) $(FLAGS) $(FFLAGS) $(OBJS) $(LIBFT) $(MLX)
+	@printf $(UP)$(CUT)
+	@echo $(G)Compiled [$(NAME)] with fsanitize=address flag...$(X)
 
-re:			fclean all
+clean:
+	@$(MAKE) clean -C $(LFT_DIR)
+	@$(MAKE) clean -C $(MLX_DIR)
+	@printf $(UP)$(CUT)
+	@$(RM) $(O_DIR)
+	@echo $(R) removed $(NAME) obj files $(X)
 
-.PHONY = all clean fclean re
+fclean:	clean
+		@$(RM) $(NAME)
+		@echo $(R) removed $(NAME) executable $(X)
+		@$(RM) -rf $(LIBFT)
+		@echo $(R) removed libft.a $(X)
+
+re:		fclean all

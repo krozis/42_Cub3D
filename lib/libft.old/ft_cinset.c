@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cinset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:32:02 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 12:32:05 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:59:40 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_cinset(const char c, const char *set)
 {
