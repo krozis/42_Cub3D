@@ -6,12 +6,11 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:42:53 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:59:56 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
  int		set_texture(t_ptr *ptr, char *str)
 {
@@ -21,13 +20,13 @@
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == 'N')
-		ptr->n_text = NULL; //text(str);
+		ptr->n_text = text(str);
 	else if (str[i] == 'S')
-		ptr->s_text = NULL; //text(str);
+		ptr->s_text = text(str);
 	else if (str[i] == 'W')
-		ptr->w_text = NULL; //text(str);
+		ptr->w_text = text(str);
 	else if (str[i] == 'E')
-		ptr->e_text = NULL; //text(str);
+		ptr->e_text = text(str);
 	else
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

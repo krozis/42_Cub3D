@@ -6,12 +6,11 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:39:56 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:59:45 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
 void	init_color(t_ptr *ptr)
 {

@@ -6,12 +6,11 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:41:00 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:59:56 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/libft.h"
 
 int		empty_line(char *str)
 {
