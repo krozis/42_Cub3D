@@ -1,6 +1,6 @@
 
 # 42_Cub3D
-Cub3D project from 42 cursus.*
+Cub3D project from 42 cursus.
 
  ## Description
 Cub3D is a graphical project where we have to recreate a visual environnement equivalent to Wolfenstein3D's.
