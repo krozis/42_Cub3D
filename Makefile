@@ -6,7 +6,7 @@
 #    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/16 16:33:11 by stelie           ###   ########.fr        #
+#    Updated: 2023/01/16 16:40:44 by stelie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,10 @@ MLX			=	$(L_DIR)/mlx-linux/libmlx_Linux.a
 
 #SRC_FILES
 SRCS	=	main.c\
-#			init.c\
+			init.c\
 			colors.c\
 			get_next_line.c\
 			malloc_free.c\
-			ft_strcmp.c\
 			map.c\
 			textures.c\
 			utils.c\

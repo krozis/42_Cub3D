@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 15:38:40 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:39:56 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	get_colors(char **lines, t_ptr *ptr)
 			i++;
 		while(ft_isspace(lines[i][k]))
 			k++;
-		if (ft_cinset(lines[i][k], "FC"))
+		if (ft_incharset(lines[i][k], "FC"))
 			set_colors(lines[i], ptr);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 16:32:10 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/16 16:37:34 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct	s_ptr{
 	int		ceiling[3];
 }				t_ptr;
 
-int		ft_isspace(const char c);
 t_ptr	*init(char **av);
 void	secure_free(void **ptr);
 char	**get_map(char **lines, int num);
