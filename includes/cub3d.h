@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/01/16 18:31:31 by dcyprien         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/16 17:48:43 by stelie           ###   ########.fr       */
->>>>>>> kro
+/*   Updated: 2023/01/17 10:56:15 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +35,13 @@ typedef enum e_textures
 	E_TEXT
 }			t_textures;
 
+/**
+ * @brief Image file structure
+ * @param img: pointer to the image, for mlx usage
+ * @param height: Height in pixels of the image
+ * @param width: Width in pixels of the image 
+ */
+
 typedef struct s_pic
 {
 	void	*img;
@@ -55,15 +58,16 @@ typedef struct s_display
 
 typedef struct s_ptr{
 	char	**map;
-	char	*n_text;
-	char	*s_text;
-	char	*e_text;
-	char	*w_text;
+	char	*text[4];
 	void	*mlx_ptr;
 	int		floor[3];
 	int		ceiling[3];
 	t_dply	dply;
 }				t_ptr;
+
+/*
+ * MAIN / INIT / PARSING
+*/
 
 t_ptr	*init(char **av);
 void	secure_free(void **ptr);
@@ -79,6 +83,10 @@ int		verify_args(int ac, char **av);
 int		check_errors(t_ptr *ptr);
 int		check_texture(t_ptr *ptr);
 int		check_colors(t_ptr *ptr);
+
+/*
+ * DISPLAYING WITH MLX
+*/
 
 int		init_mlx(t_ptr *c3d);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 18:32:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:00:59 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	check_texture(t_ptr *ptr)
 {
 	int	fd;
 
-	fd = open(ptr->n_text, O_RDONLY);
+	fd = open(ptr->text[N_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->s_text, O_RDONLY);
+	fd = open(ptr->text[S_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->e_text, O_RDONLY);
+	fd = open(ptr->text[E_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->w_text, O_RDONLY);
+	fd = open(ptr->text[W_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -44,15 +44,16 @@ int	check_texture(t_ptr *ptr)
 
 int	check_colors(t_ptr *ptr)
 {
-	if ((ptr->floor[0] < 0 || ptr->floor[0] > 255) || (ptr->floor[1] < 0
-			|| ptr->floor[1] > 255) || (ptr->floor[2] < 0 || ptr->floor[2] > 255))
-			return (EXIT_FAILURE);
+	if ((ptr->floor[0] < 0 || ptr->floor[0] > 255)
+		|| (ptr->floor[1] < 0 || ptr->floor[1] > 255)
+		|| (ptr->floor[2] < 0 || ptr->floor[2] > 255))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
 int	check_errors(t_ptr *ptr)
 {
-	if (!ptr->mlx_ptr)
+	if (!ptr->dply.mlx)
 		return (ft_putmsg_fd("Error\nError in initialization of MLX\n"
 				, 2, EXIT_FAILURE));
 	if (check_texture(ptr) == EXIT_FAILURE)
