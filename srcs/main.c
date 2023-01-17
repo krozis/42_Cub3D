@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:36:47 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:48:18 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ int	main(int ac, char **av)
 	if (verify_args(ac, av) == EXIT_FAILURE)
 		return (0);
 	ptr = init(av);
-	init_mlx(ptr);
 	printf("\nnorth texture = %s\n", ptr->text[N_TEXT]);
 	printf("south texture = %s\n", ptr->text[S_TEXT]);
 	printf("east  texture = %s\n", ptr->text[E_TEXT]);
 	printf("west  texture = %s\n", ptr->text[W_TEXT]);
 	if (check_errors(ptr) == EXIT_FAILURE)
+	{
+		free_them_all(ptr);
+		return (0);
+	}
+	if (init_mlx(ptr) == EXIT_FAILURE)
 	{
 		free_them_all(ptr);
 		return (0);

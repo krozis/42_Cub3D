@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:37:42 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:32:23 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int	verify_args(int ac, char **av)
 {
+	int	fd;
 	if (ac != 2)
 		return (ft_putmsg_fd("Error\nUsage : ./cub3D [path to config file]\n"
 				, 2, EXIT_FAILURE));
 	if (!ft_strnstr(av[1], ".cub", ft_strlen(av[1])))
 		return (ft_putmsg_fd("Error\nConfig file must have .cub extension\n"
 				, 2, EXIT_FAILURE));
+	fd = open(av[1], __O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		return (ft_putmsg_fd("Error\nArgument is a directory\n"
+				, 2, EXIT_FAILURE));
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -84,9 +92,6 @@ int	check_map(char **map)
 
 int	check_errors(t_ptr *ptr)
 {
-	if (!ptr->dply.mlx)
-		return (ft_putmsg_fd("Error\nError in initialization of MLX\n"
-				, 2, EXIT_FAILURE));
 	if (check_texture(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
 				, 2, EXIT_FAILURE));
