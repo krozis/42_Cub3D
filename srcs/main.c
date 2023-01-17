@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:48:52 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:05:30 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,56 @@ static int	_press_key(int key, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
+static void	pixel_test(t_img *img, int x, int y, int color)
+{
+	unsigned char *src;
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+
+	src = (unsigned char *)&color;
+	r = src[0];
+	g = src[1];
+	b = src[2];
+	img->data[y * img->size_line + x * img->bpp / 8] = r;
+	img->data[y * img->size_line + x * img->bpp / 8 + 1] = g;
+	img->data[y * img->size_line + x * img->bpp / 8 + 2] = b;
+//	printf("YO");
+}
+
+static void	test(t_img *img)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < WIN_HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+			pixel_test(img, x++, y, 0xFFFFFF);
+		y++;
+	}
+	y = WIN_HEIGHT - 1;
+	while (y >= WIN_HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+			pixel_test(img, x++, y, 0x22FFBC);
+		y--;
+	}
+}
+
 static int	_routine(t_ptr *c3d)
 {
+	t_img	*ceiling;
+
 	mlx_key_hook(c3d->dply.win, &_press_key, c3d);
 	mlx_hook(c3d->dply.win, 33, (1L << 5), &mlx_loop_end, c3d->dply.mlx);
+	ceiling = mlx_new_image(c3d->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
+	test(ceiling);
+	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, ceiling, 0, 0);
+	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.textures[N_TEXT].img, 1380, 840);
 	mlx_loop(c3d->dply.mlx);
 	return (EXIT_SUCCESS);
 }

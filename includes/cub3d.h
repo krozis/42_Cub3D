@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:21:00 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:05:35 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define OPEN_MAX 1024
 # define BUFFER_SIZE 1024
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define WIN_NAME "Cub3D"
 
 /*
