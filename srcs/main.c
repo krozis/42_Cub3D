@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 12:26:18 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:32:57 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ static int	_press_key(int key, t_ptr *c3d)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(c3d->dply.mlx);
+	/*
+	if (key == XK_Left || key == XK_Right)
+		rotate_camera(c3d, key);
+	if (key == key == XK_W || key == XK_w)
+		go_front(c3d);
+	if (key == XK_S || key == XK_s)
+		go_back(c3d);
+	if (key == XK_A || key == XK_a)
+		go_left(c3d);
+	if (key == XK_D || key == XK_d)
+		go_right(c3d);
+	if (key == XK_M || key == XK_m)
+		display_minimap(c3d);
+	*/
 	return (EXIT_SUCCESS);
 }
 
