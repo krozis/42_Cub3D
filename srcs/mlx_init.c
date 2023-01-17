@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/17 12:16:11 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 13:07:28 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ static int	_text_load(t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * @brief Initializes the mlx display, window and textures.
+ * @param c3d a pointer to the main cub3D structure
+ * @return EXIT_FAILURE or EXIT_SUCCESS.
+ */
 int	init_mlx(t_ptr *c3d)
 {
 	c3d->dply.mlx = mlx_init();
