@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:23:33 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:29:02 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	set_texture(t_ptr *ptr, char *str)
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == 'N')
-		ptr->n_text = text(str);
+		ptr->text[N_TEXT] = text(str);
 	else if (str[i] == 'S')
-		ptr->s_text = text(str);
+		ptr->text[S_TEXT] = text(str);
 	else if (str[i] == 'W')
-		ptr->w_text = text(str);
+		ptr->text[W_TEXT] = text(str);
 	else if (str[i] == 'E')
-		ptr->e_text = text(str);
+		ptr->text[E_TEXT] = text(str);
 	else
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -39,10 +39,10 @@ void	get_textures(char **lines, t_ptr *ptr)
 
 	i = 0;
 	count = 0;
-	ptr->n_text = NULL;
-	ptr->s_text = NULL;
-	ptr->e_text = NULL;
-	ptr->w_text = NULL;
+	ptr->text[N_TEXT] = NULL;
+	ptr->text[S_TEXT] = NULL;
+	ptr->text[E_TEXT] = NULL;
+	ptr->text[W_TEXT] = NULL;
 	while (count < 4)
 	{
 		if (empty_line(lines[i]) == EXIT_SUCCESS)

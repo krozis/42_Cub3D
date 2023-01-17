@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:14:14 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:28 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:57:52 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	free_them_all(t_ptr *ptr)
 	while (ptr->map[++i])
 		secure_free((void **)&ptr->map[i]);
 	secure_free((void **)&ptr->map);
-	secure_free((void **)&ptr->n_text);
-	secure_free((void **)&ptr->s_text);
-	secure_free((void **)&ptr->w_text);
-	secure_free((void **)&ptr->e_text);
+	secure_free((void **)&ptr->text[N_TEXT]);
+	secure_free((void **)&ptr->text[S_TEXT]);
+	secure_free((void **)&ptr->text[W_TEXT]);
+	secure_free((void **)&ptr->text[E_TEXT]);
 	secure_free((void **)&ptr);
 }

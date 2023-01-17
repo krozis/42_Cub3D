@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:13:50 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:29:29 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	check_texture(t_ptr *ptr)
 {
 	int	fd;
 
-	fd = open(ptr->n_text, O_RDONLY);
+	fd = open(ptr->text[N_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->s_text, O_RDONLY);
+	fd = open(ptr->text[S_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->e_text, O_RDONLY);
+	fd = open(ptr->text[E_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->w_text, O_RDONLY);
+	fd = open(ptr->text[W_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
