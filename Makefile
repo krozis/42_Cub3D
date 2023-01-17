@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
+#    By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/01/17 11:18:51 by dcyprien         ###   ########.fr        #
-=======
-#    Updated: 2023/01/17 10:39:06 by stelie           ###   ########.fr        #
->>>>>>> kro
+#    Updated: 2023/01/17 12:19:39 by dcyprien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +59,8 @@ SRCS	=	main.c\
 			utils_texture.c\
 			errors.c\
 			mlx_init.c\
-			map_check.c
+			map_check.c\
+			map_check_utils.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

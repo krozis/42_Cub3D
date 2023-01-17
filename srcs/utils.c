@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:22:11 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:32:44 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	ismap(char *str)
 	{
 		while (str[i] && ft_isspace(str[i]))
 			i++;
-		if (ft_isalpha(str[i]))
+		if (str[i] && ft_isalpha(str[i]))
 			return (EXIT_FAILURE);
+		if (i >= (int)ft_strlen(str))
+			break ;
 		i++;
 	}
 	return (EXIT_SUCCESS);

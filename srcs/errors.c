@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:29:29 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:10:23 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ int	check_texture(t_ptr *ptr)
 	fd = open(ptr->text[N_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
+	close(fd);
 	fd = open(ptr->text[S_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
+	close(fd);
 	fd = open(ptr->text[E_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
+	close(fd);
 	fd = open(ptr->text[W_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
+	close(fd);
 	return (EXIT_SUCCESS);
 }
 
@@ -55,6 +59,18 @@ int	check_colors(t_ptr *ptr)
 	return (EXIT_SUCCESS);
 }
 
+int	check_map(char **map)
+{
+	if (check_empty_line(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has empty line\n", 2, EXIT_FAILURE));
+	if (check_chars(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has unknown characters\n"
+				, 2, EXIT_FAILURE));
+	if (check_integrity(map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
 int	check_errors(t_ptr *ptr)
 {
 	if (!ptr->dply.mlx)
@@ -63,8 +79,8 @@ int	check_errors(t_ptr *ptr)
 	if (check_texture(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
 				, 2, EXIT_FAILURE));
-	// if (check_map(ptr->map) == EXIT_FAILURE)
-	// 	return (ft_putmsg_fd("Error\nInvalid map format\n", 2, EXIT_FAILURE));
+	if (check_map(ptr->map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	if (check_colors(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));

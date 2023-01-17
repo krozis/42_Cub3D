@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:29:15 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:35:35 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	main(int ac, char **av)
 		return (0);
 	ptr = init(av);
 	init_mlx(ptr);
-	printf("\nnorth texture = %s\n", ptr->n_text);
-	printf("south texture = %s\n", ptr->s_text);
-	printf("east  texture = %s\n", ptr->e_text);
-	printf("west  texture = %s\n", ptr->w_text);
+	printf("\nnorth texture = %s\n", ptr->text[N_TEXT]);
+	printf("south texture = %s\n", ptr->text[S_TEXT]);
+	printf("east  texture = %s\n", ptr->text[E_TEXT]);
+	printf("west  texture = %s\n", ptr->text[W_TEXT]);
 	if (check_errors(ptr) == EXIT_FAILURE)
 		return (0);
 	printf("test map\n");
