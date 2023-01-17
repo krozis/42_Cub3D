@@ -15,8 +15,8 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Textures
 | TODO | Status |
 |--|--|
-| Different textures for each wall orientation (North, South, East, West | NOK |
-| Different textures for ground and for ceiling/sky | NOK |
+| Different textures for each wall orientation (North, South, East, West | OK |
+| Different textures for ground and for ceiling/sky | OK |
 
 ### Control handling
 | TODO | Status |
@@ -28,12 +28,12 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Files
 | TODO | Status |
 |--|--|
-| Map is in a "xxx.cub" file | NOK |
-| Composed by 6 chars ONLY :
-| 0 is void spaces | NOK |
-| 1 is walls | NOK |
+| Map is in a "xxx.cub" file | OK |
+| Composed by 6 chars ONLY : OK
+| 0 is void spaces | OK |
+| 1 is walls | OK |
 | N, S, E, W is the initial position of the player, and his orientation | NOK |
-| Map must be surrounded by walls | NOK |
+| Map must be surrounded by walls | OK |
 
 
 ### Bonus

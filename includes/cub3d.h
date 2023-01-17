@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 12:09:03 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:37:58 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
 # define WIN_NAME "Cub3D"
-# define IMG_HEIGHT 64
-# define IMG_WIDTH 64
-
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -73,19 +70,33 @@ typedef struct s_ptr{
 */
 
 t_ptr	*init(char **av);
-void	secure_free(void **ptr);
 char	**get_map(char **lines, int num);
 void	get_textures(char **lines, t_ptr *ptr);
-int		ismap(char *str);
 char	*text(char *str);
 int		set_texture(t_ptr *ptr, char *str);
-void	free_them_all(t_ptr *ptr);
-int		empty_line(char *str);
 void	get_colors(char **lines, t_ptr *ptr);
+
+/*
+	UTILITY FUNCTIONS
+*/
+int		empty_line(char *str);
+void	free_them_all(t_ptr *ptr);
+int		ismap(char *str);
+void	secure_free(void **ptr);
+void	close_fds(int *fds);
+
+/*
+	ERROR CHECKING FUNCTIONS
+*/
 int		verify_args(int ac, char **av);
 int		check_errors(t_ptr *ptr);
 int		check_texture(t_ptr *ptr);
 int		check_colors(t_ptr *ptr);
+int		check_empty_line(char **map);
+int		check_chars(char **map);
+int		check_borders(char **map);
+int		check_integrity(char **map);
+int		check_ones(char **map, int i, int k);
 
 /*
  * DISPLAYING WITH MLX

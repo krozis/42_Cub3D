@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:32:58 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:37:42 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,29 @@ int	verify_args(int ac, char **av)
 
 int	check_texture(t_ptr *ptr)
 {
-	int	fd;
+	int	fd[4];
 
-	fd = open(ptr->text[N_TEXT], O_RDONLY);
+	if (!ptr->text[N_TEXT])
+		return (EXIT_FAILURE);
+	fd[0] = open(ptr->text[N_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->text[S_TEXT], O_RDONLY);
+	if (!ptr->text[S_TEXT])
+		return (EXIT_FAILURE);
+	fd[1] = open(ptr->text[S_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->text[E_TEXT], O_RDONLY);
+	if (!ptr->text[E_TEXT])
+		return (EXIT_FAILURE);
+	fd[2] = open(ptr->text[E_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
-	fd = open(ptr->text[W_TEXT], O_RDONLY);
+	if (!ptr->text[W_TEXT])
+		return (EXIT_FAILURE);
+	fd[3] = open(ptr->text[W_TEXT], O_RDONLY);
 	if (fd < 0)
 		return (EXIT_FAILURE);
+	close_fds(fd);
 	return (EXIT_SUCCESS);
 }
 
@@ -55,6 +64,24 @@ int	check_colors(t_ptr *ptr)
 	return (EXIT_SUCCESS);
 }
 
+int	check_map(char **map)
+{
+	if (check_empty_line(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has empty line\n", 2, EXIT_FAILURE));
+	if (check_chars(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has unknown characters\n"
+				, 2, EXIT_FAILURE));
+	if (check_chars(map) == ERR_NO_START)
+		return (ft_putmsg_fd("Error\nPlayer has no starting position\n"
+				, 2, EXIT_FAILURE));
+	if (check_chars(map) == ERR_TWO_START)
+		return (ft_putmsg_fd("Error\nPlayer has two starting postion\n"
+				, 2, EXIT_FAILURE));
+	if (check_integrity(map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
 int	check_errors(t_ptr *ptr)
 {
 	if (!ptr->dply.mlx)
@@ -63,8 +90,8 @@ int	check_errors(t_ptr *ptr)
 	if (check_texture(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
 				, 2, EXIT_FAILURE));
-	// if (check_map(ptr->map) == EXIT_FAILURE)
-	// 	return (ft_putmsg_fd("Error\nInvalid map format\n", 2, EXIT_FAILURE));
+	if (check_map(ptr->map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	if (check_colors(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));

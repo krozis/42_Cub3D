@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:08:58 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:24:48 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:21:08 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	**get_map(char **lines, int num)
 
 	k = 0;
 	i = 0;
-	while (ismap(lines[i]) == EXIT_FAILURE)
+	if (!lines)
+		return (NULL);
+	while (lines[i] && ismap(lines[i]) == EXIT_FAILURE)
 		i++;
 	map = malloc(sizeof(char *) * ((num - i) + 1));
 	while (lines[i])
