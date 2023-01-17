@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:37:58 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:40:15 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
 # define WIN_NAME "Cub3D"
+
+/*
+	DEFINE ERROR CODES
+*/
+
+# define ERR_TWO_START 4
+# define ERR_NO_START 3
+
 
 # include <fcntl.h>
 # include <unistd.h>
