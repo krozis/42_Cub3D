@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:38:59 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:46:48 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	verify_args(int ac, char **av)
 {
 	int	fd;
+
 	if (ac != 2)
 		return (ft_putmsg_fd("Error\nUsage : ./cub3D [path to config file]\n"
 				, 2, EXIT_FAILURE));

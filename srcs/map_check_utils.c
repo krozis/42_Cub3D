@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:10:43 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 13:34:53 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:46:59 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_down(char **map, int i, int k)
 
 int	check_right(char **map, int i, int k)
 {
-	while(map[i][k])
+	while (map[i][k])
 	{
 		if (map[i][k] == '1')
 			return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:14:14 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:33:44 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:50:03 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void	free_them_all(t_ptr *ptr)
 	secure_free((void **)&ptr->text[S_TEXT]);
 	secure_free((void **)&ptr->text[W_TEXT]);
 	secure_free((void **)&ptr->text[E_TEXT]);
+	if (ptr->dply.mlx)
+		free_mlx(ptr, true, true, EXIT_SUCCESS);
 	secure_free((void **)&ptr);
 }
