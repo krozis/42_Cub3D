@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:09 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:22:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	init_color(t_ptr *ptr)
 {
-	ptr->floor[0] = 0;
-	ptr->floor[1] = 0;
-	ptr->floor[2] = 0;
-	ptr->ceiling[0] = 0;
-	ptr->ceiling[1] = 0;
-	ptr->ceiling[2] = 0;
+	ptr->floor[0] = -1;
+	ptr->floor[1] = -1;
+	ptr->floor[2] = -1;
+	ptr->ceiling[0] = -1;
+	ptr->ceiling[1] = -1;
+	ptr->ceiling[2] = -1;
 }
 
 void	floor_color(char *str, t_ptr *ptr, int i)
@@ -66,7 +66,7 @@ void	get_colors(char **lines, t_ptr *ptr)
 	while (lines[i])
 	{
 		k = 0;
-		while (empty_line(lines[i]))
+		while (empty_line(lines[i]) == EXIT_SUCCESS)
 			i++;
 		while (ft_isspace(lines[i][k]))
 			k++;

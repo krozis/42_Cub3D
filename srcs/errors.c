@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 19:29:42 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:13:50 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,13 @@ int	check_texture(t_ptr *ptr)
 int	check_colors(t_ptr *ptr)
 {
 	if ((ptr->floor[0] < 0 || ptr->floor[0] > 255) || (ptr->floor[1] < 0
-			|| ptr->floor[1] > 255) || (ptr->floor[2] < 0 || ptr->floor[2] > 255))
-			return (EXIT_FAILURE);
+			|| ptr->floor[1] > 255) || (ptr->floor[2] < 0
+			|| ptr->floor[2] > 255))
+		return (EXIT_FAILURE);
+	if ((ptr->ceiling[0] < 0 || ptr->ceiling[0] > 255) || (ptr->ceiling[1] < 0
+			|| ptr->ceiling[1] > 255) || (ptr->ceiling[2] < 0
+			|| ptr->ceiling[2] > 255))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
