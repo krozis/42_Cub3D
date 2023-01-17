@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/17 12:09:51 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 12:16:11 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	free_mlx(t_ptr *c3d, bool win, bool text, int exit_code)
 	if (win)
 		mlx_destroy_window(c3d->dply.mlx, c3d->dply.win);
 	mlx_destroy_display(c3d->dply.mlx);
+	ft_free(c3d->dply.mlx);
 	return (exit_code);
 }
 
