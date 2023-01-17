@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:35:35 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:29:55 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	main(int ac, char **av)
 	printf("east  texture = %s\n", ptr->text[E_TEXT]);
 	printf("west  texture = %s\n", ptr->text[W_TEXT]);
 	if (check_errors(ptr) == EXIT_FAILURE)
+	{
+		free_them_all(ptr);
 		return (0);
+	}
 	printf("test map\n");
 	for (int i = 0; ptr->map[i]; i++)
 		printf("%s", ptr->map[i]);

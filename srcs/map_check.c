@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:18:13 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 13:32:29 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:02:23 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,26 @@ int	check_chars(char **map)
 {
 	int	i;
 	int	k;
+	int	player;
 
+	player = 0;
 	i = 0;
 	while (map[i])
 	{
 		k = -1;
 		while (map[i][++k])
+		{
 			if (ft_incharset(map[i][k], "NSEW01 \n") == false)
 				return (EXIT_FAILURE);
+			if (ft_incharset(map[i][k], "NSEW") && player == 0)
+				player = 1;
+			else if (ft_incharset(map[i][k], "NSEW") && player == 1)
+				return (ERR_TWO_START);
+		}
 		i++;
 	}
+	if (player == 0)
+		return (ERR_NO_START);
 	return (EXIT_SUCCESS);
 }
 
@@ -95,7 +105,8 @@ int	check_integrity(char **map)
 
 	i = 0;
 	(void)k;
-	if (check_borders(map) == EXIT_FAILURE || check_closed_map(map) == EXIT_FAILURE)
+	if (check_borders(map) == EXIT_FAILURE
+		|| check_closed_map(map) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nMap is not closed\n", 2, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }

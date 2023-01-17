@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 12:44:20 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:22:33 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ t_ptr	*init(char **av)
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);
 	get_colors(lines, ptr);
-	while (lines[++i])
+	while (lines && lines[++i])
 		secure_free((void **)&lines[i]);
 	secure_free((void **)&lines);
+	close(fd);
 	return (ptr);
 }

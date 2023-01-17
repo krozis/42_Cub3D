@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:14:14 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 10:57:52 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:33:44 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,27 @@ void	secure_free(void **ptr)
 	}
 }
 
+void	close_fds(int *fds)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (fds[i] > 0)
+			close(fds[i]);
+		i++;
+	}
+}
+
 void	free_them_all(t_ptr *ptr)
 {
 	int	i;
 
 	i = -1;
-	while (ptr->map[++i])
-		secure_free((void **)&ptr->map[i]);
+	if (ptr->map)
+		while (ptr->map[++i])
+			secure_free((void **)&ptr->map[i]);
 	secure_free((void **)&ptr->map);
 	secure_free((void **)&ptr->text[N_TEXT]);
 	secure_free((void **)&ptr->text[S_TEXT]);

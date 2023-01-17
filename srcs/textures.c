@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:29:02 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:22:13 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	get_textures(char **lines, t_ptr *ptr)
 	ptr->text[S_TEXT] = NULL;
 	ptr->text[E_TEXT] = NULL;
 	ptr->text[W_TEXT] = NULL;
+	if (!lines)
+		return ;
 	while (count < 4)
 	{
 		if (empty_line(lines[i]) == EXIT_SUCCESS)
