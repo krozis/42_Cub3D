@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:40:15 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:37:24 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define ERR_TWO_START 4
 # define ERR_NO_START 3
 
+# define RGB_RED 65536
+# define RGB_GREEN 256
+# define RGB_BLUE 1
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -70,6 +73,8 @@ typedef struct s_ptr{
 	void	*mlx_ptr;
 	int		floor[3];
 	int		ceiling[3];
+	int		rgb_floor;
+	int		rgb_ceiling;
 	t_dply	dply;
 }				t_ptr;
 
@@ -92,6 +97,7 @@ void	free_them_all(t_ptr *ptr);
 int		ismap(char *str);
 void	secure_free(void **ptr);
 void	close_fds(int *fds);
+void	convert_colors(t_ptr *ptr);
 
 /*
 	ERROR CHECKING FUNCTIONS

@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:21:54 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:36:49 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	set_colors(char *str, t_ptr *ptr)
 		ceiling_color(str, ptr, i);
 	if (str[i] == 'F')
 		floor_color(str, ptr, i);
+	convert_colors(ptr);
 }
 
 void	get_colors(char **lines, t_ptr *ptr)
