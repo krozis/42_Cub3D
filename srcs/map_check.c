@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 12:08:58 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:24:48 by dcyprien         ###   ########.fr       */
+/*   Created: 2023/01/17 11:18:13 by dcyprien          #+#    #+#             */
+/*   Updated: 2023/01/17 11:21:11 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-char	**get_map(char **lines, int num)
+int	check_empty_line(char **map)
 {
-	int		i;
-	int		k;
-	char	**map;
+	int	i;
 
-	k = 0;
 	i = 0;
-	while (ismap(lines[i]) == EXIT_FAILURE)
-		i++;
-	map = malloc(sizeof(char *) * ((num - i) + 1));
-	while (lines[i])
+	while (map[i])
 	{
-		map[k] = ft_strdup(lines[i]);
+		if (empty_line(map[i]))
+			return (EXIT_FAILURE);
 		i++;
-		k++;
 	}
-	map[k] = NULL;
-	return (map);
+	return (EXIT_SUCCESS);
 }

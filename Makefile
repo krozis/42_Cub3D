@@ -6,7 +6,7 @@
 #    By: stelie <stelie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-#    Updated: 2023/01/17 11:31:42 by stelie           ###   ########.fr        #
+#    Updated: 2023/01/17 11:33:36 by stelie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS	=	main.c\
 			utils_texture.c\
 			errors.c\
 			mlx_init.c\
+			map_check.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
