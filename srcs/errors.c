@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:32:23 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:38:59 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	verify_args(int ac, char **av)
 	if (fd != -1)
 	{
 		close(fd);
-		return (ft_putmsg_fd("Error\nArgument is a directory\n"
+		return (ft_putmsg_fd("Error\nArgument is a directory.\n"
 				, 2, EXIT_FAILURE));
 	}
 	return (EXIT_SUCCESS);
@@ -38,22 +38,22 @@ int	check_texture(t_ptr *ptr)
 	if (!ptr->text[N_TEXT])
 		return (EXIT_FAILURE);
 	fd[0] = open(ptr->text[N_TEXT], O_RDONLY);
-	if (fd < 0)
+	if (fd[0] < 0)
 		return (EXIT_FAILURE);
 	if (!ptr->text[S_TEXT])
 		return (EXIT_FAILURE);
 	fd[1] = open(ptr->text[S_TEXT], O_RDONLY);
-	if (fd < 0)
+	if (fd[1] < 0)
 		return (EXIT_FAILURE);
 	if (!ptr->text[E_TEXT])
 		return (EXIT_FAILURE);
 	fd[2] = open(ptr->text[E_TEXT], O_RDONLY);
-	if (fd < 0)
+	if (fd[2] < 0)
 		return (EXIT_FAILURE);
 	if (!ptr->text[W_TEXT])
 		return (EXIT_FAILURE);
 	fd[3] = open(ptr->text[W_TEXT], O_RDONLY);
-	if (fd < 0)
+	if (fd[3] < 0)
 		return (EXIT_FAILURE);
 	close_fds(fd);
 	return (EXIT_SUCCESS);
