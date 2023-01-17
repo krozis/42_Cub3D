@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:40:15 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:21:00 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 # define ERR_TWO_START 4
 # define ERR_NO_START 3
-
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -67,7 +66,6 @@ typedef struct s_display
 typedef struct s_ptr{
 	char	**map;
 	char	*text[4];
-	void	*mlx_ptr;
 	int		floor[3];
 	int		ceiling[3];
 	t_dply	dply;
