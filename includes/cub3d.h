@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 11:32:33 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 12:09:03 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
 # define WIN_NAME "Cub3D"
+# define IMG_HEIGHT 64
+# define IMG_WIDTH 64
+
 
 # include <fcntl.h>
 # include <unistd.h>
@@ -89,5 +92,6 @@ int		check_colors(t_ptr *ptr);
 */
 
 int		init_mlx(t_ptr *c3d);
+int		free_mlx(t_ptr *c3d, bool win, bool text, int exit_code);
 
 #endif
