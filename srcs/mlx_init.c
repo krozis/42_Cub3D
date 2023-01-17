@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/17 13:07:28 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:05:18 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	init_mlx(t_ptr *c3d)
 	c3d->dply.mlx = mlx_init();
 	if (c3d->dply.mlx == NULL)
 		return (EXIT_FAILURE);
-	c3d->dply.win = mlx_new_window(c3d->dply.mlx, WIN_WIDTH, WIN_WIDTH,
+	c3d->dply.win = mlx_new_window(c3d->dply.mlx, WIN_WIDTH, WIN_HEIGHT,
 			WIN_NAME);
 	if (c3d->dply.mlx == NULL)
 		return (free_mlx(c3d, false, false, EXIT_FAILURE));

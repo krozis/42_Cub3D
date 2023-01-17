@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 17:37:24 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:16:31 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define OPEN_MAX 1024
 # define BUFFER_SIZE 1024
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define WIN_NAME "Cub3D"
 
 /*
@@ -70,7 +70,6 @@ typedef struct s_display
 typedef struct s_ptr{
 	char	**map;
 	char	*text[4];
-	void	*mlx_ptr;
 	int		floor[3];
 	int		ceiling[3];
 	int		rgb_floor;
