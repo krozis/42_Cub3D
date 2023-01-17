@@ -6,11 +6,7 @@
 #    By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/14 03:59:05 by dcyprien          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/01/16 17:34:02 by dcyprien         ###   ########.fr        #
-=======
-#    Updated: 2023/01/16 17:20:17 by stelie           ###   ########.fr        #
->>>>>>> kro
+#    Updated: 2023/01/16 18:36:42 by dcyprien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,11 +57,8 @@ SRCS	=	main.c\
 			textures.c\
 			utils.c\
 			utils_texture.c\
-<<<<<<< HEAD
-			errors.c
-=======
+			errors.c\
 			mlx_init.c\
->>>>>>> kro
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

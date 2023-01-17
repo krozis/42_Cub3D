@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:07 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:49:37 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ int	main(int ac, char **av)
 	if (verify_args(ac, av) == EXIT_FAILURE)
 		return (0);
 	ptr = init(av);
+	init_mlx(ptr);
+	printf("\nnorth texture = %s\n", ptr->n_text);
+	printf("south texture = %s\n", ptr->s_text);
+	printf("east  texture = %s\n", ptr->e_text);
+	printf("west  texture = %s\n", ptr->w_text);
 	if (check_errors(ptr) == EXIT_FAILURE)
 		return (0);
 	printf("test map\n");
 	for (int i = 0; ptr->map[i]; i++)
 		printf("%s", ptr->map[i]);
-	printf("\nnorth texture = %s\n", ptr->n_text);
-	printf("south texture = %s\n", ptr->s_text);
-	printf("east  texture = %s\n", ptr->e_text);
-	printf("west  texture = %s\n", ptr->w_text);
 	printf("\ncolors\n");
 	printf("floor = %d,%d,%d\n", ptr->floor[0], ptr->floor[1],ptr->floor[2]);
 	printf("ceili = %d,%d,%d\n", ptr->ceiling[0], ptr->ceiling[1],ptr->ceiling[2]);
-	init_mlx(ptr);
 	free_them_all(ptr);
 	return (EXIT_SUCCESS);
 }

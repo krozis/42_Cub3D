@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 18:32:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:29:42 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_colors(t_ptr *ptr)
 
 int	check_errors(t_ptr *ptr)
 {
-	if (!ptr->mlx_ptr)
+	if (!ptr->dply.mlx)
 		return (ft_putmsg_fd("Error\nError in initialization of MLX\n"
 				, 2, EXIT_FAILURE));
 	if (check_texture(ptr) == EXIT_FAILURE)
