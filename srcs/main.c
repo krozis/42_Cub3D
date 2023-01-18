@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 18:05:30 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/18 10:30:02 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (0);
 	}
+	printf("test RGB colors =\nfloor = %d\nceiling = %d\n", ptr->rgb_floor, ptr->rgb_ceiling);
 	_routine(ptr);
-	
 	free_them_all(ptr);
 	return (EXIT_SUCCESS);
 }

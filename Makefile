@@ -48,7 +48,8 @@ SRCS	=	main.c\
 			errors.c\
 			mlx_init.c\
 			map_check.c\
-			map_check_utils.c
+			map_check_utils.c\
+			convert_colors.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
