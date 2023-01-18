@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:46:48 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/18 11:46:33 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,13 @@ int	check_texture(t_ptr *ptr)
 	return (EXIT_SUCCESS);
 }
 
-int	check_colors(t_ptr *ptr)
+int	check_colors(int color[3])
 {
-	if ((ptr->floor[0] < 0 || ptr->floor[0] > 255) || (ptr->floor[1] < 0
-			|| ptr->floor[1] > 255) || (ptr->floor[2] < 0
-			|| ptr->floor[2] > 255))
+	if (color[0] < 0 || color[0] > 255)
 		return (EXIT_FAILURE);
-	if ((ptr->ceiling[0] < 0 || ptr->ceiling[0] > 255) || (ptr->ceiling[1] < 0
-			|| ptr->ceiling[1] > 255) || (ptr->ceiling[2] < 0
-			|| ptr->ceiling[2] > 255))
+	if (color[1] < 0 || color[1] > 255)
+		return (EXIT_FAILURE);
+	if (color[2] < 0 || color[2] > 255)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -98,7 +96,7 @@ int	check_errors(t_ptr *ptr)
 				, 2, EXIT_FAILURE));
 	if (check_map(ptr->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_colors(ptr) == EXIT_FAILURE)
+	if (ptr->ceiling_color == -1 || ptr->floor_color == -1)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
