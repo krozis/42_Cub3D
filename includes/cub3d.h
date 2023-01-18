@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/18 10:30:37 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/18 12:10:25 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,34 @@
 # include "../lib/mlx-linux/mlx.h"
 # include "../lib/libft/includes/libft.h"
 
-typedef enum e_textures
+typedef enum e_textures_values
 {
 	N_TEXT,
 	S_TEXT,
 	W_TEXT,
 	E_TEXT
-}			t_textures;
+}			t_txtval;
 
 /**
- * @brief Image file structure
- * @param img: pointer to the image, for mlx usage
- * @param height: Height in pixels of the image
- * @param width: Width in pixels of the image 
+ * @brief Displaying main structure
+ * @param mlx: the identifier of the connection to the graphic server
+ * @param win: the identifier of the window
+ * @param bg: the background image (ceiling+floor)
+ * @param textures[4]: the 4 mlx's images for the NSWE textures
  */
-
-typedef struct s_pic
-{
-	void	*img;
-	int		height;
-	int		width;
-}				t_pic;
-
 typedef struct s_display
 {
 	void	*mlx;
 	void	*win;
-	t_pic	textures[4];
+	t_img	*bg;
+	t_img	textures[4];
 }				t_dply;
 
 typedef struct s_ptr{
 	char	**map;
 	char	*text[4];
-	int		floor[3];
-	int		ceiling[3];
-	int		rgb_floor;
-	int		rgb_ceiling;
+	int		floor_color;
+	int		ceiling_color;
 	t_dply	dply;
 }				t_ptr;
 
@@ -96,7 +88,6 @@ void	free_them_all(t_ptr *ptr);
 int		ismap(char *str);
 void	secure_free(void **ptr);
 void	close_fds(int *fds);
-void	convert_colors(t_ptr *ptr);
 
 /*
 	ERROR CHECKING FUNCTIONS
@@ -104,7 +95,7 @@ void	convert_colors(t_ptr *ptr);
 int		verify_args(int ac, char **av);
 int		check_errors(t_ptr *ptr);
 int		check_texture(t_ptr *ptr);
-int		check_colors(t_ptr *ptr);
+int		check_colors(int color[3]);
 int		check_empty_line(char **map);
 int		check_chars(char **map);
 int		check_borders(char **map);
@@ -116,6 +107,7 @@ int		check_ones(char **map, int i, int k);
 */
 
 int		init_mlx(t_ptr *c3d);
-int		free_mlx(t_ptr *c3d, bool win, bool text, int exit_code);
+int		free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code);
+int		background_image(t_ptr *c3d);
 
 #endif
