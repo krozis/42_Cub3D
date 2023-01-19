@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 18:16:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:19:00 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	pixel_test(t_img *img, int x, int y, int color)
 //	printf("YO");
 }
 
-static void	test(t_img *img)
+static void	test(t_img *img, t_ptr *ptr)
 {
 	int y;
 	int x;
@@ -60,7 +60,7 @@ static void	test(t_img *img)
 	{
 		x = 0;
 		while (x < WIN_WIDTH)
-			pixel_test(img, x++, y, 0xFFFFFF);
+			pixel_test(img, x++, y, ptr->rgb_ceiling);
 		y++;
 	}
 	y = WIN_HEIGHT - 1;
@@ -68,7 +68,7 @@ static void	test(t_img *img)
 	{
 		x = 0;
 		while (x < WIN_WIDTH)
-			pixel_test(img, x++, y, 0x22FFBC);
+			pixel_test(img, x++, y, ptr->rgb_floor);
 		y--;
 	}
 }
@@ -80,7 +80,7 @@ static int	_routine(t_ptr *c3d)
 	mlx_key_hook(c3d->dply.win, &_press_key, c3d);
 	mlx_hook(c3d->dply.win, 33, (1L << 5), &mlx_loop_end, c3d->dply.mlx);
 	ceiling = mlx_new_image(c3d->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
-	test(ceiling);
+	test(ceiling, c3d);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, ceiling, 0, 0);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.textures[N_TEXT].img, 1380, 840);
 	mlx_loop(c3d->dply.mlx);
