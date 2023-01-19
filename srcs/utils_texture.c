@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:36:47 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/16 19:28:57 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:23:34 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*text(char *str)
 {
 	int	i;
+	int	k;
 
 	i = 0;
 	while (str[i] && ft_isspace(str[i]))
@@ -23,5 +24,8 @@ char	*text(char *str)
 		i++;
 	while (str[i] && ft_isspace(str[i]))
 		i++;
-	return (ft_substr(str, i, (ft_strlen(str) - i) - 1));
+	k = i;
+	while (str[k] && !ft_isspace(str[k]))
+		k++;
+	return (ft_substr(str, i, k - i));
 }

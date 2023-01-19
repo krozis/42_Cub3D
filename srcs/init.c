@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 17:21:38 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:18:52 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_ptr	*init(char **av)
 	lines = get_lines(fd, count_lines(av[1]));
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);
+	printf("est = %s\n", ptr->text[E_TEXT]);
 	get_colors(lines, ptr);
 	ptr->dply.mlx = NULL;
 	while (lines && lines[++i])

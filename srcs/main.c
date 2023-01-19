@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 17:45:59 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:28:20 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ int	main(int ac, char **av)
 	{
 		free_them_all(ptr);
 		return (0);
+	}
+	for (int i = 0; ptr->map[i]; i++){
+		printf("%s", ptr->map[i]);
 	}
 	_routine(ptr);
 	free_them_all(ptr);

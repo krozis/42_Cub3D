@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:49:01 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 17:12:59 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:23:16 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	check_color_line_ceiling(char *str, t_ptr *ptr, int start)
 			ptr->ceiling_color = -3;
 			return (EXIT_FAILURE);
 		}
+		if (!str[i])
+			return (EXIT_SUCCESS);
 		i++;
 	}
 	return (EXIT_SUCCESS);
@@ -63,9 +65,12 @@ int	check_color_line_floor(char *str, t_ptr *ptr, int start)
 			i++;
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ',')
 		{
+			printf("cahr = %c\n", str[i]);
 			ptr->floor_color = -3;
 			return (EXIT_FAILURE);
 		}
+		if (!str[i])
+			return (EXIT_SUCCESS);
 		i++;
 	}
 	return (EXIT_SUCCESS);
