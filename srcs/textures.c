@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:22:13 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:45:52 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ int	set_texture(t_ptr *ptr, char *str)
 	i = 0;
 	while (str[i] && ft_isspace(str[i]))
 		i++;
-	if (str[i] == 'N')
+	if (str[i] == 'N' && !ptr->text[N_TEXT])
 		ptr->text[N_TEXT] = text(str);
-	else if (str[i] == 'S')
+	if (str[i] == 'S' && !ptr->text[S_TEXT])
 		ptr->text[S_TEXT] = text(str);
-	else if (str[i] == 'W')
+	if (str[i] == 'W' && !ptr->text[W_TEXT])
 		ptr->text[W_TEXT] = text(str);
-	else if (str[i] == 'E')
+	if (str[i] == 'E' && !ptr->text[E_TEXT])
 		ptr->text[E_TEXT] = text(str);
-	else
+	if (!ft_incharset(str[i], "NEWS"))
 		return (EXIT_FAILURE);
+	else if (ft_incharset(str[i], "NEWS"))
+		return (EXIT_CONTINUE);
 	return (EXIT_SUCCESS);
 }
 
@@ -47,11 +49,12 @@ void	get_textures(char **lines, t_ptr *ptr)
 		return ;
 	while (count < 4)
 	{
-		if (empty_line(lines[i]) == EXIT_SUCCESS)
+		while (lines[i] && empty_line(lines[i]) == EXIT_SUCCESS)
 			i++;
 		if (set_texture(ptr, lines[i]) == EXIT_FAILURE)
 			return ;
+		else if (set_texture(ptr, lines[i]) == EXIT_SUCCESS)
+			count++;
 		i++;
-		count++;
 	}
 }

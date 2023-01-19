@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 16:51:22 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:21:38 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ t_ptr	*init(char **av)
 	ptr = malloc(sizeof(t_ptr));
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
+	{
+		secure_free((void **)&ptr);
 		return (NULL);
+	}
 	lines = get_lines(fd, count_lines(av[1]));
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/18 11:46:33 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:17:34 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,6 @@ int	check_texture(t_ptr *ptr)
 	return (EXIT_SUCCESS);
 }
 
-int	check_colors(int color[3])
-{
-	if (color[0] < 0 || color[0] > 255)
-		return (EXIT_FAILURE);
-	if (color[1] < 0 || color[1] > 255)
-		return (EXIT_FAILURE);
-	if (color[2] < 0 || color[2] > 255)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
-
 int	check_map(char **map)
 {
 	if (check_empty_line(map) == EXIT_FAILURE)
@@ -91,13 +80,21 @@ int	check_map(char **map)
 
 int	check_errors(t_ptr *ptr)
 {
+	if (!ptr)
+		return (ft_putmsg_fd("Error\nCouldn't open config file\n"
+				, 2, EXIT_FAILURE));
 	if (check_texture(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
 				, 2, EXIT_FAILURE));
 	if (check_map(ptr->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	if (ptr->ceiling_color == -2 || ptr->floor_color == -2)
+		return (ft_putmsg_fd("Error\nMissing color line\n", 2, EXIT_FAILURE));
 	if (ptr->ceiling_color == -1 || ptr->floor_color == -1)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));
+	if (ptr->ceiling_color == -3 || ptr->floor_color == -3)
+		return (ft_putmsg_fd("Error\nUnknown character in color line\n"
+				, 2, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }

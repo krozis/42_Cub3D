@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 14:38:07 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:38:28 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@
 //	ERROR CODES
 # define ERR_TWO_START 4
 # define ERR_NO_START 3
+# define EXIT_CONTINUE 2
 
 // COLOR VALUES
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
+
+// TEST
+# define ALPH "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 //INCLUDES
 # include <fcntl.h>
@@ -112,6 +116,9 @@ int		check_chars(char **map);
 int		check_borders(char **map);
 int		check_integrity(char **map);
 int		check_ones(char **map, int i, int k);
+int		check_color_line_ceiling(char *str, t_ptr *ptr, int start);
+int		check_color_line_floor(char *str, t_ptr *ptr, int start);
+int		check_digit(char *str);
 
 /*
  * DISPLAYING WITH MLX
