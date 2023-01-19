@@ -6,8 +6,8 @@ W        ./textures/west.xpm
 
 SO ./textures/south.xpm
 
-F 0,0,15
-C 2,12,214
+F 0,255,124
+C 255,0,0
 
 
 1111111111111

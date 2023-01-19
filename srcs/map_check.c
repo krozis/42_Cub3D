@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:18:13 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 15:02:23 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:29:41 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,8 @@ int	check_borders(char **map)
 
 int	check_integrity(char **map)
 {
-	int	i;
 	int	k;
 
-	i = 0;
 	(void)k;
 	if (check_borders(map) == EXIT_FAILURE
 		|| check_closed_map(map) == EXIT_FAILURE)
