@@ -67,7 +67,7 @@ $(NAME):	$(OBJS)
 			@echo $(G)Compiled [MinilibX]$(X)
 			@$(MAKE) -C $(LFT_DIR)
 			@echo $(Y)Compiling [$(NAME)]...$(X)
-			@$(CC) -o $(NAME) $(FLAGS) $(OBJS) $(LIBFT) $(MLX)
+			@$(CC) -o $(NAME) $(FLAGS) $(OBJS) $(LIBFT) $(MLX) $(FLAGS)
 			@printf $(UP)$(CUT)
 			@echo $(G)Compiled [$(NAME)]$(X)
 
