@@ -3,33 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/18 12:10:25 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/19 13:45:38 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// WINDOWS INFORMATIONS
 # define OPEN_MAX 1024
 # define BUFFER_SIZE 1024
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 # define WIN_NAME "Cub3D"
 
-/*
-	DEFINE ERROR CODES
-*/
+//GRID and PLAYER INFORMATIONS
+# define BOX_SIZE 64
+# define PLAYER_SIZE 32
 
+//	ERROR CODES
 # define ERR_TWO_START 4
 # define ERR_NO_START 3
 
+// COLOR VALUES
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
 
+//INCLUDES
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -61,11 +65,18 @@ typedef struct s_display
 	t_img	textures[4];
 }				t_dply;
 
+/**
+ * @brief cub3D main structure
+ * @param map: map in char[ ][ ] grid format
+ * @param text: strigns containing the 4 paths to open texture files
+ * @param ceiling_color: color of the ceiling in int value
+ * @param floor_color: color of the floor in int value
+ */
 typedef struct s_ptr{
 	char	**map;
 	char	*text[4];
-	int		floor_color;
 	int		ceiling_color;
+	int		floor_color;
 	t_dply	dply;
 }				t_ptr;
 
