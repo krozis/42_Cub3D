@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 17:17:34 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:07:43 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_map(char **map)
 		return (ft_putmsg_fd("Error\nPlayer has no starting position\n"
 				, 2, EXIT_FAILURE));
 	if (check_chars(map) == ERR_TWO_START)
-		return (ft_putmsg_fd("Error\nPlayer has two starting postion\n"
+		return (ft_putmsg_fd("Error\nPlayer has several starting postions\n"
 				, 2, EXIT_FAILURE));
 	if (check_integrity(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
