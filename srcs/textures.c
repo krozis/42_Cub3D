@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 20:05:15 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:17:36 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	set_texture(t_ptr *ptr, char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (EXIT_FAILURE);
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == 'N' && !ptr->text[N_TEXT])

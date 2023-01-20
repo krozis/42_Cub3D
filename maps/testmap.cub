@@ -3,7 +3,7 @@ F 150,  150,   0
 N                  ./textures/north.xpm
 EA     ./textures/east.xpm 
 
-C 255,   255,     255  
+C 255,   255,     255      222
 
 
 SO ./textures/south.xpm
