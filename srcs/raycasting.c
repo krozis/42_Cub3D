@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/21 19:12:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:44:29 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void	raycasting_3(t_ptr *ptr)
 		{
 			ptr->ray->sideDistX +=  ptr->ray->deltaDistX;
 			ptr->ray->mapX += ptr->ray->stepX;
-			ptr->ray->side = 0;
+			ptr->ray->side = 1;
 		}
 		else
 		{
 			ptr->ray->sideDistY += ptr->ray->deltaDistY;
 			ptr->ray->mapY += ptr->ray->stepY;
-			ptr->ray->side = 1;
+			ptr->ray->side = 0;
 		}
 		if (ptr->map[ptr->ray->mapY][ptr->ray->mapX] == '1')
 			ptr->ray->hit = 1;
@@ -98,13 +98,13 @@ void	raycasting_4(t_ptr *ptr, int x)
 	int	drawend;
 
 	lineHeight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
-	drawstart = -lineHeight / 2 + WIN_WIDTH / 2;
+	drawstart = (-lineHeight / 2 + WIN_WIDTH / 2) + 1;
 	if (drawstart < 0)
 		drawstart = 0;
 	drawend = lineHeight / 2 + WIN_WIDTH / 2;
 	if (drawend >= WIN_WIDTH)
 		drawend = WIN_WIDTH - 1;
-	drawline(ptr, x, drawstart, drawend, convert_colors(126,45,199));
+	drawline(ptr, x, drawstart, drawend, convert_colors(255,0,152));
 }
 
 void	raycasting(t_ptr *ptr)
@@ -115,9 +115,9 @@ void	raycasting(t_ptr *ptr)
 	ptr->ray = malloc(sizeof(t_ray));
 	set_raycasting(ptr);
 	ptr->ray->planeX = 0;
-	ptr->ray->planeY = 0.66;
+	ptr->ray->planeY = 0.60;
 	ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
-	while (x < WIN_WIDTH)
+	while (x < (WIN_WIDTH))
 	{
 		raycasting_1(ptr, x);
 		raycasting_2(ptr);

@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 20:36:00 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 21:26:24 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	convert_colors(int r, int g, int b)
 {
-	return ((r * RGB_RED) + (g * RGB_GREEN) + (b * RGB_BLUE));
+	return ((r * RGB_RED) + (g * RGB_GREEN) + b);
 }
 
 static void	ceiling_color(char *str, t_ptr *ptr, int i)

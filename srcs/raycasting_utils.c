@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/21 19:09:37 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:34:03 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	set_player(t_ptr *ptr)
 		{
 			if (ft_incharset(ptr->map[i][k], "NEWS"))
 			{
-				ptr->player->posX = (double)(k + 0.5);
-				ptr->player->posY = (double)(i - 0.5);
+				ptr->player->posX = k;
+				ptr->player->posY = i;
 				ptr->player->dir = ptr->map[i][k];
 				return ;
 			}
@@ -68,14 +68,15 @@ void	set_raycasting(t_ptr *ptr)
 
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 {
-	printf("drawstart = %d\n", drawstart);
-	printf("drawend = %d\n", drawend);
-	printf("x = %d\n", x);
-	while (drawstart <= drawend)
+	printf("color = %d\n", color);
+	printf("(color %% RGB_RED) %% RGB_GREEN = %d\n", (color / RGB_RED));
+		printf("(color %% RGB_RED)  / RGB_GREEN = %d\n", (color % RGB_RED) / RGB_GREEN);
+		printf("(color  / RGB_RED) = %d\n", (color % RGB_RED) % RGB_GREEN);
+	while (drawstart < drawend)
 	{
-		ptr->dply.screen->data[(drawstart * WIN_WIDTH) + x] = (color % RGB_RED) % RGB_GREEN;
-		ptr->dply.screen->data[(drawstart * WIN_WIDTH) + x + 1] = (color % RGB_RED) / RGB_GREEN;
-		ptr->dply.screen->data[(drawstart * WIN_WIDTH) + x + 2] = color / RGB_RED;
+		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x)] = (color / RGB_RED);
+		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x) +1] = (color % RGB_RED) / RGB_GREEN;
+		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x) + 2] = (color % RGB_RED) % RGB_GREEN;
 		drawstart++;
 	}
 	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
