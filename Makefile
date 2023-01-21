@@ -52,8 +52,6 @@ SRCS	=	main.c\
 			background.c\
 			errors_colors.c\
 			raycasting.c\
-			raycasting_utils.c\
-			dda_utils.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

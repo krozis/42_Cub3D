@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 22:21:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:17:24 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ typedef enum e_textures_values
  * @param posY: player Y position on the map
 */
 typedef struct	s_player{
-	int	posX;
-	int	posY;
+	int		posX;
+	int		posY;
+	char	dir;
 }				t_player;
 
 /**
@@ -86,6 +87,7 @@ typedef struct	s_player{
  * @param stepX: value of incrementation for the X value of the ray
  * @param stepY: value of incrementation for the Y value of the ray
  * @param side: int for saying if we hitted a wall on the X side or the Y side
+ * @param hit: says if a wall has been hit or not
 */
 typedef struct	s_ray{
 	int		dirX;
@@ -105,6 +107,7 @@ typedef struct	s_ray{
 	int		stepX;
 	int		stepY;
 	int		side;
+	int		hit;
 }				t_ray;
 
 /**
