@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/21 23:34:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:10:53 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ void	set_raycasting(t_ptr *ptr)
 
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 {
-	printf("color = %d\n", color);
-	printf("(color %% RGB_RED) %% RGB_GREEN = %d\n", (color / RGB_RED));
-		printf("(color %% RGB_RED)  / RGB_GREEN = %d\n", (color % RGB_RED) / RGB_GREEN);
-		printf("(color  / RGB_RED) = %d\n", (color % RGB_RED) % RGB_GREEN);
+	/* drawing the line*/
 	while (drawstart < drawend)
 	{
 		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x)] = (color / RGB_RED);
@@ -79,5 +76,6 @@ void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x) + 2] = (color % RGB_RED) % RGB_GREEN;
 		drawstart++;
 	}
+	/* printing the image, can be moved. used for debug purpose*/
 	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
 }
