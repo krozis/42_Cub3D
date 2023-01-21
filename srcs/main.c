@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 20:41:16 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:00:39 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	_routine(t_ptr *ptr)
 	mlx_hook(ptr->dply.win, 33, (1L << 5), &mlx_loop_end, ptr->dply.mlx);
 	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.bg, 0, 0);
 	raycasting(ptr);
-	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 1000,500);
 	// mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win,
 	// 	ptr->dply.textures[N_TEXT].image, 1380, 840);
 	mlx_destroy_image(ptr->dply.mlx, ptr->dply.screen);

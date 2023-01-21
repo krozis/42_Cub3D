@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/21 15:17:24 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:54:38 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 // WINDOWS INFORMATIONS
 # define OPEN_MAX 1024
 # define BUFFER_SIZE 1024
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 # define WIN_NAME "Cub3D"
 
 //GRID and PLAYER INFORMATIONS
@@ -45,6 +45,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # include "../lib/mlx-linux/mlx_int.h"
 # include "../lib/mlx-linux/mlx.h"
 # include "../lib/libft/includes/libft.h"
@@ -63,9 +64,9 @@ typedef enum e_textures_values
  * @param posY: player Y position on the map
 */
 typedef struct	s_player{
-	int		posX;
-	int		posY;
-	char	dir;
+	double		posX;
+	double		posY;
+	char		dir;
 }				t_player;
 
 /**
@@ -198,9 +199,8 @@ int		background_image(t_ptr *c3d);
  * RAYCASTING
 */
 
-void		raycasting(t_ptr *ptr);
-void	draw(t_ptr *ptr, int x);
-void	drawline(t_ptr *ptr, int x, int drawend, int drawstart);
-int		perform_dda(t_ptr *ptr);
+void	raycasting(t_ptr *ptr);
+void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color);
+void	set_raycasting(t_ptr *ptr);
 
 #endif
