@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 12:35:50 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:15:28 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	raycasting_1(t_ptr *ptr, int x)
 	/* setting up cameraX. cameraX is the X coordinate on the camera plane for the X pixel that is on the screen*/
 	ptr->ray->cameraX = 2 * x / (double)WIN_WIDTH - 1;
 	/* setting up ray directions*/
-	ptr->ray->raydirX = ptr->ray->dirX + ptr->ray->planeX
+	ptr->ray->raydirX = ptr->player->dirX + ptr->player->planeX // player->dirX = player's dir X ?
 		* ptr->ray->cameraX;
-	ptr->ray->raydirY = ptr->ray->dirY + ptr->ray->planeY
+	ptr->ray->raydirY = ptr->player->dirY + ptr->player->planeY // player->dirY = player's dir Y ?
 		* ptr->ray->cameraX;
 	/* setting up starting position of the ray */
 	ptr->ray->mapX = (int)ptr->player->posX;
@@ -108,7 +108,10 @@ void	raycasting_4(t_ptr *ptr, int x)
 
 	/* calculating height of the vertical line to draw*/
 	lineHeight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
-	/* calculating the Y coordinate of the first pixel of the line*/
+	/* calculating the Y coordinate of the firs * @param dirX: direction X of the player (which side the player is facing). Can be 1, -1 or 0
+ * @param dirY: direction Y of the player (which side the player is facing). Can be 1, -1 or 0
+ * @param planeX: value X of the camera plane
+ * @param planeY: value Y of the camera planet pixel of the line*/
 	drawstart = (-lineHeight / 2 + WIN_WIDTH / 2) + 1;
 	if (drawstart < 0)
 		drawstart = 0;
@@ -128,8 +131,6 @@ void	raycasting(t_ptr *ptr)
 	x = 0;
 	ptr->ray = malloc(sizeof(t_ray));
 	set_raycasting(ptr);
-	ptr->ray->planeX = 0;
-	ptr->ray->planeY = 0.60;
 	//ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	/* Send rays for the whole width of the window*/
 	while (x < (WIN_WIDTH))

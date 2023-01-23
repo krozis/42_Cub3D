@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 12:49:55 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/23 13:14:50 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,24 @@ typedef enum e_textures_values
  * @brief player structure
  * @param posX: player X position on the map
  * @param posY: player Y position on the map
+ * @param dirX: direction X of the player (which side the player is facing). Can be 1, -1 or 0
+ * @param dirY: direction Y of the player (which side the player is facing). Can be 1, -1 or 0
+ * @param planeX: value X of the camera plane
+ * @param planeY: value Y of the camera plane
 */
-typedef struct	s_player{
-	double		posX;
-	double		posY;
+typedef struct	s_player
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
 	char		dir;
 }				t_player;
 
 /**
  * @brief Raycasting structure
- * @param dirX: direction X of the player (which side the player is facing). Can be 1, -1 or 0
- * @param dirY: direction Y of the player (which side the player is facing). Can be 1, -1 or 0
- * @param planeX: value X of the camera plane
- * @param planeY: value Y of the camera plane
  * @param raydirX: direction X of the ray
  * @param raydirY: directyion Y of the ray
  * @param cameraX: X-coordinate on the camera plane that the X-coordinate on the screen represent
@@ -90,11 +95,8 @@ typedef struct	s_player{
  * @param side: int for saying if we hitted a wall on the X side or the Y side
  * @param hit: says if a wall has been hit or not
 */
-typedef struct	s_ray{
-	int		dirX;
-	int		dirY;
-	double	planeX;
-	double	planeY;
+typedef struct	s_ray
+{
 	double	raydirX;
 	double	raydirY;
 	double	cameraX;

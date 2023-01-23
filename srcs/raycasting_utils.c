@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/22 00:10:53 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:16:51 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,29 @@ void	set_player(t_ptr *ptr)
 void	set_raycasting(t_ptr *ptr)
 {
 	set_player(ptr);
+	ptr->player->planeX = 0;
+	ptr->player->planeY = 0.60;
 	if (!ptr->ray || !ptr->player)
 		return ;
 	if (ptr->player->dir == 'N')
 	{
-		ptr->ray->dirX = 0;
-		ptr->ray->dirY = -1;
+		ptr->player->dirX = 0;
+		ptr->player->dirY = -1;
 	}
 	if (ptr->player->dir == 'S')
 	{
-		ptr->ray->dirX = 0;
-		ptr->ray->dirY = 1;
+		ptr->player->dirX = 0;
+		ptr->player->dirY = 1;
 	}
 	if (ptr->player->dir == 'W')
 	{
-		ptr->ray->dirX = -1;
-		ptr->ray->dirY = 0;
+		ptr->player->dirX = -1;
+		ptr->player->dirY = 0;
 	}
 	if (ptr->player->dir == 'E')
 	{
-		ptr->ray->dirX = 1;
-		ptr->ray->dirY = 0;
+		ptr->player->dirX = 1;
+		ptr->player->dirY = 0;
 	}
 }
 
