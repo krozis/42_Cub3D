@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/19 19:28:20 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:34:18 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ static int	_press_key(int key, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
-static int	_routine(t_ptr *c3d)
+static int	_routine(t_ptr *ptr)
 {
-	mlx_key_hook(c3d->dply.win, &_press_key, c3d);
-	mlx_hook(c3d->dply.win, 33, (1L << 5), &mlx_loop_end, c3d->dply.mlx);
-	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.bg, 0, 0);
-	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win,
-		c3d->dply.textures[N_TEXT].image, 1380, 840);
-	mlx_loop(c3d->dply.mlx);
+	mlx_key_hook(ptr->dply.win, &_press_key, ptr);
+	mlx_hook(ptr->dply.win, 33, (1L << 5), &mlx_loop_end, ptr->dply.mlx);
+	//mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.bg, 0, 0);
+	raycasting(ptr);
+	// mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win,
+	// 	ptr->dply.textures[N_TEXT].image, 1380, 840);
+	mlx_destroy_image(ptr->dply.mlx, ptr->dply.screen);
+	mlx_loop(ptr->dply.mlx);
 	return (EXIT_SUCCESS);
 }
 
@@ -56,9 +58,9 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (0);
 	}
-	for (int i = 0; ptr->map[i]; i++){
-		printf("%s", ptr->map[i]);
-	}
+	// for (int i = 0; ptr->map[i]; i++){
+	// 	printf("%s", ptr->map[i]);
+	// }
 	_routine(ptr);
 	free_them_all(ptr);
 	return (EXIT_SUCCESS);

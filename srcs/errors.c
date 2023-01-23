@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 13:07:43 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:45:31 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ int	check_errors(t_ptr *ptr)
 				, 2, EXIT_FAILURE));
 	if (check_map(ptr->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (ptr->ceiling_color == -2 || ptr->floor_color == -2)
+	if (ptr->ceiling_color == ERR_MISS_LINE
+		|| ptr->floor_color == ERR_MISS_LINE)
 		return (ft_putmsg_fd("Error\nMissing color line\n", 2, EXIT_FAILURE));
-	if (ptr->ceiling_color == -1 || ptr->floor_color == -1)
+	if (ptr->ceiling_color == ERR_INV_VAL || ptr->floor_color == ERR_INV_VAL)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));
-	if (ptr->ceiling_color == -3 || ptr->floor_color == -3)
+	if (ptr->ceiling_color == ERR_COLOR_CHAR
+		|| ptr->floor_color == ERR_COLOR_CHAR)
 		return (ft_putmsg_fd("Error\nUnknown character in color line\n"
 				, 2, EXIT_FAILURE));
 	return (EXIT_SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_01.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:32:02 by stelie            #+#    #+#             */
-/*   Updated: 2022/11/27 19:03:37 by krozis           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:22:03 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,11 @@ char	*ft_itoa(int n)
 		nb = nb / 10;
 	}
 	return (res);
+}
+
+int	ft_abs(int num)
+{
+	if (num < 0)
+		return (num * -1);
+	return (num);
 }

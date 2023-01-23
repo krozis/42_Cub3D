@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/18 11:18:10 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/23 12:50:03 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 		}
 	}
 	if (bg)
-		mlx_destroy_image(c3d->dply.mlx, c3d->dply.bg);
+		;//mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	mlx_destroy_window(c3d->dply.mlx, c3d->dply.win);
 	mlx_destroy_display(c3d->dply.mlx);
 	secure_free(&(c3d->dply.mlx));

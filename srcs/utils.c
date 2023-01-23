@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/17 13:32:44 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:18:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	empty_line(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (EXIT_FAILURE);
 	while (str[i])
 	{
 		if (!ft_isspace(str[i]))

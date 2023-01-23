@@ -50,7 +50,9 @@ SRCS	=	main.c\
 			map_check.c\
 			map_check_utils.c\
 			background.c\
-			errors_colors.c
+			errors_colors.c\
+			raycasting.c\
+			raycasting_utils.c
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
