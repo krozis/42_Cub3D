@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 12:29:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:22:28 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	set_player(t_ptr *ptr)
 		{
 			if (ft_incharset(ptr->map[i][k], "NEWS"))
 			{
-				ptr->player->posX = k;
-				ptr->player->posY = i;
+				ptr->player->posX = k + 0.5;
+				ptr->player->posY = i + 0.5;
 				ptr->player->dir = ptr->map[i][k];
 				return ;
 			}
