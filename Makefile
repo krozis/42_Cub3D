@@ -52,7 +52,8 @@ SRCS	=	main.c\
 			background.c\
 			errors_colors.c\
 			raycasting.c\
-			raycasting_utils.c
+			raycasting_utils.c\
+			player.c\
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

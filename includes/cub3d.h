@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 13:14:50 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:26:21 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	init_structs(t_ptr *ptr);
 void	init_ray(t_ptr *ptr);
 void	init_dda(t_ptr *ptr);
 void	set_dir(t_ptr *ptr, char c);
-void	init_player(t_ptr *ptr);
+//void	init_player(t_ptr *ptr);
 void	init_dda_2(t_ptr *ptr);
 
 /*
@@ -204,5 +204,11 @@ int		background_image(t_ptr *c3d);
 void	raycasting(t_ptr *ptr);
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color);
 void	set_raycasting(t_ptr *ptr);
+
+/*
+ * PLAYER
+*/
+
+int		init_player(t_player **player, char **map);
 
 #endif
