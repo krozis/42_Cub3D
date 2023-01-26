@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 16:24:57 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:39:20 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	set_player(t_ptr *ptr)
 void	set_raycasting(t_ptr *ptr)
 {
 	set_player(ptr);
-
 	if (!ptr->ray || !ptr->player)
 		return ;
 	if (ptr->player->dir == 'N')
