@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 13:25:43 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:51:28 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,10 @@ void	raycasting(t_ptr *ptr)
 
 	x = 0;
 	ptr->ray = malloc(sizeof(t_ray));
-	init_player(&(ptr->player), ptr->map);
+	if (!(ptr->player))
+		init_player(&(ptr->player), ptr->map);
+	if (!ptr->dply.screen)
+		ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	//set_raycasting(ptr);
 	//ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	/* Send rays for the whole width of the window*/

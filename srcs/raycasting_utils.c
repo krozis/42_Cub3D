@@ -6,12 +6,12 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 13:22:28 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:15:41 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/* 
 void	set_player(t_ptr *ptr)
 {
 	int	i;
@@ -67,6 +67,7 @@ void	set_raycasting(t_ptr *ptr)
 		ptr->player->dirY = 0;
 	}
 }
+ */
 
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 {

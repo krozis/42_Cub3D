@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 13:26:21 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:30:26 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 //GRID and PLAYER INFORMATIONS
 # define BOX_SIZE 64
 # define PLAYER_SIZE 32
+# define ROTATION_SPEED 0.05
 
 //	ERROR CODES
 # define ERR_TWO_START 4
@@ -210,5 +211,11 @@ void	set_raycasting(t_ptr *ptr);
 */
 
 int		init_player(t_player **player, char **map);
+
+/*
+ * MOVEMENT
+*/
+
+void	rotate(t_ptr *c3d, int key);
 
 #endif
