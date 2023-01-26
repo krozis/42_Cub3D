@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 12:50:41 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:24:57 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	set_player(t_ptr *ptr)
 void	set_raycasting(t_ptr *ptr)
 {
 	set_player(ptr);
-	ptr->player->planeX = 0;
-	ptr->player->planeY = 0.60;
+
 	if (!ptr->ray || !ptr->player)
 		return ;
 	if (ptr->player->dir == 'N')
@@ -66,6 +65,8 @@ void	set_raycasting(t_ptr *ptr)
 		ptr->player->dirX = 1;
 		ptr->player->dirY = 0;
 	}
+	ptr->player->planeX = ptr->player->dirY * -0.66;
+	ptr->player->planeY = ptr->player->dirX * 0.66;
 }
 
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
@@ -88,6 +89,6 @@ void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) + 2] = (color % RGB_RED) % RGB_GREEN;
 		i++;
 	}
-	/* printing the image, can be moved. used for debug purpose*/
+	/* printing the image, can be moved. used for debug purpose */
 	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
 }

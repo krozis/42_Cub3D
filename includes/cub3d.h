@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 12:54:49 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:25:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct	s_ray
 	int		stepY;
 	int		side;
 	int		hit;
+	double	oldperpwall;
 }				t_ray;
 
 /**
