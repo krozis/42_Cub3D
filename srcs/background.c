@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:41:57 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/23 12:34:11 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 12:45:21 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ static void	_coloring(t_img *img, int y, int color)
 	}
 }
 
-int	background_image(t_ptr *c3d)
+int	background_image(t_ptr *ptr)
 {
 	int	y;
 
-	c3d->dply.screen = mlx_new_image(c3d->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (c3d->dply.screen == NULL)
+	ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (ptr->dply.screen == NULL)
 		return (EXIT_FAILURE);
 	y = 0;
 	while (y < WIN_HEIGHT / 2)
 	{
-		_coloring(c3d->dply.screen, y, c3d->ceiling_color);
+		_coloring(ptr->dply.screen, y, ptr->ceiling_color);
 		y++;
 	}
 	while (y < WIN_HEIGHT)
 	{
-		_coloring(c3d->dply.screen, y, c3d->floor_color);
+		_coloring(ptr->dply.screen, y, ptr->floor_color);
 		y++;
 	}
 	return (EXIT_SUCCESS);
