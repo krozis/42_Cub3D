@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 13:15:28 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:00:13 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ void	raycasting_4(t_ptr *ptr, int x)
  * @param dirY: direction Y of the player (which side the player is facing). Can be 1, -1 or 0
  * @param planeX: value X of the camera plane
  * @param planeY: value Y of the camera planet pixel of the line*/
-	drawstart = (-lineHeight / 2 + WIN_WIDTH / 2) + 1;
+	drawstart = (-lineHeight / 2 + WIN_HEIGHT / 2) + 1;
 	if (drawstart < 0)
 		drawstart = 0;
 	/* calculating the Y coordinate of the last pixel of the line*/
-	drawend = lineHeight / 2 + WIN_WIDTH / 2;
-	if (drawend >= WIN_WIDTH)
-		drawend = WIN_WIDTH - 1;
+	drawend = lineHeight / 2 + WIN_HEIGHT / 2;
+	if (drawend >= WIN_HEIGHT)
+		drawend = WIN_HEIGHT - 1;
 	/* drawing the line to the mlx image. x is the postion in the width, drawstart is the y coordinate of the first pixel and drawend the last y coordinate*/
 	/* the line to draw then have for coordinate x = x and y = drawstart++ until drawend*/
 	drawline(ptr, x, drawstart, drawend, convert_colors(255,0,152));
@@ -131,7 +131,7 @@ void	raycasting(t_ptr *ptr)
 	x = 0;
 	ptr->ray = malloc(sizeof(t_ray));
 	set_raycasting(ptr);
-	//ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
+	// ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	/* Send rays for the whole width of the window*/
 	while (x < (WIN_WIDTH))
 	{
