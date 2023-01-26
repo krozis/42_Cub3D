@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 13:16:51 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 12:29:03 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ void	set_raycasting(t_ptr *ptr)
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 {
 	/* drawing the line*/
+	int	i;
+
+	i = 0;
+	while (i < drawstart)
+	{
+		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x)] = (ptr->ceiling_color / RGB_RED);
+		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) +1] = (ptr->ceiling_color % RGB_RED) / RGB_GREEN;
+		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) + 2] = (ptr->ceiling_color % RGB_RED) % RGB_GREEN;
+		i++;
+	}
 	while (drawstart < drawend)
 	{
 		ptr->dply.screen->data[4 * (drawstart * WIN_WIDTH + x)] = (color / RGB_RED);
