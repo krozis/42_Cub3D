@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 16:33:23 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:08:55 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,17 +114,18 @@ void	raycasting(t_ptr *ptr)
 
 	x = 0;
 	ptr->ray = malloc(sizeof(t_ray));
-	set_raycasting(ptr);
+	if (!ptr->player)
+		init_player(&(ptr->player), ptr->map);
+	if (!ptr->dply.screen)
+		ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
+	
 	while (x < (WIN_WIDTH))
 	{
-		if (x == (WIN_WIDTH / 2))
-		{
-			printf("mabite");
-		}
 		raycasting_1(ptr, x);
 		raycasting_2(ptr);
 		raycasting_3(ptr);
 		raycasting_4(ptr, x);
 		x++;
 	}
+	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 16:25:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:54:40 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 //GRID and PLAYER INFORMATIONS
 # define BOX_SIZE 64
 # define PLAYER_SIZE 32
+# define ROTATION_SPEED 0.05
 
 //	ERROR CODES
 # define ERR_TWO_START 4
@@ -158,7 +159,7 @@ void	init_structs(t_ptr *ptr);
 void	init_ray(t_ptr *ptr);
 void	init_dda(t_ptr *ptr);
 void	set_dir(t_ptr *ptr, char c);
-void	init_player(t_ptr *ptr);
+//void	init_player(t_ptr *ptr);
 void	init_dda_2(t_ptr *ptr);
 
 /*
@@ -202,5 +203,17 @@ int		background_image(t_ptr *c3d);
 void	raycasting(t_ptr *ptr);
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color);
 void	set_raycasting(t_ptr *ptr);
+
+/*
+ * PLAYER
+*/
+
+int		init_player(t_player **player, char **map);
+
+/*
+ * MOVEMENT
+*/
+
+void	rotate(t_ptr *c3d, int key);
 
 #endif

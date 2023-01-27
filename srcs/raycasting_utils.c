@@ -6,67 +6,11 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 16:39:20 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:09:10 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	set_player(t_ptr *ptr)
-{
-	int	i;
-	int	k;
-
-	i = 0;
-	ptr->player = malloc(sizeof(t_player));
-	if (!ptr->player)
-		return ;
-	while (ptr->map[i])
-	{
-		k = 0;
-		while (ptr->map[i][k])
-		{
-			if (ft_incharset(ptr->map[i][k], "NEWS"))
-			{
-				ptr->player->posX = (k + 0.5);
-				ptr->player->posY = (i + 0.5);
-				ptr->player->dir = ptr->map[i][k];
-				return ;
-			}
-			k++;
-		}
-		i++;
-	}
-}
-
-void	set_raycasting(t_ptr *ptr)
-{
-	set_player(ptr);
-	if (!ptr->ray || !ptr->player)
-		return ;
-	if (ptr->player->dir == 'N')
-	{
-		ptr->player->dirX = 0;
-		ptr->player->dirY = -1;
-	}
-	if (ptr->player->dir == 'S')
-	{
-		ptr->player->dirX = 0;
-		ptr->player->dirY = 1;
-	}
-	if (ptr->player->dir == 'W')
-	{
-		ptr->player->dirX = -1;
-		ptr->player->dirY = 0;
-	}
-	if (ptr->player->dir == 'E')
-	{
-		ptr->player->dirX = 1;
-		ptr->player->dirY = 0;
-	}
-	ptr->player->planeX = ptr->player->dirY * -0.66;
-	ptr->player->planeY = ptr->player->dirX * 0.66;
-}
 
 void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 {
@@ -84,10 +28,49 @@ void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color)
 	while (i < drawend)
 	{
 		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x)] = (color / RGB_RED);
-		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) +1] = (color % RGB_RED) / RGB_GREEN;
+		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) + 1] = (color % RGB_RED) / RGB_GREEN;
 		ptr->dply.screen->data[4 * (i * WIN_WIDTH + x) + 2] = (color % RGB_RED) % RGB_GREEN;
 		i++;
 	}
+
+
+
+      //calculate value of wallX
+    // double wallX; //where exactly the wall was hit
+    // if (ptr->ray->side == 0)
+	// 	wallX = ptr->player->posY + ptr->ray->perpWallDist * ptr->ray->raydirY;
+    // else
+	// 	wallX = ptr->player->posX + ptr->ray->perpWallDist * ptr->ray->raydirX;
+    // wallX -= floor((wallX));
+
+    //   //x coordinate on the texture
+    // int texX = (int)(wallX * (double)(64));
+    // if(ptr->ray->side == 0 && ptr->ray->raydirX > 0)
+	// 	texX = 64 - texX - 1;
+    // if(ptr->ray->side == 1 && ptr->ray->raydirY < 0)
+	// 	texX = 64 - texX - 1;
+
+    // // How much to increase the texture coordinate per screen pixel
+	// int lineheight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
+    // double step = 1.0 * 64 / lineheight;
+    //   // Starting texture coordinate
+    // double texPos = (drawstart - WIN_HEIGHT / 2 + lineheight / 2) * step;
+	// int	y;
+	// y = drawstart;
+    // while (y < drawend)
+    // {
+    //     // Cast the texture coordinate to integer, and mask with (64 - 1) in case of overflow
+    // 	int texY = (int)texPos & (64 - 1);
+    //     texPos += step;
+	// 	printf("bite = %d\n", 64 * texY + texX);
+    //     int colour = ptr->dply.textures[0].data[64 * (texY + texX)];
+    //     //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+    //     // if(side == 1)
+	// 	// 	color = (color >> 1) & 8355711;
+	// 	ptr->dply.screen->data[4 * (y * WIN_WIDTH + x)] = (colour / RGB_RED);
+	// 	ptr->dply.screen->data[4 * (y * WIN_WIDTH + x) + 1] = (colour % RGB_RED) / RGB_GREEN;
+	// 	ptr->dply.screen->data[4 * (y * WIN_WIDTH + x) + 2] = (colour % RGB_RED) % RGB_GREEN;
+	// 	y++;
+	// }
 	/* printing the image, can be moved. used for debug purpose */
-	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
 }

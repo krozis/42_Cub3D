@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:16:21 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/25 14:20:53 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/26 16:41:30 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	get_initial_direction(t_player **player, char dir)
 {
-	(*player)->planeX = 0.;
-	(*player)->planeY = 0.60;
 	if (dir == 'N')
 	{
 		(*player)->dirX = 0.;
@@ -36,6 +34,8 @@ static void	get_initial_direction(t_player **player, char dir)
 		(*player)->dirX = 0.;
 		(*player)->dirY = 1.;
 	}
+	(*player)->planeX = (*player)->dirY * -0.60;
+	(*player)->planeY = (*player)->dirX * 0.60;
 }
 
 /**
@@ -60,8 +60,8 @@ int	init_player(t_player **player, char **map)
 		{
 			if (ft_incharset(map[i][j], "NEWS"))
 			{
-				(*player)->posX = j;
-				(*player)->posY = i;
+				(*player)->posX = j + 0.5;
+				(*player)->posY = i + 0.5;
 				get_initial_direction(player, map[i][j]);
 				return (EXIT_SUCCESS);
 			}
