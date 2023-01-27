@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/26 18:11:29 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:00:54 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,28 @@ int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 		i = N_TEXT;
 		while (i <= E_TEXT)
 		{
-			mlx_destroy_image(c3d->dply.mlx, c3d->dply.textures[i].image);
+			mlx_destroy_image(c3d->dply.mlx, (t_img *)&c3d->dply.textures[i]);
 			i++;
 		}
 	}
 	if (bg)
-		;//mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
+		;
+	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	mlx_destroy_window(c3d->dply.mlx, c3d->dply.win);
 	mlx_destroy_display(c3d->dply.mlx);
 	secure_free(&(c3d->dply.mlx));
 	return (exit_code);
 }
 
-static t_img	_text_load_each(void *mlx, char *file)
+static t_img	*_text_load_each(void *mlx, char *file, int x, int y)
 {
-	t_img	i;
+	t_img	*img;
 
-	i.image = mlx_xpm_file_to_image(mlx, file, &i.width, &i.height);
-	return (i);
+	img = (t_img *)mlx_new_image(mlx, 64, 64);
+	img = mlx_xpm_file_to_image(mlx, file, &x, &y);
+	img->height = y;
+	img->width = x;
+	return (img);
 }
 
 static int	_text_load(t_ptr *c3d)
@@ -56,7 +60,7 @@ static int	_text_load(t_ptr *c3d)
 	i = N_TEXT;
 	while (i <= E_TEXT)
 	{
-		c3d->dply.textures[i] = _text_load_each(c3d->dply.mlx, c3d->text[i]);
+		c3d->dply.textures[i] = *_text_load_each(c3d->dply.mlx, c3d->text[i], 64, 64);
 		if (c3d->dply.textures[i].image == NULL)
 		{
 			while (--i <= 0)
@@ -88,6 +92,7 @@ int	init_mlx(t_ptr *c3d)
 		ft_free(c3d->dply.mlx);
 		return (EXIT_FAILURE);
 	}
+	c3d->player = NULL;
 	if (_text_load(c3d) == EXIT_FAILURE)
 		return (free_mlx(c3d, false, false, EXIT_FAILURE));
 	if (background_image(c3d) == EXIT_FAILURE)

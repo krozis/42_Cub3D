@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/27 14:08:55 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:37:27 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	raycasting_3(t_ptr *ptr)
 {
 	while (ptr->ray->hit == 0)
 	{
-		if (ptr->ray->sideDistX < ptr->ray->sideDistY)
+		if (ptr->ray->sideDistX <= ptr->ray->sideDistY)
 		{
 			ptr->ray->sideDistX += ptr->ray->deltaDistX;
 			ptr->ray->mapX += ptr->ray->stepX;
@@ -105,7 +105,7 @@ void	raycasting_4(t_ptr *ptr, int x)
 	drawend = lineheight / 2 + WIN_HEIGHT / 2;
 	if (drawend >= WIN_HEIGHT)
 		drawend = WIN_HEIGHT - 1;
-	drawline(ptr, x, drawstart, drawend, convert_colors(255, 0, 152));
+	drawline(ptr, x, drawstart, drawend);
 }
 
 void	raycasting(t_ptr *ptr)
@@ -119,13 +119,22 @@ void	raycasting(t_ptr *ptr)
 	if (!ptr->dply.screen)
 		ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	
-	while (x < (WIN_WIDTH))
+	while (x <= WIN_WIDTH / 2)
 	{
 		raycasting_1(ptr, x);
 		raycasting_2(ptr);
 		raycasting_3(ptr);
 		raycasting_4(ptr, x);
 		x++;
+	}
+	x = WIN_WIDTH;
+	while (x >= (WIN_WIDTH / 2))
+	{
+		raycasting_1(ptr, x);
+		raycasting_2(ptr);
+		raycasting_3(ptr);
+		raycasting_4(ptr, x);
+		x--;
 	}
 	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
 }

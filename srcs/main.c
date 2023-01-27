@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 17:20:16 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:24:22 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	_press_key(int key, t_ptr *c3d)
 	if (key == XK_Left || key == XK_Right)
 		rotate(c3d, key);
 /*
-	if (key == key == XK_W || key == XK_w)
+	if (key == XK_W || key == XK_w)
 		go_front(c3d);
 	if (key == XK_S || key == XK_s)
 		go_back(c3d);

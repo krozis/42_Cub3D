@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/26 17:54:40 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:45:55 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ int		background_image(t_ptr *c3d);
 */
 
 void	raycasting(t_ptr *ptr);
-void	drawline(t_ptr *ptr, int x, int drawstart, int drawend, int color);
+void	drawline(t_ptr *ptr, int x, int drawstart, int drawend);
 void	set_raycasting(t_ptr *ptr);
 
 /*
