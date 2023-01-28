@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/28 17:10:21 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:16:25 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 		i = N_TEXT;
 		while (i < E_TEXT)
 		{
-			mlx_destroy_image(c3d->dply.mlx, (t_img *)&c3d->dply.textures[i]);
+			mlx_destroy_image(c3d->dply.mlx, (void *)&c3d->dply.textures[i]);
 			i++;
 		}
 	}
