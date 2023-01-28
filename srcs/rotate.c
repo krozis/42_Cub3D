@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:00:43 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/26 17:20:53 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:08:32 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	refresh(t_ptr *c3d)
 		0, 0);
 }
 
-static double	rotate_r(double x, double y, bool is_x)
+static double	rot_r(double x, double y, bool is_x)
 {
 	if (is_x)
 		return (x * cos(ROTATION_SPEED) - (y * sin(ROTATION_SPEED)));
 	return (x * sin(ROTATION_SPEED) + (y * cos(ROTATION_SPEED)));
 }
 
-static double	rotate_l(double x, double y, bool is_x)
+static double	rot_l(double x, double y, bool is_x)
 {
 	if (is_x)
 		return (x * cos(-ROTATION_SPEED) - (y * sin(-ROTATION_SPEED)));
@@ -43,20 +43,21 @@ void	rotate(t_ptr *c3d, int key)
 
 	olddirx = c3d->player->dirX;
 	oldplanex = c3d->player->planeX;
-
 	if (key == XK_Left)
 	{
-		c3d->player->dirX = rotate_l(c3d->player->dirX, c3d->player->dirY, true);
-		c3d->player->dirY = rotate_l(olddirx, c3d->player->dirY, false);
-		c3d->player->planeX = rotate_l(c3d->player->planeX, c3d->player->planeY, true);
-		c3d->player->planeY = rotate_l(oldplanex, c3d->player->planeY, false);
+		c3d->player->dirX = rot_l(c3d->player->dirX, c3d->player->dirY, true);
+		c3d->player->dirY = rot_l(olddirx, c3d->player->dirY, false);
+		c3d->player->planeX
+			= rot_l(c3d->player->planeX, c3d->player->planeY, true);
+		c3d->player->planeY = rot_l(oldplanex, c3d->player->planeY, false);
 	}
 	if (key == XK_Right)
 	{
-		c3d->player->dirX = rotate_r(c3d->player->dirX, c3d->player->dirY, true);
-		c3d->player->dirY = rotate_r(olddirx, c3d->player->dirY, false);
-		c3d->player->planeX = rotate_r(c3d->player->planeX, c3d->player->planeY, true);
-		c3d->player->planeY = rotate_r(oldplanex, c3d->player->planeY, false);
+		c3d->player->dirX = rot_r(c3d->player->dirX, c3d->player->dirY, true);
+		c3d->player->dirY = rot_r(olddirx, c3d->player->dirY, false);
+		c3d->player->planeX
+			= rot_r(c3d->player->planeX, c3d->player->planeY, true);
+		c3d->player->planeY = rot_r(oldplanex, c3d->player->planeY, false);
 	}
 	refresh(c3d);
 }

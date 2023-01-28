@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/27 16:37:27 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:54:36 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,16 @@ void	raycasting_3(t_ptr *ptr)
 void	raycasting_4(t_ptr *ptr, int x)
 {
 	int	lineheight;
-	int	drawstart;
-	int	drawend;
 
 	lineheight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
-	drawstart = (-lineheight / 2 + WIN_HEIGHT / 2) + 1;
-	if (drawstart < 0)
-		drawstart = 0;
-	drawend = lineheight / 2 + WIN_HEIGHT / 2;
-	if (drawend >= WIN_HEIGHT)
-		drawend = WIN_HEIGHT - 1;
-	drawline(ptr, x, drawstart, drawend);
+	ptr->ray->drawval[0] = (-lineheight / 2 + WIN_HEIGHT / 2) + 1;
+	if (ptr->ray->drawval[0] < 0)
+		ptr->ray->drawval[0] = 0;
+	ptr->ray->drawval[1] = lineheight / 2 + WIN_HEIGHT / 2;
+	if (ptr->ray->drawval[1] >= WIN_HEIGHT)
+		ptr->ray->drawval[1] = WIN_HEIGHT - 1;
+	ptr->ray->texNum = text_num(ptr);
+	drawline(ptr, x);
 }
 
 void	raycasting(t_ptr *ptr)
@@ -118,8 +117,7 @@ void	raycasting(t_ptr *ptr)
 		init_player(&(ptr->player), ptr->map);
 	if (!ptr->dply.screen)
 		ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
-	
-	while (x <= WIN_WIDTH / 2)
+	while (x < WIN_WIDTH)
 	{
 		raycasting_1(ptr, x);
 		raycasting_2(ptr);
@@ -127,14 +125,6 @@ void	raycasting(t_ptr *ptr)
 		raycasting_4(ptr, x);
 		x++;
 	}
-	x = WIN_WIDTH;
-	while (x >= (WIN_WIDTH / 2))
-	{
-		raycasting_1(ptr, x);
-		raycasting_2(ptr);
-		raycasting_3(ptr);
-		raycasting_4(ptr, x);
-		x--;
-	}
-	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen, 0,0);
+	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen,
+		0, 0);
 }

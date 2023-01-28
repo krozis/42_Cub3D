@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/27 16:00:54 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:10:21 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 	if (txt)
 	{
 		i = N_TEXT;
-		while (i <= E_TEXT)
+		while (i < E_TEXT)
 		{
 			mlx_destroy_image(c3d->dply.mlx, (t_img *)&c3d->dply.textures[i]);
 			i++;
@@ -60,7 +60,8 @@ static int	_text_load(t_ptr *c3d)
 	i = N_TEXT;
 	while (i <= E_TEXT)
 	{
-		c3d->dply.textures[i] = *_text_load_each(c3d->dply.mlx, c3d->text[i], 64, 64);
+		c3d->dply.textures[i]
+			= *_text_load_each(c3d->dply.mlx, c3d->text[i], 64, 64);
 		if (c3d->dply.textures[i].image == NULL)
 		{
 			while (--i <= 0)

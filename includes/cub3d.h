@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/27 16:45:55 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:51:26 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ typedef struct	s_ray
 	int		side;
 	int		hit;
 	double	oldperpwall;
+	double	wallX;
+	int		texNum;
+	int		drawval[2];
 }				t_ray;
 
 /**
@@ -201,8 +204,9 @@ int		background_image(t_ptr *c3d);
 */
 
 void	raycasting(t_ptr *ptr);
-void	drawline(t_ptr *ptr, int x, int drawstart, int drawend);
+void	drawline(t_ptr *ptr, int x);
 void	set_raycasting(t_ptr *ptr);
+int		text_num(t_ptr *ptr);
 
 /*
  * PLAYER
