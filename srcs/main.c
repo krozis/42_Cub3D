@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/27 16:24:22 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:19:15 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static int	_press_key(int key, t_ptr *c3d)
 		mlx_loop_end(c3d->dply.mlx);
 	if (key == XK_Left || key == XK_Right)
 		rotate(c3d, key);
-/*
-	if (key == XK_W || key == XK_w)
+	if (key == W_KEY)
 		go_front(c3d);
-	if (key == XK_S || key == XK_s)
+	if (key == S_KEY)
 		go_back(c3d);
-	if (key == XK_A || key == XK_a)
+	if (key == A_KEY)
 		go_left(c3d);
-	if (key == XK_D || key == XK_d)
+	if (key == D_KEY)
 		go_right(c3d);
+	/*
 	if (key == XK_M || key == XK_m)
 		display_minimap(c3d);
 	*/
@@ -35,12 +35,14 @@ static int	_press_key(int key, t_ptr *c3d)
 
 static int	_routine(t_ptr *ptr)
 {
-	mlx_hook(ptr->dply.win, 02, 1L << 0, &_press_key, ptr);
-	mlx_hook(ptr->dply.win, 33, (1L << 5), &mlx_loop_end, ptr->dply.mlx);
-	//mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.bg, 0, 0);
+
 	raycasting(ptr);
+	mlx_hook(ptr->dply.win, 02, 1L << 0, &_press_key, ptr);
+	mlx_hook(ptr->dply.win, 33, 1L << 5, &mlx_loop_end, ptr->dply.mlx);
+	//mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.bg, 0, 0);
 	// mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win,
 	// 	ptr->dply.textures[N_TEXT].image, 1380, 840);
+	mlx_loop_hook(ptr->dply.mlx, refresh, ptr);
 	mlx_loop(ptr->dply.mlx);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/28 16:51:26 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:13:52 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define BOX_SIZE 64
 # define PLAYER_SIZE 32
 # define ROTATION_SPEED 0.05
+# define MOVE_SPEED 0.1
 
 //	ERROR CODES
 # define ERR_TWO_START 4
@@ -37,6 +38,12 @@
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
+
+// MOVEMENT KEYS
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
 //INCLUDES
 # include <fcntl.h>
@@ -146,6 +153,7 @@ typedef struct s_ptr{
 	t_player	*player;
 	t_dply		dply;
 	t_ray		*ray;
+	char		keys[66000];
 }				t_ptr;
 
 /*
@@ -218,6 +226,13 @@ int		init_player(t_player **player, char **map);
  * MOVEMENT
 */
 
+int		refresh(t_ptr *c3d);
+void	update(t_ptr *ptr);
 void	rotate(t_ptr *c3d, int key);
+void	go_front(t_ptr *ptr);
+void	go_back(t_ptr *ptr);
+void	go_right(t_ptr *ptr);
+void	go_left(t_ptr *ptr);
+
 
 #endif

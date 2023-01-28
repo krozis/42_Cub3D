@@ -55,6 +55,7 @@ SRCS	=	main.c\
 			raycasting_utils.c\
 			player.c\
 			rotate.c\
+			move.c\
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
