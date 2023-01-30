@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/28 21:13:52 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:12:33 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,10 @@ typedef struct s_display
 	void	*win;
 	t_img	*bg;
 	t_img	*screen;
-	t_img	textures[4];
+	t_img	*n_texture;
+	t_img	*s_texture;
+	t_img	*e_texture;
+	t_img	*w_texture;
 }				t_dply;
 
 /**
@@ -198,6 +201,7 @@ int		check_ones(char **map, int i, int k);
 int		check_color_line_ceiling(char *str, t_ptr *ptr, int start);
 int		check_color_line_floor(char *str, t_ptr *ptr, int start);
 int		check_digit(char *str);
+int		text_is_dir(t_ptr *ptr);
 
 /*
  * DISPLAYING WITH MLX

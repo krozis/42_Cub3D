@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/28 16:54:36 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:56:55 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	raycasting(t_ptr *ptr)
 	int	x;
 
 	x = 0;
+	secure_free((void **)&ptr->ray);
 	ptr->ray = malloc(sizeof(t_ray));
 	if (!ptr->player)
 		init_player(&(ptr->player), ptr->map);

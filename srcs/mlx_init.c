@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/28 17:16:25 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:02:48 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
  */
 int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 {
-	int	i;
-
 	if (txt)
 	{
-		i = N_TEXT;
-		while (i < E_TEXT)
-		{
-			mlx_destroy_image(c3d->dply.mlx, (void *)&c3d->dply.textures[i]);
-			i++;
-		}
+		if (c3d->dply.n_texture)
+			mlx_destroy_image(c3d->dply.mlx, c3d->dply.n_texture);
+		if (c3d->dply.s_texture)
+			mlx_destroy_image(c3d->dply.mlx, c3d->dply.s_texture);
+		if (c3d->dply.e_texture)
+			mlx_destroy_image(c3d->dply.mlx, c3d->dply.e_texture);
+		if (c3d->dply.w_texture)
+			mlx_destroy_image(c3d->dply.mlx, c3d->dply.w_texture);
 	}
 	if (bg)
 		;
@@ -46,7 +46,6 @@ static t_img	*_text_load_each(void *mlx, char *file, int x, int y)
 {
 	t_img	*img;
 
-	img = (t_img *)mlx_new_image(mlx, 64, 64);
 	img = mlx_xpm_file_to_image(mlx, file, &x, &y);
 	img->height = y;
 	img->width = x;
@@ -55,23 +54,17 @@ static t_img	*_text_load_each(void *mlx, char *file, int x, int y)
 
 static int	_text_load(t_ptr *c3d)
 {
-	int	i;
-
-	i = N_TEXT;
-	while (i <= E_TEXT)
-	{
-		c3d->dply.textures[i]
-			= *_text_load_each(c3d->dply.mlx, c3d->text[i], 64, 64);
-		if (c3d->dply.textures[i].image == NULL)
-		{
-			while (--i <= 0)
-			{
-				mlx_destroy_image(c3d->dply.mlx, c3d->dply.textures[i].image);
-			}
-			return (EXIT_FAILURE);
-		}
-		i++;
-	}
+	c3d->dply.n_texture = _text_load_each(c3d->dply.mlx,
+			c3d->text[N_TEXT], 64, 64);
+	c3d->dply.s_texture = _text_load_each(c3d->dply.mlx,
+			c3d->text[S_TEXT], 64, 64);
+	c3d->dply.e_texture = _text_load_each(c3d->dply.mlx,
+			c3d->text[E_TEXT], 64, 64);
+	c3d->dply.w_texture = _text_load_each(c3d->dply.mlx,
+			c3d->text[W_TEXT], 64, 64);
+	if (!c3d->dply.n_texture || !c3d->dply.s_texture
+		|| !c3d->dply.e_texture || !c3d->dply.w_texture)
+		return (free_mlx(c3d, true, false, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }
 

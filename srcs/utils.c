@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:28:35 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 15:18:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:11:49 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,25 @@ int	ismap(char *str)
 			return (EXIT_FAILURE);
 		if (i >= (int)ft_strlen(str))
 			break ;
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	text_is_dir(t_ptr *ptr)
+{
+	int	fd;
+	int	i;
+
+	i = 0;
+	while (i < E_TEXT)
+	{
+		fd = open(ptr->text[i], __O_DIRECTORY);
+		if (fd > 0)
+		{
+			close(fd);
+			return (EXIT_FAILURE);
+		}
 		i++;
 	}
 	return (EXIT_SUCCESS);

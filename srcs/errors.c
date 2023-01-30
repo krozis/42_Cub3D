@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 11:45:31 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/30 15:09:54 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	check_extension(char *av)
+{
+	int	i;
+
+	i = ft_strlen(av) - 1;
+	if (av[i] != 'b' || av[i - 1] != 'u' || av[i - 2] != 'c'
+		|| av[i - 3] != '.')
+			return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
 
 int	verify_args(int ac, char **av)
 {
@@ -19,7 +30,7 @@ int	verify_args(int ac, char **av)
 	if (ac != 2)
 		return (ft_putmsg_fd("Error\nUsage : ./cub3D [path to config file]\n"
 				, 2, EXIT_FAILURE));
-	if (!ft_strnstr(av[1], ".cub", ft_strlen(av[1])))
+	if (check_extension(av[1]) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nConfig file must have .cub extension\n"
 				, 2, EXIT_FAILURE));
 	fd = open(av[1], __O_DIRECTORY);
@@ -85,6 +96,9 @@ int	check_errors(t_ptr *ptr)
 				, 2, EXIT_FAILURE));
 	if (check_texture(ptr) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
+				, 2, EXIT_FAILURE));
+	if (text_is_dir(ptr) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nA texture file is a directory\n"
 				, 2, EXIT_FAILURE));
 	if (check_map(ptr->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);

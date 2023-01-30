@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 10:55:05 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/30 14:57:40 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_ptr	*init(char **av)
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);
 	get_colors(lines, ptr);
+	ptr->ray = NULL;
 	ptr->dply.mlx = NULL;
 	while (lines && lines[++i])
 		secure_free((void **)&lines[i]);

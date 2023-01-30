@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/28 17:09:30 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:52:46 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,23 @@ int	text_num(t_ptr *ptr)
 
 int	set_color(t_ptr *ptr, int texX, int texY)
 {
-	return (convert_colors(ptr->dply.textures[ptr->ray->texNum]
-			.data[4 * (64 * texY + texX)], ptr->dply.textures
-			[ptr->ray->texNum].data[4 * (64 * texY + texX) + 1],
-			ptr->dply.textures[ptr->ray->texNum].data
-			[4 * (64 * texY + texX) + 2]));
+	if (ptr->ray->texNum == N_TEXT)
+		return (convert_colors(ptr->dply.n_texture->data[4 * (64 * texY + texX)]
+				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 1]
+				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 2]));
+	if (ptr->ray->texNum == S_TEXT)
+		return (convert_colors(ptr->dply.s_texture->data[4 * (64 * texY + texX)]
+				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 1]
+				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 2]));
+	if (ptr->ray->texNum == E_TEXT)
+		return (convert_colors(ptr->dply.e_texture->data[4 * (64 * texY + texX)]
+				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 1]
+				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 2]));
+	if (ptr->ray->texNum == W_TEXT)
+		return (convert_colors(ptr->dply.w_texture->data[4 * (64 * texY + texX)]
+				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 1]
+				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 2]));
+	return (0);
 }
 
 int	set_texx(t_ptr *ptr, int texX)

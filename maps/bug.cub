@@ -6,7 +6,7 @@ EA     ./textures/east.xpm
 C 255,   255,     255      222
 
 
-SO ./textures/south.xpm
+SO .
 
 W        ./textures/west.xpm
 

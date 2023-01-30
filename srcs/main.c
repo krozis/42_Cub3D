@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/28 21:19:15 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:00:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,9 @@ static int	_press_key(int key, t_ptr *c3d)
 
 static int	_routine(t_ptr *ptr)
 {
-
 	raycasting(ptr);
 	mlx_hook(ptr->dply.win, 02, 1L << 0, &_press_key, ptr);
 	mlx_hook(ptr->dply.win, 33, 1L << 5, &mlx_loop_end, ptr->dply.mlx);
-	//mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.bg, 0, 0);
-	// mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win,
-	// 	ptr->dply.textures[N_TEXT].image, 1380, 840);
 	mlx_loop_hook(ptr->dply.mlx, refresh, ptr);
 	mlx_loop(ptr->dply.mlx);
 	return (EXIT_SUCCESS);
@@ -59,9 +55,6 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (0);
 	}
-	// for (int i = 0; ptr->map[i]; i++){
-	// 	printf("%s", ptr->map[i]);
-	// }
 	_routine(ptr);
 	free_them_all(ptr);
 	return (EXIT_SUCCESS);
