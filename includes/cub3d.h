@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 15:12:33 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:15:28 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef struct s_display
 {
 	void	*mlx;
 	void	*win;
-	t_img	*bg;
 	t_img	*screen;
 	t_img	*n_texture;
 	t_img	*s_texture;
@@ -208,7 +207,7 @@ int		text_is_dir(t_ptr *ptr);
 */
 
 int		init_mlx(t_ptr *c3d);
-int		free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code);
+int		free_mlx(t_ptr *c3d, bool txt, int exit_code);
 int		background_image(t_ptr *c3d);
 
 /*

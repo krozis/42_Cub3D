@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 14:57:40 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:17:47 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_ptr	*init(char **av)
 	get_colors(lines, ptr);
 	ptr->ray = NULL;
 	ptr->dply.mlx = NULL;
+	ptr->player = NULL;
 	while (lines && lines[++i])
 		secure_free((void **)&lines[i]);
 	secure_free((void **)&lines);

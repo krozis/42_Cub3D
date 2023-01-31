@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 15:09:54 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:18:19 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_extension(char *av)
 	i = ft_strlen(av) - 1;
 	if (av[i] != 'b' || av[i - 1] != 'u' || av[i - 2] != 'c'
 		|| av[i - 3] != '.')
-			return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:14:14 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/23 12:47:23 by stelie           ###   ########.fr       */
+/*   Updated: 2023/01/31 12:15:54 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	free_them_all(t_ptr *ptr)
 		secure_free((void **)&ptr->player);
 		secure_free((void **)&ptr->ray);
 		if (ptr->dply.mlx)
-			free_mlx(ptr, true, true, EXIT_SUCCESS);
+			free_mlx(ptr, true, EXIT_SUCCESS);
 		secure_free((void **)&ptr);
 	}
 }

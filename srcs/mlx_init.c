@@ -6,7 +6,7 @@
 /*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/30 15:02:48 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:15:59 by dcyprien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param bg true if the background image has been loaded
  * @param exit_code will return the given exit_code
  */
-int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
+int	free_mlx(t_ptr *c3d, bool txt, int exit_code)
 {
 	if (txt)
 	{
@@ -33,8 +33,6 @@ int	free_mlx(t_ptr *c3d, bool txt, bool bg, int exit_code)
 		if (c3d->dply.w_texture)
 			mlx_destroy_image(c3d->dply.mlx, c3d->dply.w_texture);
 	}
-	if (bg)
-		;
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	mlx_destroy_window(c3d->dply.mlx, c3d->dply.win);
 	mlx_destroy_display(c3d->dply.mlx);
@@ -64,7 +62,7 @@ static int	_text_load(t_ptr *c3d)
 			c3d->text[W_TEXT], 64, 64);
 	if (!c3d->dply.n_texture || !c3d->dply.s_texture
 		|| !c3d->dply.e_texture || !c3d->dply.w_texture)
-		return (free_mlx(c3d, true, false, EXIT_FAILURE));
+		return (free_mlx(c3d, true, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }
 
@@ -88,8 +86,8 @@ int	init_mlx(t_ptr *c3d)
 	}
 	c3d->player = NULL;
 	if (_text_load(c3d) == EXIT_FAILURE)
-		return (free_mlx(c3d, false, false, EXIT_FAILURE));
+		return (free_mlx(c3d, false, EXIT_FAILURE));
 	if (background_image(c3d) == EXIT_FAILURE)
-		return (free_mlx(c3d, true, false, EXIT_FAILURE));
+		return (free_mlx(c3d, true, EXIT_FAILURE));
 	return (EXIT_SUCCESS);
 }
