@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 16:34:58 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 17:11:57 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,8 +242,6 @@ int		init_player(t_player **player, char **map);
  * MOVEMENT
 */
 
-int		refresh(t_ptr *c3d);
-void	update(t_ptr *ptr);
 void	rotate(t_ptr *c3d);
 void	move(t_ptr *c3d);
 void	minimap(t_ptr *c3d);

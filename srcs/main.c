@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 16:40:07 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 17:11:11 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,32 @@ static int	_press_key(int key, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
+static int	_loop_routine(t_ptr *c3d)
+{
+	static int		fps;
+	static clock_t	clock_cur;
+
+	if (clock() != clock_cur)
+		fps = CLOCKS_PER_SEC / (clock() - clock_cur);
+	background_image(c3d);
+	raycasting(c3d);
+	move(c3d);
+	rotate(c3d);
+	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,
+		0, 0);
+	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 10, 20,0x00FB50FF, "FPS");
+	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 35, 20, 0x00FB50FF, \
+		(char []){'0' + fps / 100, '0' + fps / 10 % 10, '0' + fps % 10, '\0'});
+	minimap(c3d);
+	return (0);
+}
+
 static int	_routine(t_ptr *ptr)
 {
 	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
 		, &mlx_loop_end, ptr->dply.mlx);
 	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
-	mlx_loop_hook(ptr->dply.mlx, refresh, ptr);
+	mlx_loop_hook(ptr->dply.mlx, _loop_routine, ptr);
 	mlx_hook(ptr->dply.win, KeyRelease, KeyReleaseMask, &_release_key, ptr);
 	mlx_loop(ptr->dply.mlx);
 	return (EXIT_SUCCESS);

@@ -6,32 +6,11 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:00:43 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/01 16:58:43 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 17:09:09 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int	refresh(t_ptr *c3d)
-{
-	static int		fps;
-	static clock_t	clock_cur;
-
-	if (clock() != clock_cur)
-		fps = CLOCKS_PER_SEC / (clock() - clock_cur);
-	//mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
-	background_image(c3d);
-	raycasting(c3d);
-	move(c3d);
-	rotate(c3d);
-//	minimap(c3d);
-	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,
-		0, 0);
-	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 10, 20,0x00FB50FF, "FPS");
-	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 35, 20, 0x00FB50FF, \
-		(char []){'0' + fps / 100, '0' + fps / 10 % 10, '0' + fps % 10, '\0'});
-	return (0);
-}
 
 static double	rot_r(double x, double y, bool is_x)
 {
