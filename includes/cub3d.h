@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 17:11:57 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:45:16 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@
 # define WIN_NAME "Cub3D"
 
 //GRID and PLAYER INFORMATIONS
-# define BOX_SIZE 64
-# define PLAYER_SIZE 32
-# define ROTATION_SPEED 0.05
-# define MOVE_SPEED 0.1
+# define ROTATION_SPEED 0.5
+# define MOVE_SPEED 0.5
 
 //	ERROR CODES
 # define ERR_TWO_START 4
@@ -38,12 +36,6 @@
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
-
-// MOVEMENT KEYS
-# define W_KEY 119
-# define A_KEY 97
-# define S_KEY 115
-# define D_KEY 100
 
 //INCLUDES
 # include <fcntl.h>
