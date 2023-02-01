@@ -101,3 +101,9 @@ fclean:	clean
 		@echo $(R) removed libft.a $(X)
 
 re:		fclean all
+
+soft_clean:
+			@$(RM) $(O_DIR)
+
+soft_re:	soft_clean all
+	

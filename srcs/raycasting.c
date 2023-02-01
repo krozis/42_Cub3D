@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 14:56:55 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:57:58 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,53 @@
 
 void	raycasting_1(t_ptr *ptr, int x)
 {
-	ptr->ray->cameraX = 2 * x / (double)WIN_WIDTH - 1;
-	ptr->ray->raydirX = ptr->player->dirX + ptr->player->planeX
-		* ptr->ray->cameraX;
-	ptr->ray->raydirY = ptr->player->dirY + ptr->player->planeY
-		* ptr->ray->cameraX;
-	ptr->ray->mapX = (int)ptr->player->posX;
-	ptr->ray->mapY = (int)ptr->player->posY;
-	if (ptr->ray->raydirY == 0)
-		ptr->ray->deltaDistX = 0;
-	else if (ptr->ray->raydirX == 0)
-		ptr->ray->deltaDistX = 1;
+	ptr->ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	ptr->ray->raydir_x = ptr->player->dir_x + ptr->player->plane_x
+		* ptr->ray->camera_x;
+	ptr->ray->raydir_y = ptr->player->dir_y + ptr->player->plane_y
+		* ptr->ray->camera_x;
+	ptr->ray->map_x = (int)ptr->player->pos_x;
+	ptr->ray->map_y = (int)ptr->player->pos_y;
+	if (ptr->ray->raydir_y == 0)
+		ptr->ray->delta_x = 0;
+	else if (ptr->ray->raydir_x == 0)
+		ptr->ray->delta_x = 1;
 	else
-		ptr->ray->deltaDistX = fabs(1 / ptr->ray->raydirX);
-	if (ptr->ray->raydirX == 0)
-		ptr->ray->deltaDistY = 0;
-	else if (ptr->ray->raydirY == 0)
-		ptr->ray->deltaDistY = 0;
+		ptr->ray->delta_x = fabs(1 / ptr->ray->raydir_x);
+	if (ptr->ray->raydir_x == 0)
+		ptr->ray->delta_y = 0;
+	else if (ptr->ray->raydir_y == 0)
+		ptr->ray->delta_y = 0;
 	else
-		ptr->ray->deltaDistY = fabs(1 / ptr->ray->raydirY);
+		ptr->ray->delta_y = fabs(1 / ptr->ray->raydir_y);
 }
 
 void	raycasting_2(t_ptr *ptr)
 {
 	ptr->ray->hit = 0;
-	if (ptr->ray->raydirX < 0)
+	if (ptr->ray->raydir_x < 0)
 	{
-		ptr->ray->stepX = -1;
-		ptr->ray->sideDistX = (ptr->player->posX - ptr->ray->mapX)
-			* ptr->ray->deltaDistX;
+		ptr->ray->step_x = -1;
+		ptr->ray->side_x = (ptr->player->pos_x - ptr->ray->map_x)
+			* ptr->ray->delta_x;
 	}
 	else
 	{
-		ptr->ray->stepX = 1;
-		ptr->ray->sideDistX = (ptr->ray->mapX + 1.0 - ptr->player->posX)
-			* ptr->ray->deltaDistX;
+		ptr->ray->step_x = 1;
+		ptr->ray->side_x = (ptr->ray->map_x + 1.0 - ptr->player->pos_x)
+			* ptr->ray->delta_x;
 	}
-	if (ptr->ray->raydirY < 0)
+	if (ptr->ray->raydir_y < 0)
 	{
-		ptr->ray->stepY = -1;
-		ptr->ray->sideDistY = (ptr->player->posY - ptr->ray->mapY)
-			* ptr->ray->deltaDistY;
+		ptr->ray->step_y = -1;
+		ptr->ray->side_y = (ptr->player->pos_y - ptr->ray->map_y)
+			* ptr->ray->delta_y;
 	}
 	else
 	{
-		ptr->ray->stepY = 1;
-		ptr->ray->sideDistY = (ptr->ray->mapY + 1.0 - ptr->player->posY)
-			* ptr->ray->deltaDistY;
+		ptr->ray->step_y = 1;
+		ptr->ray->side_y = (ptr->ray->map_y + 1.0 - ptr->player->pos_y)
+			* ptr->ray->delta_y;
 	}
 }
 
@@ -68,42 +68,42 @@ void	raycasting_3(t_ptr *ptr)
 {
 	while (ptr->ray->hit == 0)
 	{
-		if (ptr->ray->sideDistX <= ptr->ray->sideDistY)
+		if (ptr->ray->side_x <= ptr->ray->side_y)
 		{
-			ptr->ray->sideDistX += ptr->ray->deltaDistX;
-			ptr->ray->mapX += ptr->ray->stepX;
+			ptr->ray->side_x += ptr->ray->delta_x;
+			ptr->ray->map_x += ptr->ray->step_x;
 			ptr->ray->side = 1;
 		}
 		else
 		{
-			ptr->ray->sideDistY += ptr->ray->deltaDistY;
-			ptr->ray->mapY += ptr->ray->stepY;
+			ptr->ray->side_y += ptr->ray->delta_y;
+			ptr->ray->map_y += ptr->ray->step_y;
 			ptr->ray->side = 0;
 		}
-		if (ptr->map[ptr->ray->mapY][ptr->ray->mapX] == '1')
+		if (ptr->map[ptr->ray->map_y][ptr->ray->map_x] == '1')
 			ptr->ray->hit = 1;
 	}
 	if (ptr->ray->side == 1)
-		ptr->ray->perpWallDist = (ptr->ray->sideDistX - ptr->ray->deltaDistX);
+		ptr->ray->perp_dist = (ptr->ray->side_x - ptr->ray->delta_x);
 	else
-		ptr->ray->perpWallDist = (ptr->ray->sideDistY - ptr->ray->deltaDistY);
-	if (ptr->ray->perpWallDist == 0.0)
-		ptr->ray->perpWallDist = ptr->ray->oldperpwall;
-	ptr->ray->oldperpwall = ptr->ray->perpWallDist;
+		ptr->ray->perp_dist = (ptr->ray->side_y - ptr->ray->delta_y);
+	if (ptr->ray->perp_dist == 0.0)
+		ptr->ray->perp_dist = ptr->ray->oldperpwall;
+	ptr->ray->oldperpwall = ptr->ray->perp_dist;
 }
 
 void	raycasting_4(t_ptr *ptr, int x)
 {
 	int	lineheight;
 
-	lineheight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
+	lineheight = (int)(WIN_WIDTH / ptr->ray->perp_dist);
 	ptr->ray->drawval[0] = (-lineheight / 2 + WIN_HEIGHT / 2) + 1;
 	if (ptr->ray->drawval[0] < 0)
 		ptr->ray->drawval[0] = 0;
 	ptr->ray->drawval[1] = lineheight / 2 + WIN_HEIGHT / 2;
 	if (ptr->ray->drawval[1] >= WIN_HEIGHT)
 		ptr->ray->drawval[1] = WIN_HEIGHT - 1;
-	ptr->ray->texNum = text_num(ptr);
+	ptr->ray->txt_nb = text_num(ptr);
 	drawline(ptr, x);
 }
 

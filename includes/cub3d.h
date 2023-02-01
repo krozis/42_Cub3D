@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 18:45:16 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 19:03:11 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define WIN_NAME "Cub3D"
 
 //GRID and PLAYER INFORMATIONS
-# define ROTATION_SPEED 0.5
-# define MOVE_SPEED 0.5
+# define ROTATION_SPEED 0.03
+# define MOVE_SPEED 0.075
 
 //	ERROR CODES
 # define ERR_TWO_START 4
@@ -58,60 +58,68 @@ typedef enum e_textures_values
 
 /**
  * @brief player structure
- * @param posX: player X position on the map
- * @param posY: player Y position on the map
- * @param dirX: direction X of the player (which side the player is facing). Can be 1, -1 or 0
- * @param dirY: direction Y of the player (which side the player is facing). Can be 1, -1 or 0
- * @param planeX: value X of the camera plane
- * @param planeY: value Y of the camera plane
+ * @param pos_x: player X position on the map
+ * @param pos_y: player Y position on the map
+ * @param dir_x: direction X of the player (which side the player is facing).
+ * Can be 1, -1 or 0
+ * @param dir_y: direction Y of the player (which side the player is facing).
+ * Can be 1, -1 or 0
+ * @param plane_x: value X of the camera plane
+ * @param plane_y: value Y of the camera plane
 */
-typedef struct	s_player
+typedef struct s_player
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	char		dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	char	dir;
 }				t_player;
 
 /**
  * @brief Raycasting structure
- * @param raydirX: direction X of the ray
- * @param raydirY: directyion Y of the ray
- * @param cameraX: X-coordinate on the camera plane that the X-coordinate on the screen represent
- * @param mapX: X-coordinate of the current position of the ray
- * @param mapY: Y-coordinate of the current position of the ray
- * @param sideDistX: distance between current position of the ray and next X side of a case
- * @param sideDistY: distance between current position of the ray and next Y side of a case
- * @param deltaDistX: distance between next X side of a case and the one after (next X side + 1)
- * @param deltaDistY: distance between next Y side of a case and the one after (next Y side + 1)
- * @param perpwallDist: distance between next wall and the camera plane (perpendicularly)
- * @param stepX: value of incrementation for the X value of the ray
- * @param stepY: value of incrementation for the Y value of the ray
+ * @param raydir_x: direction X of the ray
+ * @param raydir_y: directyion Y of the ray
+ * @param camera_x: X-coordinate on the camera plane that the X-coordinate
+ * on the screen represent
+ * @param map_x: X-coordinate of the current position of the ray
+ * @param map_y: Y-coordinate of the current position of the ray
+ * @param side_x: distance between current position of the ray and
+ * next X side of a case
+ * @param side_y: distance between current position of the ray and
+ * next Y side of a case
+ * @param delta_x: distance between next X side of a case and the one
+ * after (next X side + 1)
+ * @param delta_y: distance between next Y side of a case and the one
+ * after (next Y side + 1)
+ * @param perpwallDist: distance between next wall and the camera plane
+ * (perpendicularly)
+ * @param step_x: value of incrementation for the X value of the ray
+ * @param step_y: value of incrementation for the Y value of the ray
  * @param side: int for saying if we hitted a wall on the X side or the Y side
  * @param hit: says if a wall has been hit or not
 */
-typedef struct	s_ray
+typedef struct s_ray
 {
-	double	raydirX;
-	double	raydirY;
-	double	cameraX;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
+	double	raydir_x;
+	double	raydir_y;
+	double	camera_x;
+	int		map_x;
+	int		map_y;
 	int		side;
+	double	side_x;
+	double	side_y;
+	double	delta_x;
+	double	delta_y;
+	double	perp_dist;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	double	oldperpwall;
-	double	wallX;
-	int		texNum;
+	double	wall_x;
+	int		txt_nb;
 	int		drawval[2];
 }				t_ray;
 

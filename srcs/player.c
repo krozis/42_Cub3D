@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:16:21 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/26 16:41:30 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:49:24 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ static void	get_initial_direction(t_player **player, char dir)
 {
 	if (dir == 'N')
 	{
-		(*player)->dirX = 0.;
-		(*player)->dirY = -1.;
+		(*player)->dir_x = 0.;
+		(*player)->dir_y = -1.;
 	}
 	else if (dir == 'W')
 	{
-		(*player)->dirX = -1.;
-		(*player)->dirY = 0.;
+		(*player)->dir_x = -1.;
+		(*player)->dir_y = 0.;
 	}
 	else if (dir == 'E')
 	{
-		(*player)->dirX = 1.;
-		(*player)->dirY = 0.;
+		(*player)->dir_x = 1.;
+		(*player)->dir_y = 0.;
 	}
 	else
 	{
-		(*player)->dirX = 0.;
-		(*player)->dirY = 1.;
+		(*player)->dir_x = 0.;
+		(*player)->dir_y = 1.;
 	}
-	(*player)->planeX = (*player)->dirY * -0.60;
-	(*player)->planeY = (*player)->dirX * 0.60;
+	(*player)->plane_x = (*player)->dir_y * -0.60;
+	(*player)->plane_y = (*player)->dir_x * 0.60;
 }
 
 /**
@@ -60,8 +60,8 @@ int	init_player(t_player **player, char **map)
 		{
 			if (ft_incharset(map[i][j], "NEWS"))
 			{
-				(*player)->posX = j + 0.5;
-				(*player)->posY = i + 0.5;
+				(*player)->pos_x = j + 0.5;
+				(*player)->pos_y = i + 0.5;
 				get_initial_direction(player, map[i][j]);
 				return (EXIT_SUCCESS);
 			}

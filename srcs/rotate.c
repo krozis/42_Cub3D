@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:00:43 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/01 17:09:09 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:59:50 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,24 @@ void	rotate(t_ptr *c3d)
 	double	olddirx;
 	double	oldplanex;
 
-	olddirx = c3d->player->dirX;
-	oldplanex = c3d->player->planeX;
+	olddirx = c3d->player->dir_x;
+	oldplanex = c3d->player->plane_x;
 	if (c3d->keys.rotate_left)
 	{
-		c3d->player->dirX = rot_l(c3d->player->dirX, c3d->player->dirY, true);
-		c3d->player->dirY = rot_l(olddirx, c3d->player->dirY, false);
-		c3d->player->planeX
-			= rot_l(c3d->player->planeX, c3d->player->planeY, true);
-		c3d->player->planeY = rot_l(oldplanex, c3d->player->planeY, false);
+		c3d->player->dir_x
+			= rot_l(c3d->player->dir_x, c3d->player->dir_y, true);
+		c3d->player->dir_y = rot_l(olddirx, c3d->player->dir_y, false);
+		c3d->player->plane_x
+			= rot_l(c3d->player->plane_x, c3d->player->plane_y, true);
+		c3d->player->plane_y = rot_l(oldplanex, c3d->player->plane_y, false);
 	}
 	if (c3d->keys.rotate_right)
 	{
-		c3d->player->dirX = rot_r(c3d->player->dirX, c3d->player->dirY, true);
-		c3d->player->dirY = rot_r(olddirx, c3d->player->dirY, false);
-		c3d->player->planeX
-			= rot_r(c3d->player->planeX, c3d->player->planeY, true);
-		c3d->player->planeY = rot_r(oldplanex, c3d->player->planeY, false);
+		c3d->player->dir_x
+			= rot_r(c3d->player->dir_x, c3d->player->dir_y, true);
+		c3d->player->dir_y = rot_r(olddirx, c3d->player->dir_y, false);
+		c3d->player->plane_x
+			= rot_r(c3d->player->plane_x, c3d->player->plane_y, true);
+		c3d->player->plane_y = rot_r(oldplanex, c3d->player->plane_y, false);
 	}
 }

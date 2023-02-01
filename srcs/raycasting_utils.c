@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 14:52:46 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:57:58 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	text_num(t_ptr *ptr)
 {
 	if (ptr->ray->side == 0)
 	{
-		if (ptr->ray->raydirY > 0)
+		if (ptr->ray->raydir_y > 0)
 			return (S_TEXT);
 		else
 			return (N_TEXT);
 	}
 	else
 	{
-		if (ptr->ray->raydirX > 0)
+		if (ptr->ray->raydir_x > 0)
 			return (W_TEXT);
 		else
 			return (E_TEXT);
@@ -32,19 +32,19 @@ int	text_num(t_ptr *ptr)
 
 int	set_color(t_ptr *ptr, int texX, int texY)
 {
-	if (ptr->ray->texNum == N_TEXT)
+	if (ptr->ray->txt_nb == N_TEXT)
 		return (convert_colors(ptr->dply.n_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 2]));
-	if (ptr->ray->texNum == S_TEXT)
+	if (ptr->ray->txt_nb == S_TEXT)
 		return (convert_colors(ptr->dply.s_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 2]));
-	if (ptr->ray->texNum == E_TEXT)
+	if (ptr->ray->txt_nb == E_TEXT)
 		return (convert_colors(ptr->dply.e_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 2]));
-	if (ptr->ray->texNum == W_TEXT)
+	if (ptr->ray->txt_nb == W_TEXT)
 		return (convert_colors(ptr->dply.w_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 2]));
@@ -53,13 +53,13 @@ int	set_color(t_ptr *ptr, int texX, int texY)
 
 int	set_texx(t_ptr *ptr, int texX)
 {
-	if (ptr->ray->side == 0 && ptr->ray->raydirX > 0 && ptr->ray->raydirY > 0)
+	if (ptr->ray->side == 0 && ptr->ray->raydir_x > 0 && ptr->ray->raydir_y > 0)
 		texX = 64 - texX - 1;
-	if (ptr->ray->side == 0 && ptr->ray->raydirX < 0 && ptr->ray->raydirY > 0)
+	if (ptr->ray->side == 0 && ptr->ray->raydir_x < 0 && ptr->ray->raydir_y > 0)
 		texX = 64 - texX - 1;
-	if (ptr->ray->side == 1 && ptr->ray->raydirX < 0 && ptr->ray->raydirY > 0)
+	if (ptr->ray->side == 1 && ptr->ray->raydir_x < 0 && ptr->ray->raydir_y > 0)
 		texX = 64 - texX - 1;
-	if (ptr->ray->side == 1 && ptr->ray->raydirX < 0 && ptr->ray->raydirY < 0)
+	if (ptr->ray->side == 1 && ptr->ray->raydir_x < 0 && ptr->ray->raydir_y < 0)
 		texX = 64 - texX - 1;
 	return (texX);
 }
@@ -74,7 +74,7 @@ void	drawline_2(t_ptr *ptr, int x, int texX, int texY)
 
 	i = ptr->ray->drawval[0];
 	texX = set_texx(ptr, texX);
-	lineheight = (int)(WIN_WIDTH / ptr->ray->perpWallDist);
+	lineheight = (int)(WIN_WIDTH / ptr->ray->perp_dist);
 	step = 1.0 * 64 / lineheight;
 	texpos = (ptr->ray->drawval[0] - WIN_HEIGHT / 2 + lineheight / 2) * step;
 	while (i < ptr->ray->drawval[1])
@@ -112,9 +112,9 @@ void	drawline(t_ptr *ptr, int x)
 		i++;
 	}
 	if (ptr->ray->side == 0)
-		wallx = ptr->player->posX + ptr->ray->perpWallDist * ptr->ray->raydirX;
+		wallx = ptr->player->pos_x + ptr->ray->perp_dist * ptr->ray->raydir_x;
 	else
-		wallx = ptr->player->posY + ptr->ray->perpWallDist * ptr->ray->raydirY;
+		wallx = ptr->player->pos_y + ptr->ray->perp_dist * ptr->ray->raydir_y;
 	wallx -= (int)wallx;
 	texx = (int)(wallx * (double)(64));
 	texy = 0;
