@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/31 12:15:59 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:34:07 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	free_mlx(t_ptr *c3d, bool txt, int exit_code)
 		if (c3d->dply.w_texture)
 			mlx_destroy_image(c3d->dply.mlx, c3d->dply.w_texture);
 	}
-	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	mlx_destroy_window(c3d->dply.mlx, c3d->dply.win);
 	mlx_destroy_display(c3d->dply.mlx);
 	secure_free(&(c3d->dply.mlx));

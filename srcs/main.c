@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 17:11:11 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/01 18:33:18 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static int	_loop_routine(t_ptr *c3d)
 	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 35, 20, 0x00FB50FF, \
 		(char []){'0' + fps / 100, '0' + fps / 10 % 10, '0' + fps % 10, '\0'});
 	minimap(c3d);
+	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	return (0);
 }
 
