@@ -3,42 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/30 15:00:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:40:07 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static int	_release_key(int key, t_ptr *c3d)
+{
+	if (key == XK_w)
+		c3d->keys.move_front = false;
+	if (key == XK_s)
+		c3d->keys.move_back = false;
+	if (key == XK_a)
+		c3d->keys.move_left = false;
+	if (key == XK_d)
+		c3d->keys.move_right = false;
+	if (key == XK_Left)
+		c3d->keys.rotate_left = false;
+	if (key == XK_Right)
+		c3d->keys.rotate_right = false;
+	if (key == XK_m)
+		c3d->keys.minimap = false;
+	return (EXIT_SUCCESS);
+}
+
 static int	_press_key(int key, t_ptr *c3d)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(c3d->dply.mlx);
-	if (key == XK_Left || key == XK_Right)
-		rotate(c3d, key);
-	if (key == W_KEY)
-		go_front(c3d);
-	if (key == S_KEY)
-		go_back(c3d);
-	if (key == A_KEY)
-		go_left(c3d);
-	if (key == D_KEY)
-		go_right(c3d);
-	/*
-	if (key == XK_M || key == XK_m)
-		display_minimap(c3d);
-	*/
+	if (key == XK_w)
+		c3d->keys.move_front = true;
+	if (key == XK_s)
+		c3d->keys.move_back = true;
+	if (key == XK_a)
+		c3d->keys.move_left = true;
+	if (key == XK_d)
+		c3d->keys.move_right = true;
+	if (key == XK_Left)
+		c3d->keys.rotate_left = true;
+	if (key == XK_Right)
+		c3d->keys.rotate_right = true;
+	if (key == XK_m)
+		c3d->keys.minimap = true;
 	return (EXIT_SUCCESS);
 }
 
 static int	_routine(t_ptr *ptr)
 {
-	raycasting(ptr);
-	mlx_hook(ptr->dply.win, 02, 1L << 0, &_press_key, ptr);
-	mlx_hook(ptr->dply.win, 33, 1L << 5, &mlx_loop_end, ptr->dply.mlx);
+	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
+		, &mlx_loop_end, ptr->dply.mlx);
+	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
 	mlx_loop_hook(ptr->dply.mlx, refresh, ptr);
+	mlx_hook(ptr->dply.win, KeyRelease, KeyReleaseMask, &_release_key, ptr);
 	mlx_loop(ptr->dply.mlx);
 	return (EXIT_SUCCESS);
 }

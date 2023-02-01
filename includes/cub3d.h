@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/31 12:15:28 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:34:58 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <time.h>
 # include "../lib/mlx-linux/mlx_int.h"
 # include "../lib/mlx-linux/mlx.h"
 # include "../lib/libft/includes/libft.h"
@@ -138,7 +139,19 @@ typedef struct s_display
 	t_img	*s_texture;
 	t_img	*e_texture;
 	t_img	*w_texture;
+	t_img	*minimap;
 }				t_dply;
+
+typedef struct s_keys
+{
+	bool	move_front;
+	bool	move_back;
+	bool	move_left;
+	bool	move_right;
+	bool	rotate_left;
+	bool	rotate_right;
+	bool	minimap;
+}				t_keys;
 
 /**
  * @brief cub3D main structure
@@ -155,7 +168,7 @@ typedef struct s_ptr{
 	t_player	*player;
 	t_dply		dply;
 	t_ray		*ray;
-	char		keys[66000];
+	t_keys		keys;
 }				t_ptr;
 
 /*
@@ -231,11 +244,8 @@ int		init_player(t_player **player, char **map);
 
 int		refresh(t_ptr *c3d);
 void	update(t_ptr *ptr);
-void	rotate(t_ptr *c3d, int key);
-void	go_front(t_ptr *ptr);
-void	go_back(t_ptr *ptr);
-void	go_right(t_ptr *ptr);
-void	go_left(t_ptr *ptr);
-
+void	rotate(t_ptr *c3d);
+void	move(t_ptr *c3d);
+void	minimap(t_ptr *c3d);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/31 12:17:47 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:55:05 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	count_lines(char *av)
+static int	count_lines(char *av)
 {
 	int		i;
 	char	*tmp;
@@ -36,7 +36,7 @@ int	count_lines(char *av)
 	return (i);
 }
 
-char	**get_lines(int fd, int num)
+static char	**get_lines(int fd, int num)
 {
 	int		i;
 	char	*tmp;
@@ -58,6 +58,19 @@ char	**get_lines(int fd, int num)
 	return (lines);
 }
 
+static void	_init(t_ptr *c3d)
+{
+	ft_bzero(&(c3d->keys), sizeof(t_keys));
+	c3d->ray = NULL;
+	c3d->dply.win = NULL;
+	c3d->dply.minimap = NULL;
+	c3d->dply.mlx = NULL;
+	c3d->player = NULL;
+	c3d->map = NULL;
+	c3d->ceiling_color = 0;
+	c3d->floor_color = 0;
+}
+
 t_ptr	*init(char **av)
 {
 	int		fd;
@@ -73,13 +86,11 @@ t_ptr	*init(char **av)
 		secure_free((void **)&ptr);
 		return (NULL);
 	}
+	_init(ptr);
 	lines = get_lines(fd, count_lines(av[1]));
 	ptr->map = get_map(lines, count_lines(av[1]));
 	get_textures(lines, ptr);
 	get_colors(lines, ptr);
-	ptr->ray = NULL;
-	ptr->dply.mlx = NULL;
-	ptr->player = NULL;
 	while (lines && lines[++i])
 		secure_free((void **)&lines[i]);
 	secure_free((void **)&lines);

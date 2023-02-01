@@ -56,6 +56,7 @@ SRCS	=	main.c\
 			player.c\
 			rotate.c\
 			move.c\
+			minimap.c\
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
