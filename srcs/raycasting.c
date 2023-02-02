@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 18:57:58 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:08:09 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	raycasting_1(t_ptr *ptr, int x)
+static void	raycasting_1(t_ptr *ptr, int x)
 {
 	ptr->ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
 	ptr->ray->raydir_x = ptr->player->dir_x + ptr->player->plane_x
@@ -35,7 +35,7 @@ void	raycasting_1(t_ptr *ptr, int x)
 		ptr->ray->delta_y = fabs(1 / ptr->ray->raydir_y);
 }
 
-void	raycasting_2(t_ptr *ptr)
+static void	raycasting_2(t_ptr *ptr)
 {
 	ptr->ray->hit = 0;
 	if (ptr->ray->raydir_x < 0)
@@ -64,7 +64,7 @@ void	raycasting_2(t_ptr *ptr)
 	}
 }
 
-void	raycasting_3(t_ptr *ptr)
+static void	raycasting_3(t_ptr *ptr)
 {
 	while (ptr->ray->hit == 0)
 	{
@@ -92,7 +92,7 @@ void	raycasting_3(t_ptr *ptr)
 	ptr->ray->oldperpwall = ptr->ray->perp_dist;
 }
 
-void	raycasting_4(t_ptr *ptr, int x)
+static void	raycasting_4(t_ptr *ptr, int x)
 {
 	int	lineheight;
 

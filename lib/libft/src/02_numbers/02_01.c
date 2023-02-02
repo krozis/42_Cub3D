@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_01.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:32:02 by stelie            #+#    #+#             */
-/*   Updated: 2023/01/20 17:22:03 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:03:14 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*_nb_zero(char *res)
 	return (res);
 }
 
-/*
+/**
  * @brief Transform a given int n into a string.
  * @return returns the string created from the given int n.
 */
@@ -73,6 +73,9 @@ char	*ft_itoa(int n)
 	return (res);
 }
 
+/**
+ * @brief Returns the absolute value of a given int
+ */
 int	ft_abs(int num)
 {
 	if (num < 0)

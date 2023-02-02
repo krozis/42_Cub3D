@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/31 12:18:19 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:52:33 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_extension(char *av)
+static int	check_empty_line(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (empty_line(map[i]) == EXIT_SUCCESS)
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+static int	check_extension(char *av)
 {
 	int	i;
 
@@ -23,6 +37,28 @@ int	check_extension(char *av)
 	return (EXIT_SUCCESS);
 }
 
+static int	check_map(char **map)
+{
+	if (check_empty_line(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has empty line\n", 2, EXIT_FAILURE));
+	if (check_chars(map) == EXIT_FAILURE)
+		return (ft_putmsg_fd("Error\nMap has unknown characters\n"
+				, 2, EXIT_FAILURE));
+	if (check_chars(map) == ERR_NO_START)
+		return (ft_putmsg_fd("Error\nPlayer has no starting position\n"
+				, 2, EXIT_FAILURE));
+	if (check_chars(map) == ERR_TWO_START)
+		return (ft_putmsg_fd("Error\nPlayer has several starting postions\n"
+				, 2, EXIT_FAILURE));
+	if (check_integrity(map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+/**
+ * @brief Check if the given parameter is a valid .cub map.
+ * @return EXIT_FAILURE or EXIT_SUCCESS
+ */
 int	verify_args(int ac, char **av)
 {
 	int	fd;
@@ -43,52 +79,10 @@ int	verify_args(int ac, char **av)
 	return (EXIT_SUCCESS);
 }
 
-int	check_texture(t_ptr *ptr)
-{
-	int	fd[4];
-
-	if (!ptr->text[N_TEXT])
-		return (EXIT_FAILURE);
-	fd[0] = open(ptr->text[N_TEXT], O_RDONLY);
-	if (fd[0] < 0)
-		return (EXIT_FAILURE);
-	if (!ptr->text[S_TEXT])
-		return (EXIT_FAILURE);
-	fd[1] = open(ptr->text[S_TEXT], O_RDONLY);
-	if (fd[1] < 0)
-		return (EXIT_FAILURE);
-	if (!ptr->text[E_TEXT])
-		return (EXIT_FAILURE);
-	fd[2] = open(ptr->text[E_TEXT], O_RDONLY);
-	if (fd[2] < 0)
-		return (EXIT_FAILURE);
-	if (!ptr->text[W_TEXT])
-		return (EXIT_FAILURE);
-	fd[3] = open(ptr->text[W_TEXT], O_RDONLY);
-	if (fd[3] < 0)
-		return (EXIT_FAILURE);
-	close_fds(fd);
-	return (EXIT_SUCCESS);
-}
-
-int	check_map(char **map)
-{
-	if (check_empty_line(map) == EXIT_FAILURE)
-		return (ft_putmsg_fd("Error\nMap has empty line\n", 2, EXIT_FAILURE));
-	if (check_chars(map) == EXIT_FAILURE)
-		return (ft_putmsg_fd("Error\nMap has unknown characters\n"
-				, 2, EXIT_FAILURE));
-	if (check_chars(map) == ERR_NO_START)
-		return (ft_putmsg_fd("Error\nPlayer has no starting position\n"
-				, 2, EXIT_FAILURE));
-	if (check_chars(map) == ERR_TWO_START)
-		return (ft_putmsg_fd("Error\nPlayer has several starting postions\n"
-				, 2, EXIT_FAILURE));
-	if (check_integrity(map) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
-
+/**
+ * @brief main error checker
+ * @return EXIT_FAILURE or EXIT_SUCCESS
+ */
 int	check_errors(t_ptr *ptr)
 {
 	if (!ptr)

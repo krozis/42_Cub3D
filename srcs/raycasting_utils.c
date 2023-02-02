@@ -3,34 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 18:57:58 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:12:27 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	text_num(t_ptr *ptr)
-{
-	if (ptr->ray->side == 0)
-	{
-		if (ptr->ray->raydir_y > 0)
-			return (S_TEXT);
-		else
-			return (N_TEXT);
-	}
-	else
-	{
-		if (ptr->ray->raydir_x > 0)
-			return (W_TEXT);
-		else
-			return (E_TEXT);
-	}
-}
-
-int	set_color(t_ptr *ptr, int texX, int texY)
+static int	set_color(t_ptr *ptr, int texX, int texY)
 {
 	if (ptr->ray->txt_nb == N_TEXT)
 		return (convert_colors(ptr->dply.n_texture->data[4 * (64 * texY + texX)]
@@ -51,7 +33,7 @@ int	set_color(t_ptr *ptr, int texX, int texY)
 	return (0);
 }
 
-int	set_texx(t_ptr *ptr, int texX)
+static int	set_texx(t_ptr *ptr, int texX)
 {
 	if (ptr->ray->side == 0 && ptr->ray->raydir_x > 0 && ptr->ray->raydir_y > 0)
 		texX = 64 - texX - 1;
@@ -64,7 +46,7 @@ int	set_texx(t_ptr *ptr, int texX)
 	return (texX);
 }
 
-void	drawline_2(t_ptr *ptr, int x, int texX, int texY)
+static void	drawline_2(t_ptr *ptr, int x, int texX, int texY)
 {
 	int		i;
 	int		lineheight;
@@ -119,4 +101,22 @@ void	drawline(t_ptr *ptr, int x)
 	texx = (int)(wallx * (double)(64));
 	texy = 0;
 	drawline_2(ptr, x, texx, texy);
+}
+
+int	text_num(t_ptr *ptr)
+{
+	if (ptr->ray->side == 0)
+	{
+		if (ptr->ray->raydir_y > 0)
+			return (S_TEXT);
+		else
+			return (N_TEXT);
+	}
+	else
+	{
+		if (ptr->ray->raydir_x > 0)
+			return (W_TEXT);
+		else
+			return (E_TEXT);
+	}
 }
