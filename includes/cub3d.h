@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:17:00 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:29:37 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,6 @@ int		check_integrity(char **map);
 /*
 	UTILITY FUNCTIONS
 */
-int		empty_line(char *str);
 void	free_them_all(t_ptr *ptr);
 int		ismap(char *str);
 void	close_fds(int *fds);

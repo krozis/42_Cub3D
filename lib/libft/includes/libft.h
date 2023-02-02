@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 15:45:08 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/02 12:17:35 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:28:56 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ bool			ft_isoctal(char *str);
 bool			ft_isprint(int c);
 bool			ft_isspace(int c);
 bool			ft_isupper(int c);
+bool			is_empty(char *str);
 
 /*
 01_get_len

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/21 21:26:24 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:30:57 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	get_colors(char **lines, t_ptr *ptr)
 	while (lines[i])
 	{
 		k = 0;
-		while (lines[i] && empty_line(lines[i]) == EXIT_SUCCESS)
+		while (lines[i] && is_empty(lines[i]))
 			i++;
 		if (!lines[i])
 			return ;

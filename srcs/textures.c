@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 11:46:34 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:31:07 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	get_textures(char **lines, t_ptr *c3d)
 		return ;
 	while (count < 4)
 	{
-		while (lines[i] && empty_line(lines[i]) == EXIT_SUCCESS)
+		while (lines[i] && is_empty(lines[i]))
 			i++;
 		if (set_texture(c3d, lines[i]) == EXIT_FAILURE)
 			return ;
@@ -117,5 +117,24 @@ int	check_texture(t_ptr *c3d)
 	if (fd[3] < 0)
 		return (EXIT_FAILURE);
 	close_fds(fd);
+	return (EXIT_SUCCESS);
+}
+
+int	text_is_dir(t_ptr *ptr)
+{
+	int	fd;
+	int	i;
+
+	i = 0;
+	while (i < E_TEXT)
+	{
+		fd = open(ptr->text[i], __O_DIRECTORY);
+		if (fd > 0)
+		{
+			close(fd);
+			return (EXIT_FAILURE);
+		}
+		i++;
+	}
 	return (EXIT_SUCCESS);
 }

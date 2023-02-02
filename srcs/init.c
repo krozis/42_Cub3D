@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 11:47:56 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:32:23 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,24 @@ t_ptr	*init(char **av)
 	secure_free((void **)&lines);
 	close(fd);
 	return (ptr);
+}
+
+int	ismap(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (is_empty(str))
+		return (EXIT_FAILURE);
+	while (str[i])
+	{
+		while (str[i] && ft_isspace(str[i]))
+			i++;
+		if (str[i] && ft_isalpha(str[i]))
+			return (EXIT_FAILURE);
+		if (i >= (int)ft_strlen(str))
+			break ;
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_02.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 20:15:21 by krozis            #+#    #+#             */
-/*   Updated: 2022/11/18 11:12:00 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:29:11 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,24 @@ bool	ft_isupper(int c)
 	if (c >= 'A' && c <= 'Z')
 		return (true);
 	return (false);
+}
+
+/**
+ * @brief Tells if a string is empty (size < 1 or full of spaces)
+ * @return true or false 
+ */
+bool	is_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (true);
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }

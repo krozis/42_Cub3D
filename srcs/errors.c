@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 11:52:33 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:31:03 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_empty_line(char **map)
 	i = 0;
 	while (map[i])
 	{
-		if (empty_line(map[i]) == EXIT_SUCCESS)
+		if (is_empty(map[i]))
 			return (EXIT_FAILURE);
 		i++;
 	}

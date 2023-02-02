@@ -43,7 +43,6 @@ SRCS	=	main.c\
 			map.c\
 			map_utils.c\
 			textures.c\
-			utils.c\
 			errors.c\
 			mlx_init.c\
 			background.c\
