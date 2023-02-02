@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   06_00.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:13:51 by stelie            #+#    #+#             */
-/*   Updated: 2022/12/14 12:46:44 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:18:33 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,16 @@ int	ft_free_and_return(void *p, int return_value)
 		p = NULL;
 	}
 	return (return_value);
+}
+
+/**
+ * @brief Check if a pointer is not NULL then frees
+ */
+void	secure_free(void **ptr)
+{
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 19:03:11 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 12:17:00 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CUB3D_H
 
 // WINDOWS INFORMATIONS
-# define OPEN_MAX 1024
-# define BUFFER_SIZE 1024
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
 # define WIN_NAME "Cub3D"
@@ -176,17 +174,40 @@ typedef struct s_ptr{
 */
 
 t_ptr	*init(char **av);
-char	**get_map(char **lines, int num);
-void	get_textures(char **lines, t_ptr *ptr);
-char	*text(char *str);
-int		set_texture(t_ptr *ptr, char *str);
 void	get_colors(char **lines, t_ptr *ptr);
 void	init_structs(t_ptr *ptr);
 void	init_ray(t_ptr *ptr);
 void	init_dda(t_ptr *ptr);
 void	set_dir(t_ptr *ptr, char c);
-//void	init_player(t_ptr *ptr);
 void	init_dda_2(t_ptr *ptr);
+
+/*
+	ERROR CHECKING FUNCTIONS
+*/
+
+int		verify_args(int ac, char **av);
+int		check_errors(t_ptr *ptr);
+int		check_colors(int color[3]);
+int		check_ones(char **map, int i, int k);
+int		check_color_line_ceiling(char *str, t_ptr *ptr, int start);
+int		check_color_line_floor(char *str, t_ptr *ptr, int start);
+int		check_digit(char *str);
+int		text_is_dir(t_ptr *ptr);
+
+/*
+ * TEXTURES
+*/
+
+void	get_textures(char **lines, t_ptr *ptr);
+int		check_texture(t_ptr *c3d);
+
+/*
+ * MAP
+*/
+
+char	**get_map(char **lines, int num);
+int		check_chars(char **map);
+int		check_integrity(char **map);
 
 /*
 	UTILITY FUNCTIONS
@@ -194,26 +215,8 @@ void	init_dda_2(t_ptr *ptr);
 int		empty_line(char *str);
 void	free_them_all(t_ptr *ptr);
 int		ismap(char *str);
-void	secure_free(void **ptr);
 void	close_fds(int *fds);
 int		convert_colors(int r, int g, int b);
-
-/*
-	ERROR CHECKING FUNCTIONS
-*/
-int		verify_args(int ac, char **av);
-int		check_errors(t_ptr *ptr);
-int		check_texture(t_ptr *ptr);
-int		check_colors(int color[3]);
-int		check_empty_line(char **map);
-int		check_chars(char **map);
-int		check_borders(char **map);
-int		check_integrity(char **map);
-int		check_ones(char **map, int i, int k);
-int		check_color_line_ceiling(char *str, t_ptr *ptr, int start);
-int		check_color_line_floor(char *str, t_ptr *ptr, int start);
-int		check_digit(char *str);
-int		text_is_dir(t_ptr *ptr);
 
 /*
  * DISPLAYING WITH MLX
@@ -229,7 +232,6 @@ int		background_image(t_ptr *c3d);
 
 void	raycasting(t_ptr *ptr);
 void	drawline(t_ptr *ptr, int x);
-void	set_raycasting(t_ptr *ptr);
 int		text_num(t_ptr *ptr);
 
 /*
