@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 20:12:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 18:49:24 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 11:33:16 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ static void	go_right(t_ptr *ptr)
 	}
 }
 
+/**
+ * @brief move function who calls the left/right/front/back movements.
+ * @param c3d: a pointer to the main cub3D structure
+ */
 void	move(t_ptr *c3d)
 {
 	go_front(c3d);
