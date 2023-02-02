@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 11:24:59 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/02 11:30:10 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	_routine(t_ptr *c3d)
 		0, 0);
 	secure_free((void **)&c3d->ray);
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -97,12 +97,12 @@ int	main(int ac, char **av)
 	t_ptr	*ptr;
 
 	if (verify_args(ac, av) == EXIT_FAILURE)
-		return (0);
+		return (EXIT_FAILURE);
 	ptr = init(av);
 	if (check_errors(ptr) == EXIT_FAILURE || init_mlx(ptr) == EXIT_FAILURE)
 	{
 		free_them_all(ptr);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
 		, &mlx_loop_end, ptr->dply.mlx);
