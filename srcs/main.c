@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
+/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/01 18:46:04 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/02 11:24:59 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static int	_mouse_move(int x, int y, t_ptr *c3d)
+{
+	(void)y;
+	if (x < WIN_WIDTH / 2.5 && x > 0)
+	{
+		c3d->keys.rotate_right = false;
+		c3d->keys.rotate_left = true;
+	}
+	else if (x > WIN_WIDTH * 0.5 && x < WIN_WIDTH)
+	{
+		c3d->keys.rotate_left = false;
+		c3d->keys.rotate_right = true;
+	}
+	else
+	{
+		c3d->keys.rotate_left = false;
+		c3d->keys.rotate_right = false;
+	}
+	return (EXIT_SUCCESS);
+}
 
 static int	_release_key(int key, t_ptr *c3d)
 {
@@ -44,44 +65,31 @@ static int	_press_key(int key, t_ptr *c3d)
 	if (key == XK_d)
 		c3d->keys.move_right = true;
 	if (key == XK_Left)
+	{
+		c3d->keys.rotate_right = false;
 		c3d->keys.rotate_left = true;
+	}
 	if (key == XK_Right)
+	{
+		c3d->keys.rotate_left = false;
 		c3d->keys.rotate_right = true;
+	}
 	if (key == XK_m)
 		c3d->keys.minimap = true;
 	return (EXIT_SUCCESS);
 }
 
-static int	_loop_routine(t_ptr *c3d)
+static int	_routine(t_ptr *c3d)
 {
-	static int		fps;
-	static clock_t	clock_cur;
-
-	if (clock() != clock_cur)
-		fps = CLOCKS_PER_SEC / (clock() - clock_cur);
 	background_image(c3d);
 	raycasting(c3d);
 	move(c3d);
 	rotate(c3d);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,
 		0, 0);
-	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 10, 20, 0x00FB50FF, "FPS");
-	mlx_string_put(c3d->dply.mlx, c3d->dply.win, 35, 20, 0x00FB50FF, \
-		(char []){'0' + fps / 100, '0' + fps / 10 % 10, '0' + fps % 10, '\0'});
-	minimap(c3d);
+	secure_free((void **)&c3d->ray);
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	return (0);
-}
-
-static int	_routine(t_ptr *ptr)
-{
-	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
-		, &mlx_loop_end, ptr->dply.mlx);
-	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
-	mlx_loop_hook(ptr->dply.mlx, _loop_routine, ptr);
-	mlx_hook(ptr->dply.win, KeyRelease, KeyReleaseMask, &_release_key, ptr);
-	mlx_loop(ptr->dply.mlx);
-	return (EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -96,7 +104,13 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (0);
 	}
-	_routine(ptr);
+	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
+		, &mlx_loop_end, ptr->dply.mlx);
+	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
+	mlx_loop_hook(ptr->dply.mlx, _routine, ptr);
+	mlx_hook(ptr->dply.win, KeyRelease, KeyReleaseMask, &_release_key, ptr);
+	mlx_hook(ptr->dply.win, MotionNotify, PointerMotionMask, &_mouse_move, ptr);
+	mlx_loop(ptr->dply.mlx);
 	free_them_all(ptr);
 	return (EXIT_SUCCESS);
 }
