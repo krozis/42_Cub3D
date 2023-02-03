@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 13:51:15 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:20:39 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,20 @@
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
+
+// MINIMAP
+/*
+	800 * 0.7 = 560
+	600 * 0.7 = 420
+*/
+# define MAP_RATIO 0.7
+# define MAP_X_START WIN_WIDTH * MAP_RATIO
+# define MAP_X_END (WIN_WIDTH - 2)
+# define MAP_Y_START WIN_HEIGHT * MAP_RATIO
+# define MAP_Y_END (WIN_HEIGHT - 2)
 # define MAP_PLAYER_COLOR 16724530
+# define MAP_WALL_COLOR	3289650
+# define MAP_FLOOR_COLOR 10532000
 
 //INCLUDES
 # include <fcntl.h>
@@ -76,6 +89,19 @@ typedef struct s_player
 	double	plane_y;
 	char	dir;
 }				t_player;
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}				t_rgb;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}				t_point;
 
 /**
  * @brief Raycasting structure
@@ -218,7 +244,6 @@ int		check_integrity(char **map);
 void	free_them_all(t_ptr *ptr);
 int		ismap(char *str);
 void	close_fds(int *fds);
-int		convert_colors(int r, int g, int b);
 
 /*
  * DISPLAYING WITH MLX
@@ -249,5 +274,12 @@ int		init_player(t_player **player, char **map);
 void	rotate(t_ptr *c3d);
 void	move(t_ptr *c3d);
 void	minimap(t_ptr *c3d);
+
+/*
+ * DRAWING
+*/
+int		rgb_to_int(int r, int g, int b);
+t_rgb	int_to_rgb(int color);
+void	draw_pixel(t_img *img, int x, int y, t_rgb color);
 
 #endif
