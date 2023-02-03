@@ -53,11 +53,12 @@ SRCS	=	main.c\
 			rotate.c\
 			move.c\
 			minimap.c\
+			draw.c\
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))
 
-$(O_DIR)/%.o:	./*/%.c
+$(O_DIR)/%.o:	./*/%.c ./includes/cub3d.h
 				@echo $(Y)Compiling [$@]...$(X)
 				@$(MKD) $(O_DIR)
 				@$(CC) $(CFLAGS) -o $@ -c $<
