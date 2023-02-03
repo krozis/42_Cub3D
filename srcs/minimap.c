@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:09:11 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/03 17:45:36 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 18:56:03 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	_coloring_pixel(t_img *img, int y, int color)
 	while (x++ < MAP_X_END * 4)
 	{
 		new = int_to_rgb(color);
-		old = get_color(img, x, y);
+		old = get_pixel_color(img, x, y);
 		new.r = (new.r + old.r) / 2;
 		new.g = (new.g + old.g) / 2;
 		new.b = (new.b + old.b) / 2;
