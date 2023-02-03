@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 13:52:07 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:56:05 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ static int	_routine(t_ptr *c3d)
 {
 	background_image(c3d);
 	raycasting(c3d);
-	move(c3d);
-	rotate(c3d);
 	minimap(c3d);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,
 		0, 0);
+	move(c3d);
+	rotate(c3d);
 	mlx_mouse_move(c3d->dply.mlx, c3d->dply.win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	secure_free((void **)&c3d->ray);
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
@@ -106,7 +106,6 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (EXIT_FAILURE);
 	}
-	mlx_mouse_hide(ptr->dply.mlx, ptr->dply.win);
 	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
 		, &mlx_loop_end, ptr->dply.mlx);
 	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
