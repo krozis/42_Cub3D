@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:00:43 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/01 18:59:50 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:47:16 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rotate(t_ptr *c3d)
 
 	olddirx = c3d->player->dir_x;
 	oldplanex = c3d->player->plane_x;
-	if (c3d->keys.rotate_left)
+	if (c3d->keys.rotate_left || c3d->keys.rotate_mouse_left)
 	{
 		c3d->player->dir_x
 			= rot_l(c3d->player->dir_x, c3d->player->dir_y, true);
@@ -46,7 +46,7 @@ void	rotate(t_ptr *c3d)
 			= rot_l(c3d->player->plane_x, c3d->player->plane_y, true);
 		c3d->player->plane_y = rot_l(oldplanex, c3d->player->plane_y, false);
 	}
-	if (c3d->keys.rotate_right)
+	if (c3d->keys.rotate_right || c3d->keys.rotate_mouse_right)
 	{
 		c3d->player->dir_x
 			= rot_r(c3d->player->dir_x, c3d->player->dir_y, true);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 11:30:10 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:52:07 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 static int	_mouse_move(int x, int y, t_ptr *c3d)
 {
 	(void)y;
-	if (x < WIN_WIDTH / 2.5 && x > 0)
+	if (x < WIN_WIDTH / 2 && x > 0)
 	{
-		c3d->keys.rotate_right = false;
-		c3d->keys.rotate_left = true;
+		c3d->keys.rotate_mouse_right = false;
+		c3d->keys.rotate_mouse_left = true;
 	}
 	else if (x > WIN_WIDTH * 0.5 && x < WIN_WIDTH)
 	{
-		c3d->keys.rotate_left = false;
-		c3d->keys.rotate_right = true;
+		c3d->keys.rotate_mouse_left = false;
+		c3d->keys.rotate_mouse_right = true;
 	}
 	else
 	{
-		c3d->keys.rotate_left = false;
-		c3d->keys.rotate_right = false;
+		c3d->keys.rotate_mouse_left = false;
+		c3d->keys.rotate_mouse_right = false;
 	}
 	return (EXIT_SUCCESS);
 }
@@ -85,8 +85,10 @@ static int	_routine(t_ptr *c3d)
 	raycasting(c3d);
 	move(c3d);
 	rotate(c3d);
+	minimap(c3d);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,
 		0, 0);
+	mlx_mouse_move(c3d->dply.mlx, c3d->dply.win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	secure_free((void **)&c3d->ray);
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	return (EXIT_SUCCESS);
@@ -104,6 +106,7 @@ int	main(int ac, char **av)
 		free_them_all(ptr);
 		return (EXIT_FAILURE);
 	}
+	mlx_mouse_hide(ptr->dply.mlx, ptr->dply.win);
 	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
 		, &mlx_loop_end, ptr->dply.mlx);
 	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);

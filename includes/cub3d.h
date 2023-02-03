@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:29:37 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 13:51:15 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define RGB_RED 65536
 # define RGB_GREEN 256
 # define RGB_BLUE 1
+# define MAP_PLAYER_COLOR 16724530
 
 //INCLUDES
 # include <fcntl.h>
@@ -147,6 +148,8 @@ typedef struct s_keys
 	bool	move_left;
 	bool	move_right;
 	bool	rotate_left;
+	bool	rotate_mouse_left;
+	bool	rotate_mouse_right;
 	bool	rotate_right;
 	bool	minimap;
 }				t_keys;
