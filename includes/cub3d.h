@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 17:20:39 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:41:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,5 +281,6 @@ void	minimap(t_ptr *c3d);
 int		rgb_to_int(int r, int g, int b);
 t_rgb	int_to_rgb(int color);
 void	draw_pixel(t_img *img, int x, int y, t_rgb color);
+t_rgb	get_color(t_img *img, int x, int y);
 
 #endif
