@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:41:57 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/03 17:20:52 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:26:57 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	_coloring(t_img *img, int y, int color)
 	x = 0;
 	while (x < WIN_WIDTH * 4)
 	{
-		draw_pixel(img, x, y, int_to_rgb(color));
+		draw_pixel(img, x, 4 * y, int_to_rgb(color));
 		x += 4;
 	}
 }

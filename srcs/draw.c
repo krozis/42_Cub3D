@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:15:12 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/03 17:21:45 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:26:29 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	draw_pixel(t_img *img, int x, int y, t_rgb color)
 {
-	y *= 4;
 	img->data[(y * WIN_WIDTH) + x] = color.b;
 	img->data[(y * WIN_WIDTH) + x + 1] = color.g;
 	img->data[(y * WIN_WIDTH) + x + 2] = color.r;
