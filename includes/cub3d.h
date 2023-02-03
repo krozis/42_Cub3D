@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 17:41:37 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:55:14 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ typedef struct s_display
 	t_img	*s_texture;
 	t_img	*e_texture;
 	t_img	*w_texture;
-	t_img	*minimap;
 }				t_dply;
 
 typedef struct s_keys
@@ -281,6 +280,7 @@ void	minimap(t_ptr *c3d);
 int		rgb_to_int(int r, int g, int b);
 t_rgb	int_to_rgb(int color);
 void	draw_pixel(t_img *img, int x, int y, t_rgb color);
-t_rgb	get_color(t_img *img, int x, int y);
+t_rgb	get_pixel_color(t_img *img, int x, int y);
+void	draw_rectangle(t_img *img, t_point x, t_point y, t_rgb color);
 
 #endif

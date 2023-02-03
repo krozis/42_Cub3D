@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:32:23 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:57:03 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	_init(t_ptr *c3d)
 	ft_bzero(&(c3d->keys), sizeof(t_keys));
 	c3d->ray = NULL;
 	c3d->dply.win = NULL;
-	c3d->dply.minimap = NULL;
 	c3d->dply.mlx = NULL;
 	c3d->player = NULL;
 	c3d->map = NULL;

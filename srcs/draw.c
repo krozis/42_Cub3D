@@ -6,13 +6,30 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:15:12 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/03 17:41:22 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:59:07 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_rgb	get_color(t_img *img, int x, int y)
+void	draw_rectangle(t_img *img, t_point a, t_point b, t_rgb color)
+{
+	t_point	p;
+
+	p = a;
+	while (p.y < b.y)
+	{
+		p.x = a.x;
+		while (p.x < b.x)
+		{
+			draw_pixel(img, p.x * 4, p.y * 4, color);
+			p.x++;
+		}
+		p.y++;
+	}
+}
+
+t_rgb	get_pixel_color(t_img *img, int x, int y)
 {
 	t_rgb	color;
 
