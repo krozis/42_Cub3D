@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 15:20:10 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:12:27 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:04:38 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 static int	set_color(t_ptr *ptr, int texX, int texY)
 {
 	if (ptr->ray->txt_nb == N_TEXT)
-		return (convert_colors(ptr->dply.n_texture->data[4 * (64 * texY + texX)]
+		return (rgb_to_int(ptr->dply.n_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.n_texture->data[4 * (64 * texY + texX) + 2]));
 	if (ptr->ray->txt_nb == S_TEXT)
-		return (convert_colors(ptr->dply.s_texture->data[4 * (64 * texY + texX)]
+		return (rgb_to_int(ptr->dply.s_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.s_texture->data[4 * (64 * texY + texX) + 2]));
 	if (ptr->ray->txt_nb == E_TEXT)
-		return (convert_colors(ptr->dply.e_texture->data[4 * (64 * texY + texX)]
+		return (rgb_to_int(ptr->dply.e_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.e_texture->data[4 * (64 * texY + texX) + 2]));
 	if (ptr->ray->txt_nb == W_TEXT)
-		return (convert_colors(ptr->dply.w_texture->data[4 * (64 * texY + texX)]
+		return (rgb_to_int(ptr->dply.w_texture->data[4 * (64 * texY + texX)]
 				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 1]
 				, ptr->dply.w_texture->data[4 * (64 * texY + texX) + 2]));
 	return (0);

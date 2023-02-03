@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:26:04 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:30:57 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 17:04:48 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int	convert_colors(int r, int g, int b)
-{
-	return ((r * RGB_RED) + (g * RGB_GREEN) + b);
-}
 
 static void	ceiling_color(char *str, t_ptr *ptr, int i)
 {
@@ -41,7 +36,7 @@ static void	ceiling_color(char *str, t_ptr *ptr, int i)
 	else
 		ceiling[2] = ft_atoi(&str[i]);
 	if (check_colors(ceiling) == EXIT_SUCCESS)
-		ptr->ceiling_color = convert_colors(ceiling[0], ceiling[1], ceiling[2]);
+		ptr->ceiling_color = rgb_to_int(ceiling[0], ceiling[1], ceiling[2]);
 	else
 		ptr->ceiling_color = ERR_INV_VAL;
 }
@@ -70,7 +65,7 @@ static void	floor_color(char *str, t_ptr *ptr, int i)
 	else
 		floor[2] = ft_atoi(&str[i]);
 	if (check_colors(floor) == EXIT_SUCCESS)
-		ptr->floor_color = convert_colors(floor[0], floor[1], floor[2]);
+		ptr->floor_color = rgb_to_int(floor[0], floor[1], floor[2]);
 	else
 		ptr->floor_color = ERR_INV_VAL;
 }
