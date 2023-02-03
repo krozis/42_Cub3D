@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:34:00 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:08:09 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/03 14:05:00 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,6 @@ void	raycasting(t_ptr *ptr)
 	ptr->ray = malloc(sizeof(t_ray));
 	if (!ptr->player)
 		init_player(&(ptr->player), ptr->map);
-	if (!ptr->dply.screen)
-		ptr->dply.screen = mlx_new_image(ptr->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	while (x < WIN_WIDTH)
 	{
 		raycasting_1(ptr, x);
@@ -126,6 +124,4 @@ void	raycasting(t_ptr *ptr)
 		raycasting_4(ptr, x);
 		x++;
 	}
-	mlx_put_image_to_window(ptr->dply.mlx, ptr->dply.win, ptr->dply.screen,
-		0, 0);
 }
