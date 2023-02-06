@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 15:18:50 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:57:14 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@
 # define RGB_BLUE 1
 
 //MINIMAP VALUES
-# define MAP_X_START 560
-# define MAP_X_END 800
-# define MAP_Y_START 420
-# define MAP_Y_END 600
 # define MAP_P_X 668
 # define MAP_P_Y 501
 # define MAP_BOX_W 24
@@ -47,7 +43,6 @@
 # define MAP_PLAYER_COLOR 16724530
 # define MAP_WALL_COLOR	3289650
 # define MAP_FLOOR_COLOR 7239790
-# define MAP_BG_COLOR 10532001
 
 //INCLUDES
 # include <fcntl.h>
