@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 11:26:06 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:18:50 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define RGB_GREEN 256
 # define RGB_BLUE 1
 
+//MINIMAP VALUES
 # define MAP_X_START 560
 # define MAP_X_END 800
 # define MAP_Y_START 420
@@ -45,6 +46,7 @@
 # define MAP_BOX_H 18
 # define MAP_PLAYER_COLOR 16724530
 # define MAP_WALL_COLOR	3289650
+# define MAP_FLOOR_COLOR 7239790
 # define MAP_BG_COLOR 10532001
 
 //INCLUDES
@@ -65,6 +67,14 @@ typedef enum e_textures_values
 	W_TEXT,
 	E_TEXT
 }			t_txtval;
+
+typedef enum e_map_corners
+{
+	TOP_LEFT,
+	TOP_RIGHT,
+	BOT_LEFT,
+	BOT_RIGHT
+}			t_mc;
 
 /**
  * @brief player structure
@@ -296,5 +306,6 @@ t_rgb	transparency(t_rgb color_one, t_rgb color_two);
 t_point	init_point(int x, int y);
 t_point	add_two_points(t_point a, t_point b);
 t_point	add_point(t_point a, float x, float y);
+t_point	abs_point(t_point p);
 
 #endif

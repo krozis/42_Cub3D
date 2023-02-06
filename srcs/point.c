@@ -6,21 +6,32 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:08:46 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 11:18:51 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 12:56:41 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /**
- * @brief Adds the given x and y to the t_point a
- * @return Retruns the t_point.
+ * @brief Multiplies t_point coordinates by respectively x and y.
+ * @return Returns the t_point.
  */
-t_point	add_point(t_point a, float x, float y)
+t_point	mult_point(t_point p, float x, float y)
 {
-	a.x += x;
-	a.y += y;
-	return (a);
+	p.x *= x;
+	p.y *= y;
+	return (p);
+}
+
+/**
+ * @brief Adds the given x and y to the t_point a
+ * @return Returns the t_point.
+ */
+t_point	add_point(t_point p, float x, float y)
+{
+	p.x += x;
+	p.y += y;
+	return (p);
 }
 
 /**
@@ -44,5 +55,12 @@ t_point	init_point(int x, int y)
 
 	p.x = x;
 	p.y = y;
+	return (p);
+}
+
+t_point	abs_point(t_point p)
+{
+	p.x = (int)p.x;
+	p.y = (int)p.y;
 	return (p);
 }
