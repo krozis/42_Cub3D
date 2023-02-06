@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 14:56:05 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:07:18 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	_press_key(int key, t_ptr *c3d)
 
 static int	_routine(t_ptr *c3d)
 {
-	background_image(c3d);
+	background(c3d);
 	raycasting(c3d);
 	minimap(c3d);
 	mlx_put_image_to_window(c3d->dply.mlx, c3d->dply.win, c3d->dply.screen,

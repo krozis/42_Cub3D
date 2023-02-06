@@ -46,7 +46,6 @@ SRCS	=	main.c\
 			textures.c\
 			errors.c\
 			mlx_init.c\
-			background.c\
 			errors_colors.c\
 			raycasting.c\
 			raycasting_utils.c\

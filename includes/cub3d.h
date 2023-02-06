@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 15:57:14 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:10:53 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ typedef enum e_textures_values
 typedef enum e_map_corners
 {
 	TOP_LEFT,
-	TOP_RIGHT,
-	BOT_LEFT,
 	BOT_RIGHT
 }			t_mc;
 
@@ -253,7 +251,6 @@ void	close_fds(int *fds);
 
 int		init_mlx(t_ptr *c3d);
 int		free_mlx(t_ptr *c3d, bool txt, int exit_code);
-int		background_image(t_ptr *c3d);
 
 /*
  * RAYCASTING
@@ -280,8 +277,8 @@ void	minimap(t_ptr *c3d);
 /*
  * DRAWING
 */
+int		background(t_ptr *c3d);
 void	draw_pixel(t_img *img, int x, int y, t_rgb color);
-void	draw_rect_empty(t_img *img, t_point a, t_point b, t_rgb color);
 void	draw_rect_full(t_img *img, t_point a, t_point b, t_rgb color);
 void	draw_rect_trans(t_img *img, t_point a, t_point b, t_rgb color);
 
