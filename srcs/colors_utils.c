@@ -6,17 +6,23 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:24:15 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 10:20:45 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:26:09 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/**
+ * @brief Returns an int color  from the given r,g and b int
+ */
 int	rgb_to_int(int r, int g, int b)
 {
 	return ((r * RGB_RED) + (g * RGB_GREEN) + b);
 }
 
+/**
+ * @brief Returns a t_rgb from the given int color
+ */
 t_rgb	int_to_rgb(int color)
 {
 	t_rgb	rgb;
@@ -27,6 +33,9 @@ t_rgb	int_to_rgb(int color)
 	return (rgb);
 }
 
+/**
+ * @brief Returns the color (t_rgb format) of the pixel at the given x and y.
+ */
 t_rgb	get_pixel_color(t_img *img, int x, int y)
 {
 	t_rgb	color;
@@ -37,6 +46,10 @@ t_rgb	get_pixel_color(t_img *img, int x, int y)
 	return (color);
 }
 
+/**
+ * @brief Returns the color which is a transparent looking of the two
+ * given colors.
+ */
 t_rgb	transparency(t_rgb color_one, t_rgb color_two)
 {
 	color_two.r = (color_two.r + color_one.r) / 2;
