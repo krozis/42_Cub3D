@@ -55,6 +55,7 @@ SRCS	=	main.c\
 			move.c\
 			minimap.c\
 			draw.c\
+			point.c\
 
 #Object
 OBJS	=	$(addprefix $(O_DIR)/, $(SRCS:.c=.o))

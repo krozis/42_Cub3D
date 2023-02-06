@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 10:22:31 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 11:19:02 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,14 @@
 # define RGB_GREEN 256
 # define RGB_BLUE 1
 
-// MINIMAP
-/*
-	800 * 0.7 = 560
-	600 * 0.7 = 420
-*/
-# define MAP_RATIO 0.7
-# define MAP_X_START WIN_WIDTH * MAP_RATIO
-# define MAP_X_END (WIN_WIDTH - 2)
-# define MAP_Y_START WIN_HEIGHT * MAP_RATIO
-# define MAP_Y_END (WIN_HEIGHT - 2)
+# define MAP_X_START 560
+# define MAP_X_END 800
+# define MAP_Y_START 420
+# define MAP_Y_END 600
+# define MAP_MID_START_X 668
+# define MAP_MID_START_Y 501
+# define MAP_CASE_W 24
+# define MAP_CASE_H 18
 # define MAP_PLAYER_COLOR 16724530
 # define MAP_WALL_COLOR	3289650
 # define MAP_BG_COLOR 10532001
@@ -99,8 +97,8 @@ typedef struct s_rgb
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 }				t_point;
 
 /**
@@ -290,5 +288,13 @@ int		rgb_to_int(int r, int g, int b);
 t_rgb	int_to_rgb(int color);
 t_rgb	get_pixel_color(t_img *img, int x, int y);
 t_rgb	transparency(t_rgb color_one, t_rgb color_two);
+
+/*
+ * POINT
+*/
+
+t_point	init_point(int x, int y);
+t_point	add_two_points(t_point a, t_point b);
+t_point	add_point(t_point a, float x, float y);
 
 #endif
