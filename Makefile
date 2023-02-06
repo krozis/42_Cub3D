@@ -39,6 +39,7 @@ MLX			=	$(L_DIR)/mlx-linux/libmlx_Linux.a
 SRCS	=	main.c\
 			init.c\
 			colors.c\
+			colors_utils.c\
 			malloc_free.c\
 			map.c\
 			map_utils.c\

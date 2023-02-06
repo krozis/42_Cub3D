@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 17:55:14 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 10:22:31 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define MAP_Y_END (WIN_HEIGHT - 2)
 # define MAP_PLAYER_COLOR 16724530
 # define MAP_WALL_COLOR	3289650
-# define MAP_FLOOR_COLOR 10532000
+# define MAP_BG_COLOR 10532001
 
 //INCLUDES
 # include <fcntl.h>
@@ -277,10 +277,18 @@ void	minimap(t_ptr *c3d);
 /*
  * DRAWING
 */
+void	draw_pixel(t_img *img, int x, int y, t_rgb color);
+void	draw_rect_empty(t_img *img, t_point a, t_point b, t_rgb color);
+void	draw_rect_full(t_img *img, t_point a, t_point b, t_rgb color);
+void	draw_rect_trans(t_img *img, t_point a, t_point b, t_rgb color);
+
+/*
+ * COLOR
+*/
+
 int		rgb_to_int(int r, int g, int b);
 t_rgb	int_to_rgb(int color);
-void	draw_pixel(t_img *img, int x, int y, t_rgb color);
 t_rgb	get_pixel_color(t_img *img, int x, int y);
-void	draw_rectangle(t_img *img, t_point x, t_point y, t_rgb color);
+t_rgb	transparency(t_rgb color_one, t_rgb color_two);
 
 #endif
