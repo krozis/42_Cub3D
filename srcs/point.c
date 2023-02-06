@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:08:46 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 16:10:19 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:33:40 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,5 @@ t_point	init_point(int x, int y)
 
 	p.x = x;
 	p.y = y;
-	return (p);
-}
-
-t_point	abs_point(t_point p)
-{
-	p.x = (int)p.x;
-	p.y = (int)p.y;
 	return (p);
 }

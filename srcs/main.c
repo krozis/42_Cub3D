@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 16:07:18 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:49:12 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static int	_release_key(int key, t_ptr *c3d)
 		c3d->keys.rotate_left = false;
 	if (key == XK_Right)
 		c3d->keys.rotate_right = false;
-	if (key == XK_m)
-		c3d->keys.minimap = false;
+	if (key == XK_space)
+		c3d->keys.mouse_free = false;
 	return (EXIT_SUCCESS);
 }
 
@@ -74,8 +74,8 @@ static int	_press_key(int key, t_ptr *c3d)
 		c3d->keys.rotate_left = false;
 		c3d->keys.rotate_right = true;
 	}
-	if (key == XK_m)
-		c3d->keys.minimap = true;
+	if (key == XK_space)
+		c3d->keys.mouse_free = true;
 	return (EXIT_SUCCESS);
 }
 
@@ -88,7 +88,9 @@ static int	_routine(t_ptr *c3d)
 		0, 0);
 	move(c3d);
 	rotate(c3d);
-	mlx_mouse_move(c3d->dply.mlx, c3d->dply.win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	if (c3d->keys.mouse_free == false)
+		mlx_mouse_move(c3d->dply.mlx, c3d->dply.win,
+			WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	secure_free((void **)&c3d->ray);
 	mlx_destroy_image(c3d->dply.mlx, c3d->dply.screen);
 	return (EXIT_SUCCESS);

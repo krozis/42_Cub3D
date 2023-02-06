@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 16:10:53 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:46:55 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,34 +63,9 @@ typedef enum e_textures_values
 	E_TEXT
 }			t_txtval;
 
-typedef enum e_map_corners
-{
-	TOP_LEFT,
-	BOT_RIGHT
-}			t_mc;
-
 /**
- * @brief player structure
- * @param pos_x: player X position on the map
- * @param pos_y: player Y position on the map
- * @param dir_x: direction X of the player (which side the player is facing).
- * Can be 1, -1 or 0
- * @param dir_y: direction Y of the player (which side the player is facing).
- * Can be 1, -1 or 0
- * @param plane_x: value X of the camera plane
- * @param plane_y: value Y of the camera plane
-*/
-typedef struct s_player
-{
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	char	dir;
-}				t_player;
-
+ * @brief Structure for colors with 3 int: r, g and b
+ */
 typedef struct s_rgb
 {
 	int	r;
@@ -98,10 +73,13 @@ typedef struct s_rgb
 	int	b;
 }				t_rgb;
 
+/**
+ * @brief Coordinates structure with x and y 
+ */
 typedef struct s_point
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }				t_point;
 
 /**
@@ -150,6 +128,28 @@ typedef struct s_ray
 }				t_ray;
 
 /**
+ * @brief player structure
+ * @param pos_x: player X position on the map
+ * @param pos_y: player Y position on the map
+ * @param dir_x: direction X of the player (which side the player is facing).
+ * Can be 1, -1 or 0
+ * @param dir_y: direction Y of the player (which side the player is facing).
+ * Can be 1, -1 or 0
+ * @param plane_x: value X of the camera plane
+ * @param plane_y: value Y of the camera plane
+*/
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	char	dir;
+}				t_player;
+
+/**
  * @brief Displaying main structure
  * @param mlx: the identifier of the connection to the graphic server
  * @param win: the identifier of the window
@@ -167,6 +167,9 @@ typedef struct s_display
 	t_img	*w_texture;
 }				t_dply;
 
+/**
+ * @brief Structure to precise if a key is pressed or not(only booleans)
+ */
 typedef struct s_keys
 {
 	bool	move_front;
@@ -177,7 +180,7 @@ typedef struct s_keys
 	bool	rotate_mouse_left;
 	bool	rotate_mouse_right;
 	bool	rotate_right;
-	bool	minimap;
+	bool	mouse_free;
 }				t_keys;
 
 /**
@@ -203,6 +206,7 @@ typedef struct s_ptr{
 */
 
 t_ptr	*init(char **av);
+int		init_player(t_player **player, char **map);
 void	get_colors(char **lines, t_ptr *ptr);
 void	init_structs(t_ptr *ptr);
 void	init_ray(t_ptr *ptr);
@@ -261,23 +265,18 @@ void	drawline(t_ptr *ptr, int x);
 int		text_num(t_ptr *ptr);
 
 /*
- * PLAYER
-*/
-
-int		init_player(t_player **player, char **map);
-
-/*
  * MOVEMENT
 */
 
 void	rotate(t_ptr *c3d);
 void	move(t_ptr *c3d);
-void	minimap(t_ptr *c3d);
 
 /*
  * DRAWING
 */
+
 int		background(t_ptr *c3d);
+void	minimap(t_ptr *c3d);
 void	draw_pixel(t_img *img, int x, int y, t_rgb color);
 void	draw_rect_full(t_img *img, t_point a, t_point b, t_rgb color);
 void	draw_rect_trans(t_img *img, t_point a, t_point b, t_rgb color);

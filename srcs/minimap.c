@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:09:11 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 15:56:40 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:35:36 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,18 @@ static t_point	_calculate(t_point p, int x, int y)
 {
 	t_point	ret;
 
-	if (x == 0)
-		ret.x = MAP_P_X - ((p.x - x) * MAP_BOX_W);
-	else if (p.x > x)
+	if (x == 0 || p.x > x)
 		ret.x = MAP_P_X - ((p.x - x) * MAP_BOX_W);
 	else
 		ret.x = MAP_P_X + ((x - p.x) * MAP_BOX_W);
-	if (y == 0)
-		ret.y = MAP_P_Y - ((p.y - y) * MAP_BOX_H);
-	else if (p.y > y)
+	if (y == 0 || p.y > y)
 		ret.y = MAP_P_Y - ((p.y - y) * MAP_BOX_H);
 	else
 		ret.y = MAP_P_Y + ((y - p.y) * MAP_BOX_H);
 	return (ret);
 }
 
-static t_point	_get_corner_coord(char **map, t_point p, int corner_type)
+static t_point	_get_corner_coord(char **map, t_point p, bool origin)
 {
 	int	min_y;
 	int	min_x;
@@ -49,7 +45,7 @@ static t_point	_get_corner_coord(char **map, t_point p, int corner_type)
 
 	min_x = ft_posmin(p.x - 4, 0);
 	min_y = ft_posmin(p.y - 4, 0);
-	if (corner_type == TOP_LEFT)
+	if (origin)
 		return (init_point(min_x, min_y));
 	max_y = 0;
 	while (map[max_y] != NULL)
@@ -67,9 +63,9 @@ static void	_check_map(t_img *img, char **map, t_player *player)
 	int		x;
 	int		y;
 
-	p = abs_point(init_point(player->pos_x, player->pos_y));
-	tmp = _get_corner_coord(map, p, TOP_LEFT);
-	corner = _get_corner_coord(map, p, BOT_RIGHT);
+	p = init_point(player->pos_x, player->pos_y);
+	tmp = _get_corner_coord(map, p, true);
+	corner = _get_corner_coord(map, p, false);
 	y = tmp.y;
 	while (y <= corner.y)
 	{
@@ -83,6 +79,10 @@ static void	_check_map(t_img *img, char **map, t_player *player)
 	}
 }
 
+/**
+ * @brief Creates and display the minimap
+ * @param c3d: a pointer to the main structure
+ */
 void	minimap(t_ptr *c3d)
 {
 	t_point	a;
