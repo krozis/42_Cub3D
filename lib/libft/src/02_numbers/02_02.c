@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   02_02.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 20:07:35 by krozis            #+#    #+#             */
-/*   Updated: 2022/11/27 20:56:25 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:30:18 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,24 @@ char	*ft_lltoa(long long nb)
 	else
 		_ft_lltoa(nb, s, i);
 	return (s);
+}
+
+/**
+ * @brief Returns the minimum dumber which is not negative between a and b.
+*/
+double	ft_posmin(double a, double b)
+{
+	if (a < 0 && b < 0)
+		return (0);
+	if (a < 0)
+		return (b);
+	if (b < 0)
+		return (a);
+	if (a == 0)
+		return (b);
+	if (b == 0)
+		return (a);
+	if (a < b)
+		return (a);
+	return (b);
 }
