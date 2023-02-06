@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:26:55 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:31:03 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,27 +83,27 @@ int	verify_args(int ac, char **av)
  * @brief main error checker
  * @return EXIT_FAILURE or EXIT_SUCCESS
  */
-int	check_errors(t_ptr *ptr)
+int	check_errors(t_c3d *c3d)
 {
-	if (!ptr)
+	if (!c3d)
 		return (ft_putmsg_fd("Error\nCouldn't open config file\n"
 				, 2, EXIT_FAILURE));
-	if (check_texture(ptr) == EXIT_FAILURE)
+	if (check_texture(c3d) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nCouldn't open texture file\n"
 				, 2, EXIT_FAILURE));
-	if (text_is_dir(ptr) == EXIT_FAILURE)
+	if (text_is_dir(c3d) == EXIT_FAILURE)
 		return (ft_putmsg_fd("Error\nA texture file is a directory\n"
 				, 2, EXIT_FAILURE));
-	if (check_map(ptr->map) == EXIT_FAILURE)
+	if (check_map(c3d->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (ptr->ceiling_color == ERR_MISS_LINE
-		|| ptr->floor_color == ERR_MISS_LINE)
+	if (c3d->ceiling_color == ERR_MISS_LINE
+		|| c3d->floor_color == ERR_MISS_LINE)
 		return (ft_putmsg_fd("Error\nMissing color line\n", 2, EXIT_FAILURE));
-	if (ptr->ceiling_color == ERR_INV_VAL || ptr->floor_color == ERR_INV_VAL)
+	if (c3d->ceiling_color == ERR_INV_VAL || c3d->floor_color == ERR_INV_VAL)
 		return (ft_putmsg_fd("Error\nInvalid color values : value must"
 				" be between 0 and 255\n", 2, EXIT_FAILURE));
-	if (ptr->ceiling_color == ERR_COLOR_CHAR
-		|| ptr->floor_color == ERR_COLOR_CHAR)
+	if (c3d->ceiling_color == ERR_COLOR_CHAR
+		|| c3d->floor_color == ERR_COLOR_CHAR)
 		return (ft_putmsg_fd("Error\nUnknown character in color line\n"
 				, 2, EXIT_FAILURE));
 	return (EXIT_SUCCESS);

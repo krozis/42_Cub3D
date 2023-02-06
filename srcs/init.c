@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:05:28 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/03 17:57:03 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	**get_lines(int fd, int num)
 	return (lines);
 }
 
-static void	_init(t_ptr *c3d)
+static void	_init(t_c3d *c3d)
 {
 	ft_bzero(&(c3d->keys), sizeof(t_keys));
 	c3d->ray = NULL;
@@ -76,31 +76,31 @@ static void	_init(t_ptr *c3d)
  * @param av: Arguments given to the program
  * @return Returns a pointer to the main cub3D structure.
  */
-t_ptr	*init(char **av)
+t_c3d	*init(char **av)
 {
 	int		fd;
 	char	**lines;
-	t_ptr	*ptr;
+	t_c3d	*c3d;
 	int		i;
 
 	i = -1;
-	ptr = malloc(sizeof(t_ptr));
+	c3d = malloc(sizeof(t_c3d));
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 	{
-		secure_free((void **)&ptr);
+		secure_free((void **)&c3d);
 		return (NULL);
 	}
-	_init(ptr);
+	_init(c3d);
 	lines = get_lines(fd, count_lines(av[1]));
-	ptr->map = get_map(lines, count_lines(av[1]));
-	get_textures(lines, ptr);
-	get_colors(lines, ptr);
+	c3d->map = get_map(lines, count_lines(av[1]));
+	get_textures(lines, c3d);
+	get_colors(lines, c3d);
 	while (lines && lines[++i])
 		secure_free((void **)&lines[i]);
 	secure_free((void **)&lines);
 	close(fd);
-	return (ptr);
+	return (c3d);
 }
 
 int	ismap(char *str)

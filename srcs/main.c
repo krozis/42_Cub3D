@@ -6,13 +6,13 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:03:38 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 16:49:12 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	_mouse_move(int x, int y, t_ptr *c3d)
+static int	_mouse_move(int x, int y, t_c3d *c3d)
 {
 	(void)y;
 	if (x < WIN_WIDTH / 2 && x > 0)
@@ -33,7 +33,7 @@ static int	_mouse_move(int x, int y, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
-static int	_release_key(int key, t_ptr *c3d)
+static int	_release_key(int key, t_c3d *c3d)
 {
 	if (key == XK_w)
 		c3d->keys.move_front = false;
@@ -52,7 +52,7 @@ static int	_release_key(int key, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
-static int	_press_key(int key, t_ptr *c3d)
+static int	_press_key(int key, t_c3d *c3d)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(c3d->dply.mlx);
@@ -79,7 +79,7 @@ static int	_press_key(int key, t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
-static int	_routine(t_ptr *c3d)
+static int	_routine(t_c3d *c3d)
 {
 	background(c3d);
 	raycasting(c3d);
@@ -98,23 +98,23 @@ static int	_routine(t_ptr *c3d)
 
 int	main(int ac, char **av)
 {
-	t_ptr	*ptr;
+	t_c3d	*c3d;
 
 	if (verify_args(ac, av) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	ptr = init(av);
-	if (check_errors(ptr) == EXIT_FAILURE || init_mlx(ptr) == EXIT_FAILURE)
+	c3d = init(av);
+	if (check_errors(c3d) == EXIT_FAILURE || init_mlx(c3d) == EXIT_FAILURE)
 	{
-		free_them_all(ptr);
+		free_them_all(c3d);
 		return (EXIT_FAILURE);
 	}
-	mlx_hook(ptr->dply.win, DestroyNotify, ButtonPressMask \
-		, &mlx_loop_end, ptr->dply.mlx);
-	mlx_hook(ptr->dply.win, KeyPress, KeyPressMask, &_press_key, ptr);
-	mlx_loop_hook(ptr->dply.mlx, _routine, ptr);
-	mlx_hook(ptr->dply.win, KeyRelease, KeyReleaseMask, &_release_key, ptr);
-	mlx_hook(ptr->dply.win, MotionNotify, PointerMotionMask, &_mouse_move, ptr);
-	mlx_loop(ptr->dply.mlx);
-	free_them_all(ptr);
+	mlx_hook(c3d->dply.win, DestroyNotify, ButtonPressMask \
+		, &mlx_loop_end, c3d->dply.mlx);
+	mlx_hook(c3d->dply.win, KeyPress, KeyPressMask, &_press_key, c3d);
+	mlx_loop_hook(c3d->dply.mlx, _routine, c3d);
+	mlx_hook(c3d->dply.win, KeyRelease, KeyReleaseMask, &_release_key, c3d);
+	mlx_hook(c3d->dply.win, MotionNotify, PointerMotionMask, &_mouse_move, c3d);
+	mlx_loop(c3d->dply.mlx);
+	free_them_all(c3d);
 	return (EXIT_SUCCESS);
 }

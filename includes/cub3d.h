@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:14:59 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 16:46:55 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ typedef struct s_keys
  * @param ceiling_color: color of the ceiling in int value
  * @param floor_color: color of the floor in int value
  */
-typedef struct s_ptr{
+typedef struct s_c3d{
 	char		**map;
 	char		*text[4];
 	int			ceiling_color;
@@ -199,40 +199,40 @@ typedef struct s_ptr{
 	t_dply		dply;
 	t_ray		*ray;
 	t_keys		keys;
-}				t_ptr;
+}				t_c3d;
 
 /*
  * MAIN / INIT / PARSING
 */
 
-t_ptr	*init(char **av);
+t_c3d	*init(char **av);
 int		init_player(t_player **player, char **map);
-void	get_colors(char **lines, t_ptr *ptr);
-void	init_structs(t_ptr *ptr);
-void	init_ray(t_ptr *ptr);
-void	init_dda(t_ptr *ptr);
-void	set_dir(t_ptr *ptr, char c);
-void	init_dda_2(t_ptr *ptr);
+void	get_colors(char **lines, t_c3d *c3d);
+void	init_structs(t_c3d *c3d);
+void	init_ray(t_c3d *c3d);
+void	init_dda(t_c3d *c3d);
+void	set_dir(t_c3d *c3d, char c);
+void	init_dda_2(t_c3d *c3d);
 
 /*
 	ERROR CHECKING FUNCTIONS
 */
 
 int		verify_args(int ac, char **av);
-int		check_errors(t_ptr *ptr);
+int		check_errors(t_c3d *c3d);
 int		check_colors(int color[3]);
 int		check_ones(char **map, int i, int k);
-int		check_color_line_ceiling(char *str, t_ptr *ptr, int start);
-int		check_color_line_floor(char *str, t_ptr *ptr, int start);
+int		check_color_line_ceiling(char *str, t_c3d *c3d, int start);
+int		check_color_line_floor(char *str, t_c3d *c3d, int start);
 int		check_digit(char *str);
-int		text_is_dir(t_ptr *ptr);
+int		text_is_dir(t_c3d *c3d);
 
 /*
  * TEXTURES
 */
 
-void	get_textures(char **lines, t_ptr *ptr);
-int		check_texture(t_ptr *c3d);
+void	get_textures(char **lines, t_c3d *c3d);
+int		check_texture(t_c3d *c3d);
 
 /*
  * MAP
@@ -245,7 +245,7 @@ int		check_integrity(char **map);
 /*
 	UTILITY FUNCTIONS
 */
-void	free_them_all(t_ptr *ptr);
+void	free_them_all(t_c3d *c3d);
 int		ismap(char *str);
 void	close_fds(int *fds);
 
@@ -253,30 +253,30 @@ void	close_fds(int *fds);
  * DISPLAYING WITH MLX
 */
 
-int		init_mlx(t_ptr *c3d);
-int		free_mlx(t_ptr *c3d, bool txt, int exit_code);
+int		init_mlx(t_c3d *c3d);
+int		free_mlx(t_c3d *c3d, bool txt, int exit_code);
 
 /*
  * RAYCASTING
 */
 
-void	raycasting(t_ptr *ptr);
-void	drawline(t_ptr *ptr, int x);
-int		text_num(t_ptr *ptr);
+void	raycasting(t_c3d *c3d);
+void	drawline(t_c3d *c3d, int x);
+int		text_num(t_c3d *c3d);
 
 /*
  * MOVEMENT
 */
 
-void	rotate(t_ptr *c3d);
-void	move(t_ptr *c3d);
+void	rotate(t_c3d *c3d);
+void	move(t_c3d *c3d);
 
 /*
  * DRAWING
 */
 
-int		background(t_ptr *c3d);
-void	minimap(t_ptr *c3d);
+int		background(t_c3d *c3d);
+void	minimap(t_c3d *c3d);
 void	draw_pixel(t_img *img, int x, int y, t_rgb color);
 void	draw_rect_full(t_img *img, t_point a, t_point b, t_rgb color);
 void	draw_rect_trans(t_img *img, t_point a, t_point b, t_rgb color);

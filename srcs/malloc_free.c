@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:14:14 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:22:25 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@ void	close_fds(int *fds)
 	}
 }
 
-void	free_them_all(t_ptr *ptr)
+void	free_them_all(t_c3d *c3d)
 {
 	int	i;
 
 	i = -1;
-	if (ptr)
+	if (c3d)
 	{
-		if (ptr->map)
-			while (ptr->map[++i])
-				secure_free((void **)&ptr->map[i]);
-		secure_free((void **)&ptr->map);
-		secure_free((void **)&ptr->text[N_TEXT]);
-		secure_free((void **)&ptr->text[S_TEXT]);
-		secure_free((void **)&ptr->text[W_TEXT]);
-		secure_free((void **)&ptr->text[E_TEXT]);
-		secure_free((void **)&ptr->player);
-		secure_free((void **)&ptr->ray);
-		if (ptr->dply.mlx)
-			free_mlx(ptr, true, EXIT_SUCCESS);
-		secure_free((void **)&ptr);
+		if (c3d->map)
+			while (c3d->map[++i])
+				secure_free((void **)&c3d->map[i]);
+		secure_free((void **)&c3d->map);
+		secure_free((void **)&c3d->text[N_TEXT]);
+		secure_free((void **)&c3d->text[S_TEXT]);
+		secure_free((void **)&c3d->text[W_TEXT]);
+		secure_free((void **)&c3d->text[E_TEXT]);
+		secure_free((void **)&c3d->player);
+		secure_free((void **)&c3d->ray);
+		if (c3d->dply.mlx)
+			free_mlx(c3d, true, EXIT_SUCCESS);
+		secure_free((void **)&c3d);
 	}
 }

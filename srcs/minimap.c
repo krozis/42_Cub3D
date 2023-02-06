@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:09:11 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 16:35:36 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	_check_map(t_img *img, char **map, t_player *player)
  * @brief Creates and display the minimap
  * @param c3d: a pointer to the main structure
  */
-void	minimap(t_ptr *c3d)
+void	minimap(t_c3d *c3d)
 {
 	t_point	a;
 	t_point	b;

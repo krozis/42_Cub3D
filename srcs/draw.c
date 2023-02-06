@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:15:12 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 16:09:29 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	draw_pixel(t_img *img, int x, int y, t_rgb color)
  * @brief Colors the background of the screen.
  * @return EXIT_FAILURE or EXIT_SUCCESS
  */
-int	background(t_ptr *c3d)
+int	background(t_c3d *c3d)
 {
 	c3d->dply.screen = mlx_new_image(c3d->dply.mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (c3d->dply.screen == NULL)

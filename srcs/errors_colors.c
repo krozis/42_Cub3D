@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_colors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcyprien <dcyprien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:49:01 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/01/20 15:11:36 by dcyprien         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_digit(char *str)
 	return (EXIT_SUCCESS);
 }
 
-int	check_color_line_ceiling(char *str, t_ptr *ptr, int start)
+int	check_color_line_ceiling(char *str, t_c3d *c3d, int start)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ int	check_color_line_ceiling(char *str, t_ptr *ptr, int start)
 			i++;
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ',')
 		{
-			ptr->ceiling_color = ERR_COLOR_CHAR;
+			c3d->ceiling_color = ERR_COLOR_CHAR;
 			return (EXIT_FAILURE);
 		}
 		if (!str[i])
@@ -52,7 +52,7 @@ int	check_color_line_ceiling(char *str, t_ptr *ptr, int start)
 	return (EXIT_SUCCESS);
 }
 
-int	check_color_line_floor(char *str, t_ptr *ptr, int start)
+int	check_color_line_floor(char *str, t_c3d *c3d, int start)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ int	check_color_line_floor(char *str, t_ptr *ptr, int start)
 			i++;
 		if (str[i] && !ft_isdigit(str[i]) && str[i] != ',')
 		{
-			ptr->floor_color = ERR_COLOR_CHAR;
+			c3d->floor_color = ERR_COLOR_CHAR;
 			return (EXIT_FAILURE);
 		}
 		if (!str[i])

@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:00:43 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/03 13:47:16 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static double	rot_l(double x, double y, bool is_x)
  * @brief Rotate left or right (with arrow keys or mouse movements)
  * @param c3d: Takes a pointer to the main structure.
  */
-void	rotate(t_ptr *c3d)
+void	rotate(t_c3d *c3d)
 {
 	double	olddirx;
 	double	oldplanex;

@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/06 16:18:38 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*text(char *str)
 	return (ft_substr(str, i, k - i));
 }
 
-static int	set_texture(t_ptr *c3d, char *str)
+static int	set_texture(t_c3d *c3d, char *str)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ static int	set_texture(t_ptr *c3d, char *str)
  * @brief Stores the textures files names in the main cub3D structure.
  * @param c3d: a pointer to the main cub3D structure
  */
-void	get_textures(char **lines, t_ptr *c3d)
+void	get_textures(char **lines, t_c3d *c3d)
 {
 	int		i;
 	int		count;
@@ -91,7 +91,7 @@ void	get_textures(char **lines, t_ptr *c3d)
  * @param c3d: a pointer to the main cub3D structure
  * @return EXIT_SUCCESS or EXIT_FAILURE
  */
-int	check_texture(t_ptr *c3d)
+int	check_texture(t_c3d *c3d)
 {
 	int	fd[4];
 
@@ -119,7 +119,7 @@ int	check_texture(t_ptr *c3d)
 	return (EXIT_SUCCESS);
 }
 
-int	text_is_dir(t_ptr *ptr)
+int	text_is_dir(t_c3d *c3d)
 {
 	int	fd;
 	int	i;
@@ -127,7 +127,7 @@ int	text_is_dir(t_ptr *ptr)
 	i = 0;
 	while (i < E_TEXT)
 	{
-		fd = open(ptr->text[i], __O_DIRECTORY);
+		fd = open(c3d->text[i], __O_DIRECTORY);
 		if (fd > 0)
 		{
 			close(fd);

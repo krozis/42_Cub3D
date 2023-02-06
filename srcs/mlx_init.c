@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:23:07 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/01 18:41:38 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 17:31:37 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param bg true if the background image has been loaded
  * @param exit_code will return the given exit_code
  */
-int	free_mlx(t_ptr *c3d, bool txt, int exit_code)
+int	free_mlx(t_c3d *c3d, bool txt, int exit_code)
 {
 	if (txt)
 	{
@@ -49,7 +49,7 @@ static t_img	*_text_load_each(void *mlx, char *file, int x, int y)
 	return (img);
 }
 
-static int	_text_load(t_ptr *c3d)
+static int	_text_load(t_c3d *c3d)
 {
 	c3d->dply.n_texture = _text_load_each(c3d->dply.mlx,
 			c3d->text[N_TEXT], 64, 64);
@@ -70,7 +70,7 @@ static int	_text_load(t_ptr *c3d)
  * @param c3d a pointer to the main cub3D structure
  * @return EXIT_FAILURE or EXIT_SUCCESS.
  */
-int	init_mlx(t_ptr *c3d)
+int	init_mlx(t_c3d *c3d)
 {
 	c3d->dply.mlx = mlx_init();
 	if (c3d->dply.mlx == NULL)
