@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:37:30 by dcyprien          #+#    #+#             */
-/*   Updated: 2023/02/02 12:34:40 by krozis           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:18:38 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static int	set_texture(t_ptr *c3d, char *str)
 
 /**
  * @brief Stores the textures files names in the main cub3D structure.
- * 
  * @param c3d: a pointer to the main cub3D structure
  */
 void	get_textures(char **lines, t_ptr *c3d)
