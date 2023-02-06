@@ -6,7 +6,7 @@
 /*   By: stelie <stelie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:09:11 by stelie            #+#    #+#             */
-/*   Updated: 2023/02/06 15:25:50 by stelie           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:52:23 by stelie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	_color_case(t_img *img, t_point p, char type)
 	if (type == '1')
 		draw_rect_trans(img, p, add_point(p, MAP_BOX_W, MAP_BOX_H),
 			int_to_rgb(MAP_WALL_COLOR));
-	else
+	else if (type == '0' || ft_incharset(type, "NWSE"))
 		draw_rect_trans(img, p, add_point(p, MAP_BOX_W, MAP_BOX_H),
 			int_to_rgb(MAP_FLOOR_COLOR));
 }
@@ -27,13 +27,13 @@ static t_point	_calculate(t_point p, int x, int y)
 	t_point	ret;
 
 	if (x == 0)
-		ret.x = MAP_P_X;
+		ret.x = MAP_P_X - ((p.x - x) * MAP_BOX_W);
 	else if (p.x > x)
 		ret.x = MAP_P_X - ((p.x - x) * MAP_BOX_W);
 	else
 		ret.x = MAP_P_X + ((x - p.x) * MAP_BOX_W);
 	if (y == 0)
-		ret.y = MAP_P_Y;
+		ret.y = MAP_P_Y - ((p.y - y) * MAP_BOX_H);
 	else if (p.y > y)
 		ret.y = MAP_P_Y - ((p.y - y) * MAP_BOX_H);
 	else
@@ -43,22 +43,18 @@ static t_point	_calculate(t_point p, int x, int y)
 
 static t_point	_get_corner_coord(char **map, t_point p, int corner_type)
 {
-	float	min_y;
-	float	min_x;
-	int		max_y;
+	int	min_y;
+	int	min_x;
+	int	max_y;
 
 	min_x = ft_posmin(p.x - 4, 0);
 	min_y = ft_posmin(p.y - 4, 0);
 	if (corner_type == TOP_LEFT)
 		return (init_point(min_x, min_y));
-	if (corner_type == TOP_RIGHT)
-		return (init_point(ft_min(p.x + 4, ft_strlen(map[0])), min_y));
 	max_y = 0;
 	while (map[max_y] != NULL)
 		max_y++;
 	max_y--;
-	if (corner_type == BOT_LEFT)
-		return (init_point(min_x, ft_min(max_y, p.y + 4)));
 	return (init_point(ft_min(p.x + 4, ft_strlen(map[0])), \
 			ft_min(max_y, p.y + 4)));
 }
@@ -75,11 +71,15 @@ static void	_check_map(t_img *img, char **map, t_player *player)
 	tmp = _get_corner_coord(map, p, TOP_LEFT);
 	corner = _get_corner_coord(map, p, BOT_RIGHT);
 	y = tmp.y;
-	while (y++ < corner.y)
+	while (y <= corner.y)
 	{
 		x = tmp.x;
-		while (x++ < corner.x)
+		while (x <= corner.x)
+		{
 			_color_case(img, _calculate(p, x, y), map[y][x]);
+			x++;
+		}
+		y++;
 	}
 }
 
