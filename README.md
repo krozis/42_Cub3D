@@ -8,9 +8,9 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Windows handling
 | TODO | Status |
 |--|--|
-| Change of windows focus / changing windows | NOK |
-| Resizing / reducting the window | NOK |
-| Closing the window | NOK |
+| Change of windows focus / changing windows | OK |
+| Reducting the window | OK |
+| Closing the window | OK |
   
 ### Textures
 | TODO | Status |
@@ -21,9 +21,9 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 ### Control handling
 | TODO | Status |
 |--|--|
-| Arrow keys right/left rotate the camera | NOK |
-| Keys WASD / ZQSD to move the character | NOK |
-| ESCAPE key and red cross shut correcty the program | NOK |
+| Arrow keys right/left rotate the camera | OK |
+| Keys WASD / ZQSD to move the character | OK |
+| ESCAPE key and red cross shut correcty the program | OK |
 
 ### Files
 | TODO | Status |
@@ -32,15 +32,15 @@ Cub3D is a graphical project where we have to recreate a visual environnement eq
 | Composed by 6 chars ONLY : OK
 | 0 is void spaces | OK |
 | 1 is walls | OK |
-| N, S, E, W is the initial position of the player, and his orientation | NOK |
+| N, S, E, W is the initial position of the player, and his orientation | OK |
 | Map must be surrounded by walls | OK |
 
 
 ### Bonus
 | TODO | Status |
 |--|--|
-| Walls collision | NOK |
-| minimap system | NOK |
+| Walls collision | OK |
+| minimap system | OK |
 | Doors that can be opened/closed (allowe to add a symbol on map description)| NOK |
 | Animated sprites | NOK |
-| PoV can be changed with the mouse | NOK |
+| PoV can be changed with the mouse | OK |
